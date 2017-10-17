@@ -1,4 +1,5 @@
-﻿Bài tập lớn nhóm 17 môn Công Nghệ Phần mềm 
+
+ 
 Pet Shop là dự án tạo lập một trang web thương mại có khả năng cung cấp cho khách hàng thông tin về những sản phẩm như quần áo, vòng cổ,... cho thú cưng của mình, mang lại cho khách hàng những phút giây thư giãn khi ghé thăm hoặc đặt hàng mua sắm. 
 Web có những tính năng cơ bản:
 
