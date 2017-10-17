@@ -11,6 +11,6 @@ Web có những tính năng cơ bản:
   
   3.Đặt hàng & mua hàng trực tuyến 
   
-    -Khách hàng không cần tạo tài khoản để hoàn tất quá trình thanh toán mà chỉ cần cung cấp những thông tin cơ bản 
+  -Khách hàng không cần tạo tài khoản để hoàn tất quá trình thanh toán mà chỉ cần cung cấp những thông tin cơ bản 
     
   4.Đánh giá của người dùng về sản phẩm
