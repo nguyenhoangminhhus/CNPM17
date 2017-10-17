@@ -4,7 +4,8 @@ Pet Shop là dự án tạo lập một trang web thương mại có khả năng
 Web có những tính năng cơ bản:
 
   1.Thông tin cơ bản về sản phẩm 
-    -Đa dạng các sản phẩm như vòng cổ, thức ăn, quần áo, đồ chơi, chuồng, sữa tắm,... 
+  
+  -Đa dạng các sản phẩm như vòng cổ, thức ăn, quần áo, đồ chơi, chuồng, sữa tắm,... 
     
   2.Thông tin về các gói ưu đãi 
   
