@@ -16,3 +16,5 @@ Web có những tính năng cơ bản:
   -Khách hàng không cần tạo tài khoản để hoàn tất quá trình thanh toán mà chỉ cần cung cấp những thông tin cơ bản 
     
   4.Đánh giá của người dùng về sản phẩm
+
+  5.Công nghệ sử dụng: PHP + MySQL, sử dụng framework Laravel 5.
