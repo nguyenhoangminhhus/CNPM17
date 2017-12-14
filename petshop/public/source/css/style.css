@@ -78,6 +78,7 @@ ul.cd-dropdown-content li {
     color: #fc6400;
     outline:none;
     padding-left: 0.5em;
+    font-size: 1.1em;
 }
 .w3ls-header-left ul li a.dropdown-toggle:hover,li.dropdown.head-dpdn.open a.dropdown-toggle{
     color: #00fc32;

@@ -10,12 +10,12 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+//Hiển thị
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('index', [
+Route::get('trang-chu', [
 	'as'=>'trang-chu',
 	'uses'=>'PageController@getIndex'
 ]);
@@ -28,6 +28,11 @@ Route::get('dang-ky', [
 Route::get('dang-nhap', [
 	'as'=>'dang-nhap',
 	'uses'=>'PageController@getDangnhap'
+]);
+
+Route::get('quen-mat-khau', [
+	'as'=>'quen-mat-khau',
+	'uses'=>'PageController@getForgotpass'
 ]);
 
 Route::get('thong-tin', [
@@ -108,4 +113,20 @@ Route::get('gia-tri-cot-loi', [
 Route::get('khuyen-mai', [
 	'as'=>'khuyen-mai',
 	'uses'=>'PageController@getOffers'
+]);
+
+//hành động
+Route::post('dang-ky', [
+	'as'=>'dang-ky',
+	'uses'=>'PageController@postDangky'
+]);
+
+Route::post('dang-nhap', [
+	'as'=>'dang-nhap',
+	'uses'=>'PageController@postDangnhap'
+]);
+
+Route::post('dang-xuat', [
+	'as'=>'dang-xuat',
+	'uses'=>'PageController@postDangxuat'
 ]);

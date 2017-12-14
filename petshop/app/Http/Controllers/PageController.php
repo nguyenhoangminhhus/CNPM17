@@ -2,10 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
+use Hash;
+use Auth;
+
+
+
 use Illuminate\Http\Request;
 
 class PageController extends Controller
 {
+    //hiển thị
     public function getIndex(){
     	return view('page.trangchu');
     }
@@ -16,6 +23,10 @@ class PageController extends Controller
 
     public function getDangnhap(){
     	return view('page.dangnhap');
+    }
+
+    public function getForgotpass(){
+        return view('page.forgot_password');
     }
 
     public function getThongtin(){
@@ -80,5 +91,70 @@ class PageController extends Controller
 
     public function getOffers(){
     	return view('page.offers');
+    }
+
+    //hành động
+    public function postDangky(Request $req){
+        $this->validate($req,
+            [
+                'fullname'=>'required|string|max:255',
+                'account'=>'required|min:6|max:25|unique:users,account',
+                'email'=>'required|email|unique:users,email',
+                'password'=>'required|min:6|max:20',
+                're_password'=>'required|same:password'
+            ],
+            [
+                'fullname.required'=>'Vui lòng nhập tên của bạn.',
+                'account.required'=>'Vui lòng nhập tên tài khoản.',
+                'account.unique'=>'Tài khoản đã có người sử dụng.',
+                'account.min'=>'Tài khoản ít nhất 6 ký tự.',
+                'account.max'=>'Tài khoản nhiều nhất 25 ký tự.',
+                'email.required'=>'Vui lòng nhập email.',
+                'email.email'=>'Không đúng định dạng email.',
+                'email.unique'=>'Email đã có người sử dụng.',
+                'password.required'=>'Vui lòng nhập mật khẩu.',
+                'password.min'=>'Mật khẩu ít nhất 6 ký tự.',
+                'password.max'=>'Mật khẩu nhiều nhất 20 ký tự.',
+                're_password.required'=>'Vui lòng nhập lại mật khẩu.',
+                're_password.same'=>'Nhập lại mật khẩu không đúng.'
+            ]
+        );
+        $user = new User();
+        $user->fullname = $req->fullname;
+        $user->account = $req->account;
+        $user->email = $req->email;
+        $user->password = Hash::make($req->password);
+        $user->role = '1';
+        $user->sign_date = '1995-01-06';
+        $user->save();
+        return redirect()->back()->with('thanhcong', 'Tạo tài khoản thành công');
+    }
+
+    public function postDangnhap(Request $req){
+        $this->validate($req,
+            [
+                'account'=>'required|min:6|max:25',
+                'password'=>'required|min:6|max:20'
+            ],
+            [
+                'account.required'=>'Vui lòng nhập tên tài khoản.',
+                'account.min'=>'Tài khoản ít nhất 6 ký tự.',
+                'account.max'=>'Tài khoản nhiều nhất 25 ký tự.',
+                'password.required'=>'Vui lòng nhập mật khẩu.',
+                'password.min'=>'Mật khẩu ít nhất 6 ký tự.',
+                'password.max'=>'Mật khẩu nhiều nhất 20 ký tự.'
+            ]
+        );
+        $credentials = array('account'=>$req->account, 'password'=>$req->password);
+        if (Auth::attempt($credentials)) {
+            return redirect()->back()->with(['flag'=>'success','message'=>'Đăng nhập thành công']);
+        } else {
+            return redirect()->back()->with(['flag'=>'danger','message'=>'Sai tài khoản hoặc mật khẩu']);
+        }
+    }
+
+    public function postDangxuat(){
+        Auth::logout();
+        return redirect()->route('trang-chu');
     }
 }
