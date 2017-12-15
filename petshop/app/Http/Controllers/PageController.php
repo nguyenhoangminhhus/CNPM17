@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use App\Category;
 use Hash;
 use Auth;
 
@@ -12,85 +13,107 @@ use Illuminate\Http\Request;
 
 class PageController extends Controller
 {
+    
+
     //hiển thị
     public function getIndex(){
-    	return view('page.trangchu');
+        $category = Category::all();
+        return view('page.trangchu', compact('category'));
     }
 
     public function getDangky(){
-    	return view('page.dangky');
+        $category = Category::all();
+    	return view('page.dangky', compact('category'));
     }
 
     public function getDangnhap(){
-    	return view('page.dangnhap');
+        $category = Category::all();
+    	return view('page.dangnhap', compact('category'));
     }
 
     public function getForgotpass(){
-        return view('page.forgot_password');
+        $category = Category::all();
+        return view('page.forgot_password', compact('category'));
     }
 
     public function getThongtin(){
-    	return view('page.thongtin');
+        $category = Category::all();
+    	return view('page.thongtin', compact('category'));
     }
 
     public function getCreditcard(){
-    	return view('page.credit_card');
+        $category = Category::all();
+    	return view('page.credit_card', compact('category'));
     }
 
     public function getChangepass(){
-    	return view('page.change_pass');
+        $category = Category::all();
+    	return view('page.change_pass', compact('category'));
     }
 
     public function getContact(){
-    	return view('page.contact');
+        $category = Category::all();
+    	return view('page.contact', compact('category'));
     }
 
     public function getEditinfor(){
-    	return view('page.edit_infor');
+        $category = Category::all();
+    	return view('page.edit_infor', compact('category'));
     }
 
     public function getHelp(){
-    	return view('page.help');
+        $category = Category::all();
+    	return view('page.help', compact('category'));
     }
 
     public function getInfor(){
-    	return view('page.infor');
+        $category = Category::all();
+    	return view('page.infor', compact('category'));
     }
 
     public function getInforbill(){
-    	return view('page.infor_bill');
+        $category = Category::all();
+    	return view('page.infor_bill', compact('category'));
     }
 
     public function getListbill(){
-    	return view('page.list_bill');
+        $category = Category::all();
+    	return view('page.list_bill', compact('category'));
     }
 
     public function getMarketplace(){
-    	return view('page.Market_place');
+        $category = Category::all();
+    	return view('page.Market_place', compact('category'));
     }
 
     public function getPayment(){
-    	return view('page.payment');
+        $category = Category::all();
+    	return view('page.payment', compact('category'));
     }
 
     public function getPrivacy(){
-    	return view('page.privacy');
+        $category = Category::all();
+    	return view('page.privacy', compact('category'));
     }
 
     public function getSignup(){
-    	return view('page.signup');
+        $category = Category::all();
+    	return view('page.signup', compact('category'));
     }
 
     public function getSitemap(){
-    	return view('page.sitemap');
+        $category = Category::all();
+    	return view('page.sitemap', compact('category'));
     }
 
     public function getValues(){
-    	return view('page.values');
+        $category = Category::all();
+    	return view('page.values', compact('category'));
     }
 
     public function getOffers(){
-    	return view('page.offers');
+        $category = Category::all();
+    	return view('page.offers', compact('category'));
     }
 
     //hành động
@@ -128,6 +151,7 @@ class PageController extends Controller
         $user->sign_date = '1995-01-06';
         $user->save();
         return redirect()->back()->with('thanhcong', 'Tạo tài khoản thành công');
+        Auth::login($user);
     }
 
     public function postDangnhap(Request $req){
@@ -147,10 +171,11 @@ class PageController extends Controller
         );
         $credentials = array('account'=>$req->account, 'password'=>$req->password);
         if (Auth::attempt($credentials)) {
-            return redirect()->back()->with(['flag'=>'success','message'=>'Đăng nhập thành công']);
+            return redirect()->route('trang-chu');
         } else {
             return redirect()->back()->with(['flag'=>'danger','message'=>'Sai tài khoản hoặc mật khẩu']);
         }
+
     }
 
     public function postDangxuat(){

@@ -11,11 +11,7 @@
 |
 */
 //Hiển thị
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('trang-chu', [
+Route::get('/', [
 	'as'=>'trang-chu',
 	'uses'=>'PageController@getIndex'
 ]);
@@ -126,7 +122,7 @@ Route::post('dang-nhap', [
 	'uses'=>'PageController@postDangnhap'
 ]);
 
-Route::post('dang-xuat', [
+Route::get('dang-xuat', [
 	'as'=>'dang-xuat',
 	'uses'=>'PageController@postDangxuat'
 ]);

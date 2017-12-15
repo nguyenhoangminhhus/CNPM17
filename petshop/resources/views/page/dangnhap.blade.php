@@ -17,6 +17,11 @@
 					@if(Session::has('flag'))
 						<div class="alert alert-{{Session::get('flag')}}">{{Session::get('message')}}</div>
 					@endif
+					@if (session('warning'))
+                        <span class="alert alert-warning help-block">
+                            <strong>{{ session('warning') }}</strong>
+                        </span>
+                    @endif
 					<input type="text" class="user" name="account" placeholder="Nhập tài khoản của bạn" required="">
 					<input type="password" name="password" class="lock" placeholder="Nhập mật khẩu" required="">
 					<input type="submit" value="Đăng nhập">

@@ -1,11 +1,12 @@
+
 	<!-- header -->
 	<div class="header">
 		<div class="w3ls-header"><!--header-one--> 
 			<div class="w3ls-header-left">
 				<ul>
-					@if(!Auth::check())
+					@if(Auth::check())
 						<li class="dropdown head-dpdn">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-user" aria-hidden="true"></i>{{Auth::user()->account}} <span class="caret"></span> </a>
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-user" aria-hidden="true"></i>{{Auth::user()->fullname}} <span class="caret"></span> </a>
 							<ul class="dropdown-menu">
 								<li><a href="infor.html">Quản lý tài khoản </a></li> 
 								<li><a href="signup.html">Đơn hàng của tôi</a></li> 
@@ -84,36 +85,11 @@
 							<a href="#0" class="cd-close">Close</a>
 							<ul class="cd-dropdown-content"> 
 								<li><a href="{{route('khuyen-mai')}}">Khuyến mãi</a></li>
+								@foreach($category as $cate)
 								<li class="has-children">
-									<a href="#">Đệm và ổ nằm</a> 
+									<a href="#">{{$cate->name}}</a> 
 								</li> <!-- .has-children -->
-								<li class="has-children">
-									<a href="#">Đồ chơi cho chó và mèo</a> 
-								</li> <!-- .has-children -->
-								<li class="has-children">
-									<a href="products2.html">Lồng chuồng - túi vận chuyển</a> 
-								</li> <!-- .has-children --> 
-								<li class="has-children">
-									<a href="#">Quần áo - phụ kiện</a> 
-								</li> <!-- .has-children -->  
-								<li class="has-children">
-									<a href="#">Sữa tắm - mỹ phẩm</a>
-								</li> <!-- .has-children -->  
-								<li class="has-children">
-									<a href="#">Thức ăn</a>
-								</li> <!-- .has-children -->  
-								<li class="has-children">
-									<a href="#">Thuốc thú ý</a>
-								</li> 
-								<li class="has-children">
-									<a href="#">Vật dụng ăn uống</a>
-								</li>
-								<li class="has-children">
-									<a href="#">Vệ sinh - khử mùi</a>
-								</li>
-								<li class="has-children">
-									<a href="#">Thẻ tên</a>
-								</li>  
+								@endforeach
 								<li><a href="sitemap.html">Toàn bộ sản phẩm website </a></li>  
 							</ul> <!-- .cd-dropdown-content -->
 						</nav> <!-- .cd-dropdown -->
