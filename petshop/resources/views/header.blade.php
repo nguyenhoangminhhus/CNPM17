@@ -32,10 +32,10 @@
 			<div class="w3ls-header-right">
 				<ul>
 					<li class="dropdown head-dpdn">
-						<a href="contact.html" class="dropdown-toggle"><i class="fa fa-map-marker" aria-hidden="true"></i> Vị trí cửa hàng</a>
+						<a href="{{route('lien-he')}}" class="dropdown-toggle"><i class="fa fa-map-marker" aria-hidden="true"></i> Vị trí cửa hàng</a>
 					</li> 
 					<li class="dropdown head-dpdn">
-						<a href="card.html" class="dropdown-toggle"><i class="fa fa-credit-card-alt" aria-hidden="true"></i> Thẻ tín dụng</a>
+						<a href="{{route('credit-card')}}" class="dropdown-toggle"><i class="fa fa-credit-card-alt" aria-hidden="true"></i> Thẻ tín dụng</a>
 					</li> 
 					<li class="dropdown head-dpdn">
 						<a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="#"><i class="fa fa-trademark" aria-hidden="true"></i> Kiểm tra đơn hàng </a>
@@ -85,12 +85,14 @@
 							<a href="#0" class="cd-close">Close</a>
 							<ul class="cd-dropdown-content"> 
 								<li><a href="{{route('khuyen-mai')}}">Khuyến mãi</a></li>
+
 								@foreach($category as $cate)
-								<li class="has-children">
-									<a href="#">{{$cate->name}}</a> 
-								</li> <!-- .has-children -->
+								<li >
+									<a href="{{route('loai-san-pham',$cate->category_id)}}">{{$cate->name}}</a> 
+								</li> 
 								@endforeach
-								<li><a href="sitemap.html">Toàn bộ sản phẩm website </a></li>  
+								
+								<li><a href="{{route('so-do-website')}}">Toàn bộ sản phẩm website </a></li>  
 							</ul> <!-- .cd-dropdown-content -->
 						</nav> <!-- .cd-dropdown -->
 					</div> <!-- .cd-dropdown-wrapper -->	 

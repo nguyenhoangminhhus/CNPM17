@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Products extends Model
 {
     protected $table = "products";
+    protected $primaryKey = "products_id";
 
     public function category(){
     	return $this->belongsTo('App\Category', 'category_id', 'products_id');

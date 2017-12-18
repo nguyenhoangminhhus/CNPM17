@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\User;
 use App\Category;
+use App\Products;
+
 use Hash;
 use Auth;
 
@@ -16,104 +18,239 @@ class PageController extends Controller
     
 
     //hiển thị
+    public function getIndex_Admin(){
+        
+        return view('admin.index_admin');
+    }
+
+    public function getAdd_address(){
+        
+        return view('admin.add_address');
+    }
+
+    public function getAdd_category(){
+        
+        return view('admin.add_category');
+    }
+
+    public function getAdd_product(){
+        
+        return view('admin.add_products');
+    }
+
+    public function getAdd_sale(){
+        
+        return view('admin.add_sale');
+    }
+
+    public function getAdd_slide(){
+        
+        return view('admin.add_slide');
+    }
+
+    public function getChange_address(){
+        
+        return view('admin.change_address');
+    }
+
+    public function getChange_category(){
+        
+        return view('admin.change_category');
+    }
+
+    public function getChange_pass(){
+        
+        return view('admin.change_pass');
+    }
+
+    public function getChange_product(){
+        
+        return view('admin.change_product');
+    }
+
+    public function getChange_sale(){
+        
+        return view('admin.change_sale');
+    }
+
+    public function getChange_slide(){
+        
+        return view('admin.change_slide');
+    }
+
+    public function getEdit_profile(){
+        
+        return view('admin.edit_profile');
+    }
+
+    public function getForgot_pass(){
+        
+        return view('admin.forgot_pass');
+    }
+
+    public function getList_address(){
+        
+        return view('admin.list_address');
+    }
+
+    public function getList_bill(){
+        
+        return view('admin.list_bill');
+    }
+
+    public function getList_category(){
+        
+        return view('admin.list_category');
+    }
+
+    public function getList_inbox(){
+        
+        return view('admin.list_inbox');
+    }
+
+    public function getList_product(){
+        
+        return view('admin.list_products');
+    }
+
+    public function getList_sale(){
+        
+        return view('admin.list_sale');
+    }
+
+    public function getList_slide(){
+        
+        return view('admin.list_slide');
+    }
+
+    public function getList_user(){
+        
+        return view('admin.list_user');
+    }
+
+    public function getLogin_admin(){
+        
+        return view('admin.login');
+    }
+
+    public function getProfile_admin(){
+        
+        return view('admin.profile');
+    }
+
+    public function getReply_inbox(){
+        
+        return view('admin.reply_inbox');
+    }
+
+    public function getView_inbox(){
+        
+        return view('admin.view_inbox');
+    }
+
     public function getIndex(){
         $category = Category::all();
         return view('page.trangchu', compact('category'));
     }
 
     public function getDangky(){
-        $category = Category::all();
-    	return view('page.dangky', compact('category'));
+        
+    	return view('page.dangky');
     }
 
     public function getDangnhap(){
-        $category = Category::all();
-    	return view('page.dangnhap', compact('category'));
+        
+    	return view('page.dangnhap');
     }
 
     public function getForgotpass(){
-        $category = Category::all();
-        return view('page.forgot_password', compact('category'));
+        
+        return view('page.forgot_password');
     }
 
     public function getThongtin(){
-        $category = Category::all();
-    	return view('page.thongtin', compact('category'));
+        
+    	return view('page.thongtin');
     }
 
     public function getCreditcard(){
-        $category = Category::all();
-    	return view('page.credit_card', compact('category'));
+        
+    	return view('page.credit_card');
     }
 
     public function getChangepass(){
-        $category = Category::all();
-    	return view('page.change_pass', compact('category'));
+        
+    	return view('page.change_pass');
     }
 
     public function getContact(){
-        $category = Category::all();
-    	return view('page.contact', compact('category'));
+        
+    	return view('page.contact');
     }
 
     public function getEditinfor(){
-        $category = Category::all();
-    	return view('page.edit_infor', compact('category'));
+        
+    	return view('page.edit_infor');
     }
 
     public function getHelp(){
-        $category = Category::all();
-    	return view('page.help', compact('category'));
+        
+    	return view('page.help');
     }
 
     public function getInfor(){
-        $category = Category::all();
-    	return view('page.infor', compact('category'));
+        
+    	return view('page.infor');
     }
 
     public function getInforbill(){
-        $category = Category::all();
-    	return view('page.infor_bill', compact('category'));
+        
+    	return view('page.infor_bill');
     }
 
     public function getListbill(){
-        $category = Category::all();
-    	return view('page.list_bill', compact('category'));
+        
+    	return view('page.list_bill');
     }
 
     public function getMarketplace(){
-        $category = Category::all();
-    	return view('page.Market_place', compact('category'));
+        
+    	return view('page.Market_place');
     }
 
     public function getPayment(){
-        $category = Category::all();
-    	return view('page.payment', compact('category'));
+        
+    	return view('page.payment');
     }
 
     public function getPrivacy(){
-        $category = Category::all();
-    	return view('page.privacy', compact('category'));
+        
+    	return view('page.privacy');
     }
 
-    public function getSignup(){
-        $category = Category::all();
-    	return view('page.signup', compact('category'));
+    public function getProduct(){
+        
+    	return view('page.product');
     }
 
     public function getSitemap(){
-        $category = Category::all();
-    	return view('page.sitemap', compact('category'));
+        
+    	return view('page.sitemap');
     }
 
     public function getValues(){
-        $category = Category::all();
-    	return view('page.values', compact('category'));
+        
+    	return view('page.values');
     }
 
     public function getOffers(){
-        $category = Category::all();
-    	return view('page.offers', compact('category'));
+        
+    	return view('page.offers');
+    }
+
+    public function getCategory($type){
+        $sp_theoloai = Products::where('category_id', $type)->get();
+        return view('page.category_products', compact('sp_theoloai'));
     }
 
     //hành động

@@ -1340,7 +1340,6 @@ a:hover, a:focus{
 .product-top h4 {
     font-size: 1.3em;
     color: #fff;
-    font-family: 'Offside', cursive;
     float: left;
 }
 .product-top ul li a.dropdown-toggle {
@@ -1371,7 +1370,6 @@ a:hover, a:focus{
 .agile-product-text h5{ 
     font-size: 1em;
     line-height: 1.8em;
-    font-family: 'Offside', cursive;
 	margin-top: 1em;
     text-transform: capitalize;
 }
@@ -2149,7 +2147,7 @@ h3.w3ls-title.w3ls-title1 {
 }
 .sitemap-tabs ul li {
     display: inline-block;
-    width: 18%; 
+    width: 48.5%; 
     margin: 0.5em;
     text-align: center;
     font-size: 1.1em;
@@ -2214,7 +2212,6 @@ nav.sitemap-tabs.affix div#myNavbar {
     margin: 0 auto;
 }
 h3.w3sitemap-title {
-    font-family: 'Offside', cursive;
     font-size: 1.5em;
 	color: #f44336; 
     border-bottom: 1px solid #e8e8e8;
