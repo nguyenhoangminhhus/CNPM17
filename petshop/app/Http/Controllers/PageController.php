@@ -8,6 +8,11 @@ use App\Products;
 
 use Hash;
 use Auth;
+use Mail;
+
+use App\mail\sendMail;
+use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\DB;
 
 
 
@@ -16,7 +21,6 @@ use Illuminate\Http\Request;
 class PageController extends Controller
 {
     
-
     //hiển thị
     public function getIndex_Admin(){
         
@@ -248,6 +252,16 @@ class PageController extends Controller
     	return view('page.offers');
     }
 
+    public function getGiohang(){
+        
+        return view('page.giohang');
+    }
+
+    public function getActive(){
+        
+        return view('page.active');
+    }
+
     public function getCategory($type){
         $sp_theoloai = Products::where('category_id', $type)->get();
         return view('page.category_products', compact('sp_theoloai'));
@@ -255,6 +269,7 @@ class PageController extends Controller
 
     //hành động
     public function postDangky(Request $req){
+        $random = rand(100000, 999999);
         $this->validate($req,
             [
                 'fullname'=>'required|string|max:255',
@@ -285,10 +300,44 @@ class PageController extends Controller
         $user->email = $req->email;
         $user->password = Hash::make($req->password);
         $user->role = '1';
-        $user->sign_date = '1995-01-06';
+        $user->sign_date = date('Y-m-d');
+        
+        $user->active_code = $random;
         $user->save();
-        return redirect()->back()->with('thanhcong', 'Tạo tài khoản thành công');
-        Auth::login($user);
+
+        Mail::send('email.user-activation', array('name'=>$user->fullname, 'code'=>$random), function($message){
+            $message->to(Input::get('email'), Input::get('fullname'))->subject('Mã kích hoạt tài khoản!');
+        });
+
+        return redirect()->back()->with('thanhcong', 'Tạo tài khoản thành công. Vui lòng kiểm tra email để xác thực tài khoản trước khi đăng nhập.');
+        
+    }
+
+    public function postActive(Request $req){
+        $this->validate($req,
+            [
+                'account'=>'required|min:6|max:25',
+            ],
+            [
+                'account.required'=>'Vui lòng nhập tên tài khoản.',
+                'account.min'=>'Tài khoản ít nhất 6 ký tự.',
+                'account.max'=>'Tài khoản nhiều nhất 25 ký tự.',
+            ]
+        );
+        $check = array('account'=>$req->account, 'active_code'=>$req->code, 'active'=>0);
+        $user = DB::table('users')
+                ->where('account', $req->account)
+                ->where('active_code', $req->code)
+                ->where('active', 0)
+                ->get();
+        if (count($user) > 0) {
+            DB::table('users')
+                ->where('account', $req->account)
+                ->update(['active' => 1]);
+            return redirect()->back()->with('thanhcong','Tài khoản của bạn đã kích hoạt thành công.');
+        } else {
+            return redirect()->back()->with('thatbai','Sai tài khoản hoặc mã code hoặc tài khoản của bạn đã được kích hoạt');
+        }
     }
 
     public function postDangnhap(Request $req){
@@ -306,11 +355,12 @@ class PageController extends Controller
                 'password.max'=>'Mật khẩu nhiều nhất 20 ký tự.'
             ]
         );
-        $credentials = array('account'=>$req->account, 'password'=>$req->password);
-        if (Auth::attempt($credentials)) {
+        $credentials = array('account'=>$req->account, 'password'=>$req->password, 'active'=>1);
+        $remember = $req->remember;
+        if (Auth::attempt($credentials, $remember)) {
             return redirect()->route('trang-chu');
         } else {
-            return redirect()->back()->with(['flag'=>'danger','message'=>'Sai tài khoản hoặc mật khẩu']);
+            return redirect()->back()->with(['flag'=>'danger','message'=>'Sai tài khoản hoặc mật khẩu hoặc tài khoản của bạn chưa được kích hoạt']);
         }
 
     }

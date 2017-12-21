@@ -246,10 +246,20 @@ Route::get('loai-san-pham/{type}', [
 	'uses'=>'PageController@getCategory'
 ]);
 
+Route::get('kich-hoat', [
+	'as'=>'kich-hoat',
+	'uses'=>'PageController@getActive'
+]);
+
 //hành động
 Route::post('dang-ky', [
 	'as'=>'dang-ky',
 	'uses'=>'PageController@postDangky'
+]);
+
+Route::post('kich-hoat', [
+	'as'=>'kich-hoat',
+	'uses'=>'PageController@postActive'
 ]);
 
 Route::post('dang-nhap', [
@@ -257,7 +267,19 @@ Route::post('dang-nhap', [
 	'uses'=>'PageController@postDangnhap'
 ]);
 
+
+
 Route::get('dang-xuat', [
 	'as'=>'dang-xuat',
 	'uses'=>'PageController@postDangxuat'
 ]);
+
+Route::get('gio-hang', [
+	'as'=>'gio-hang',
+	'uses'=>'PageController@getGiohang'
+]);
+
+Route::get('test', function()
+{
+    dd(Config::get('mail'));
+});
