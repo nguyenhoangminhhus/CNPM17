@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <!-- Meta, title, CSS, favicons, etc. -->
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Shop Pet Corner / Phụ kiện chó - mèo</title>
+
+  <!-- Bootstrap -->
+    <link href="vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <!-- NProgress -->
+    <link href="vendors/nprogress/nprogress.css" rel="stylesheet">
+    <!-- iCheck -->
+    <link href="vendors/iCheck/skins/flat/green.css" rel="stylesheet">
+    <!-- bootstrap-wysiwyg -->
+    <link href="vendors/google-code-prettify/bin/prettify.min.css" rel="stylesheet">
+    <!-- Select2 -->
+    <link href="vendors/select2/dist/css/select2.min.css" rel="stylesheet">
+    <!-- Switchery -->
+    <link href="vendors/switchery/dist/switchery.min.css" rel="stylesheet">
+    <!-- starrr -->
+    <link href="vendors/starrr/dist/starrr.css" rel="stylesheet">
+    <!-- bootstrap-daterangepicker -->
+    <link href="vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
+
+    <!-- Custom Theme Style -->
+    <link href="css/custom.css" rel="stylesheet">
+</head>
+
+<body class="nav-md">
+  <div class="container body">
+    <div class="main_container">
+      <div class="col-md-3 left_col">
+        <div class="left_col scroll-view">
+          <div class="navbar nav_title" style="border: 0;">
+            <a href="index.html" class="site_title"><i class="fa fa-paw"></i> <span>Shoppet Conner</span></a>
+          </div>
+
+          <div class="clearfix"></div>
+
+          <!-- menu profile quick info -->
+          <div class="profile clearfix">
+            <div class="profile_pic">
+              <img src="images/img.jpg" alt="..." class="img-circle profile_img">
+            </div>
+            <div class="profile_info">
+              <span>Xin chào,</span>
+              <h2>John Doe</h2>
+            </div>
+          </div>
+          <!-- /menu profile quick info -->
+
+          <br />
+
+          <!-- menu trái -->
+          <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+            <div class="menu_section">
+              <h3>Danh mục chính</h3>
+              <ul class="nav side-menu">
+                <li><a href="index.html"><i class="fa fa-home"></i> Trang chủ Admin <span class="fa fa-chevron-right"></span></a></li>
+                <li><a href="list_category.html"><i class="fa fa-list"></i> Loại sản phẩm <span class="fa fa-chevron-right"></span></a></li>
+                <li><a href="list_products.html"><i class="fa fa-product-hunt"></i> Danh sách sản phẩm <span class="fa fa-chevron-right"></span></a></li>
+                <li><a href="list_bill.html"><i class="fa fa-file"></i> Danh sách hóa đơn <span class="fa fa-chevron-right"></span></a></li>
+                <li><a href="list_sale.html"><i class="fa fa-bar-chart-o"></i> Danh sách khuyến mãi <span class="fa fa-chevron-right"></span></a></li>
+
+              </ul>
+            </div>
+            <div class="menu_section">
+              <h3>Danh mục phụ</h3>
+              <ul class="nav side-menu">
+                <li><a href="list_users.html"><i class="fa fa-users"></i> Danh sách Tài khoản <span class="fa fa-chevron-right"></span></a></li>
+                <li><a href="list_inbox.html"><i class="fa fa-envelope-o"></i> Danh sách tin nhắn <span class="fa fa-chevron-right"></span></a></li>
+                <li><a href="list_address.html"><i class="fa fa-clone"></i> Danh sách địa chỉ <span class="fa fa-chevron-right"></span></a></li>
+                <li><a href="list_slide.html"><i class="fa fa-sliders"></i> Danh sách slide chạy <span class="fa fa-chevron-right"></span></a></li>
+              </ul>
+            </div>
+          </div>
+          <!-- /menu trái -->
+        </div>
+      </div>
+
+      <!-- top navigation -->
+      <div class="top_nav">
+        <div class="nav_menu">
+          <nav>
+            <div class="nav toggle">
+              <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+            </div>
+
+            <ul class="nav navbar-nav navbar-right">
+              <li class="">
+                <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                  <img src="images/img.jpg" alt="">John Doe
+                  <span class=" fa fa-angle-down"></span>
+                </a>
+                <ul class="dropdown-menu dropdown-usermenu pull-right">
+                  <li><a href="#"><i class="fa fa-info pull-right"></i> Thông tin tài khoản</a></li>
+                  <li><a href="#"><i class="fa fa-key pull-right"></i> Đổi mật khẩu</a></li>
+                  <li><a href="login.html"><i class="fa fa-sign-out pull-right"></i> Đăng xuất</a></li>
+                </ul>
+              </li>
+
+              <li role="presentation" class="dropdown">
+                <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
+                  <i class="fa fa-envelope-o"></i>
+                  <span class="badge bg-green">6</span>
+                </a>
+                <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
+                  <li>
+                    <a>
+                      <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
+                      <span>
+                        <span>John Smith</span>
+                        <span class="time">3 mins ago</span>
+                      </span>
+                      <span class="message">
+                        Film festivals used to be do-or-die moments for movie makers. They were where...
+                      </span>
+                    </a>
+                  </li>
+                  <li>
+                    <a>
+                      <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
+                      <span>
+                        <span>John Smith</span>
+                        <span class="time">3 mins ago</span>
+                      </span>
+                      <span class="message">
+                        Film festivals used to be do-or-die moments for movie makers. They were where...
+                      </span>
+                    </a>
+                  </li>
+                  <li>
+                    <a>
+                      <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
+                      <span>
+                        <span>John Smith</span>
+                        <span class="time">3 mins ago</span>
+                      </span>
+                      <span class="message">
+                        Film festivals used to be do-or-die moments for movie makers. They were where...
+                      </span>
+                    </a>
+                  </li>
+                  <li>
+                    <a>
+                      <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
+                      <span>
+                        <span>John Smith</span>
+                        <span class="time">3 mins ago</span>
+                      </span>
+                      <span class="message">
+                        Film festivals used to be do-or-die moments for movie makers. They were where...
+                      </span>
+                    </a>
+                  </li>
+                  <li>
+                    <div class="text-center">
+                      <a href="list_inbox.html">
+                        <strong>Xem tất cả tin nhắn</strong>
+                        <i class="fa fa-angle-right"></i>
+                      </a>
+                    </div>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+      <!-- /top navigation -->
+
+      <!-- page content -->
+      <div class="right_col" role="main">
+        <div class="">
+          <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+              <div class="x_panel">
+                <div class="x_title">
+                  <h2>Gửi tin nhắn</h2>
+                  <ul class="nav navbar-right panel_toolbox">
+                    <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></li>
+                  </ul>
+                  <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                  <br />
+                  <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
+
+                    <div class="form-group">
+                      <label class="control-label col-md-3 col-sm-3 col-xs-12">Email</label>
+                      <div class="col-md-6 col-sm-6 col-xs-12">
+                        <input id="birthday" class="date-picker form-control col-md-7 col-xs-12" type="text" value="fsdfasd">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="control-label col-md-3 col-sm-3 col-xs-12">Tiêu đề</label>
+                      <div class="col-md-6 col-sm-6 col-xs-12">
+                        <input id="birthday" class="date-picker form-control col-md-7 col-xs-12" required="required" type="text" value="fsdfasd">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                    	<label class="control-label col-md-3 col-sm-3 col-xs-12">Nội dung <span class="required">*</span></label>
+                    	<div class="col-md-6 col-sm-6 col-xs-12">
+                    		<div class="btn-toolbar editor" data-role="editor-toolbar" data-target="#editor-one">
+                    			<div class="btn-group">
+                    				<a class="btn dropdown-toggle" data-toggle="dropdown" title="Font"><i class="fa fa-font"></i><b class="caret"></b></a>
+                    				<ul class="dropdown-menu">
+                    				</ul>
+                    			</div>
+
+                    			<div class="btn-group">
+                    				<a class="btn dropdown-toggle" data-toggle="dropdown" title="Font Size"><i class="fa fa-text-height"></i>&nbsp;<b class="caret"></b></a>
+                    				<ul class="dropdown-menu">
+                    					<li>
+                    						<a data-edit="fontSize 5">
+                    							<p style="font-size:17px">17</p>
+                    						</a>
+                    					</li>
+                    					<li>
+                    						<a data-edit="fontSize 3">
+                    							<p style="font-size:14px">14</p>
+                    						</a>
+                    					</li>
+                    					<li>
+                    						<a data-edit="fontSize 1">
+                    							<p style="font-size:11px">11</p>
+                    						</a>
+                    					</li>
+                    				</ul>
+                    			</div>
+
+                    			<div class="btn-group">
+                    				<a class="btn" data-edit="bold" title="Bold (Ctrl/Cmd+B)"><i class="fa fa-bold"></i></a>
+                    				<a class="btn" data-edit="italic" title="Italic (Ctrl/Cmd+I)"><i class="fa fa-italic"></i></a>
+                    				<a class="btn" data-edit="strikethrough" title="Strikethrough"><i class="fa fa-strikethrough"></i></a>
+                    				<a class="btn" data-edit="underline" title="Underline (Ctrl/Cmd+U)"><i class="fa fa-underline"></i></a>
+                    			</div>
+
+                    			<div class="btn-group">
+                    				<a class="btn" data-edit="insertunorderedlist" title="Bullet list"><i class="fa fa-list-ul"></i></a>
+                    				<a class="btn" data-edit="insertorderedlist" title="Number list"><i class="fa fa-list-ol"></i></a>
+                    				<a class="btn" data-edit="outdent" title="Reduce indent (Shift+Tab)"><i class="fa fa-dedent"></i></a>
+                    				<a class="btn" data-edit="indent" title="Indent (Tab)"><i class="fa fa-indent"></i></a>
+                    			</div>
+
+                    			<div class="btn-group">
+                    				<a class="btn" data-edit="justifyleft" title="Align Left (Ctrl/Cmd+L)"><i class="fa fa-align-left"></i></a>
+                    				<a class="btn" data-edit="justifycenter" title="Center (Ctrl/Cmd+E)"><i class="fa fa-align-center"></i></a>
+                    				<a class="btn" data-edit="justifyright" title="Align Right (Ctrl/Cmd+R)"><i class="fa fa-align-right"></i></a>
+                    				<a class="btn" data-edit="justifyfull" title="Justify (Ctrl/Cmd+J)"><i class="fa fa-align-justify"></i></a>
+                    			</div>
+
+                    			<div class="btn-group">
+                    				<a class="btn dropdown-toggle" data-toggle="dropdown" title="Hyperlink"><i class="fa fa-link"></i></a>
+                    				<div class="dropdown-menu input-append">
+                    					<input class="span2" placeholder="URL" type="text" data-edit="createLink" />
+                    					<button class="btn" type="button">Add</button>
+                    				</div>
+                    				<a class="btn" data-edit="unlink" title="Remove Hyperlink"><i class="fa fa-cut"></i></a>
+                    			</div>
+
+                    			<div class="btn-group">
+                    				<a class="btn" data-edit="undo" title="Undo (Ctrl/Cmd+Z)"><i class="fa fa-undo"></i></a>
+                    				<a class="btn" data-edit="redo" title="Redo (Ctrl/Cmd+Y)"><i class="fa fa-repeat"></i></a>
+                    			</div>
+                    		</div>
+
+                    		<div id="editor-one" class="editor-wrapper"></div>
+
+                    		<textarea name="descr" id="descr" style="display:none;"></textarea>
+                    	</div>
+                    </div>
+
+                    <div class="ln_solid"></div>
+                    <div class="form-group">
+                      <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+                        <button class="btn btn-primary" type="button">Hủy</button>
+                        <button type="submit" class="btn btntn-success">Gửi</button>
+                      </div>
+                    </div>
+
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- /page content -->
+
+      <!-- footer content -->
+      <footer>
+        <div class="pull-right">
+          Shoppet Conner
+        </div>
+        <div class="clearfix"></div>
+      </footer>
+      <!-- /footer content -->
+    </div>
+  </div>
+
+  <!-- jQuery -->
+    <script src="vendors/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- FastClick -->
+    <script src="vendors/fastclick/lib/fastclick.js"></script>
+    <!-- NProgress -->
+    <script src="vendors/nprogress/nprogress.js"></script>
+    <!-- bootstrap-progressbar -->
+    <script src="vendors/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
+    <!-- iCheck -->
+    <script src="vendors/iCheck/icheck.min.js"></script>
+    <!-- bootstrap-daterangepicker -->
+    <script src="vendors/moment/min/moment.min.js"></script>
+    <script src="vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
+    <!-- bootstrap-wysiwyg -->
+    <script src="vendors/bootstrap-wysiwyg/js/bootstrap-wysiwyg.min.js"></script>
+    <script src="vendors/jquery.hotkeys/jquery.hotkeys.js"></script>
+    <script src="vendors/google-code-prettify/src/prettify.js"></script>
+    <!-- jQuery Tags Input -->
+    <script src="vendors/jquery.tagsinput/src/jquery.tagsinput.js"></script>
+    <!-- Switchery -->
+    <script src="vendors/switchery/dist/switchery.min.js"></script>
+    <!-- Select2 -->
+    <script src="vendors/select2/dist/js/select2.full.min.js"></script>
+    <!-- Parsley -->
+    <script src="vendors/parsleyjs/dist/parsley.min.js"></script>
+    <!-- Autosize -->
+    <script src="vendors/autosize/dist/autosize.min.js"></script>
+    <!-- jQuery autocomplete -->
+    <script src="vendors/devbridge-autocomplete/dist/jquery.autocomplete.min.js"></script>
+    <!-- starrr -->
+    <script src="vendors/starrr/dist/starrr.js"></script>
+    <!-- Custom Theme Scripts -->
+    <script src="js/custom.js"></script>
+  
+</body>
+</html>
