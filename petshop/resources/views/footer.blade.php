@@ -1,3 +1,4 @@
+
 	<!-- footer-top -->
 	<div class="w3agile-ftr-top">
 		<div class="container">
@@ -72,34 +73,32 @@
 			<div class="footer-info w3-agileits-info">
 				<div class="col-md-4 address-left agileinfo">
 					<div class="footer-logo header-logo">
-						<h2><a href="index.html"><span>S</span>hopet<i> Corner</i></a></h2>
+						<h2><a href="{{route('trang-chu')}}"><span>S</span>hopet<i> Corner</i></a></h2>
 						<h6>Cửa hàng của bạn. Địa điểm của bạn.</h6>
 					</div>
 					<ul>
-						<li><i class="fa fa-map-marker"></i> 123 San Sebastian, New York City USA.</li>
-						<li><i class="fa fa-mobile"></i> 333 222 3333 </li>
-						<li><i class="fa fa-phone"></i> +222 11 4444 </li>
-						<li><i class="fa fa-envelope-o"></i> <a href="mailto:example@mail.com"> mail@example.com</a></li>
+						<li><i class="fa fa-map-marker"></i>358 - Bùi Xương Trạch - Khương Đình - Thanh Xuân</li>
+						<li><i class="fa fa-mobile"></i> 01679643840 </li>
+						<li><i class="fa fa-phone"></i> +0898573076	</li>
+						<li><i class="fa fa-envelope-o"></i> <a href="mailto:example@mail.com">duongnc@i-com.vn</a></li>
 					</ul> 
 				</div>
 				<div class="col-md-8 address-right">
 					<div class="col-md-3 footer-grids">
 						<h3>Company</h3>
 						<ul>
-							<li><a href="about.html">Về chúng tôi</a></li>
-							<li><a href="marketplace.html">Marketplace</a></li>  
-							<li><a href="values.html">Core Values</a></li>  
-							<li><a href="privacy.html">Chính sách bảo mật</a></li>
+							<li><a href="{{route('thong-tin')}}">Về chúng tôi</a></li>
+							<li><a href="{{route('dich-vu')}}">Marketplace</a></li>  
+							<li><a href="{{route('gia-tri-cot-loi')}}">Giá trị cốt lõi</a></li>  
+							<li><a href="{{route('chinh-sach-bao-mat')}}">Chính sách bảo mật</a></li>
 						</ul>
 					</div>
 					<div class="col-md-3 footer-grids">
 						<h3>Dịch vụ</h3>
 						<ul>
-							<li><a href="contact.html">Liên hệ với chúng tôi</a></li>
-							<li><a href="login.html">Returns</a></li> 
-							<li><a href="faq.html">FAQ</a></li>
-							<li><a href="sitemap.html">Sơ đồ website</a></li>
-							<li><a href="login.html">Order Status</a></li>
+							<li><a href="{{route('lien-he')}}">Liên hệ với chúng tôi</a></li>
+							<li><a href="{{route('giup-do')}}">Hướng dẫn</a></li>
+							<li><a href="{{route('so-do-website')}}">Sơ đồ website</a></li>
 						</ul> 
 					</div>
 					<div class="col-md-6 footer-grids">

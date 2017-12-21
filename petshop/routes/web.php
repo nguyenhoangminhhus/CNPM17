@@ -10,12 +10,8 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('index', [
+//Hiển thị
+Route::get('/', [
 	'as'=>'trang-chu',
 	'uses'=>'PageController@getIndex'
 ]);
@@ -28,6 +24,11 @@ Route::get('dang-ky', [
 Route::get('dang-nhap', [
 	'as'=>'dang-nhap',
 	'uses'=>'PageController@getDangnhap'
+]);
+
+Route::get('quen-mat-khau', [
+	'as'=>'quen-mat-khau',
+	'uses'=>'PageController@getForgotpass'
 ]);
 
 Route::get('thong-tin', [
@@ -90,9 +91,9 @@ Route::get('chinh-sach-bao-mat', [
 	'uses'=>'PageController@getPrivacy'
 ]);
 
-Route::get('san-pham', [
-	'as'=>'san-pham',
-	'uses'=>'PageController@getSignup'
+Route::get('chi-tiet-san-pham/{id}'	, [
+	'as'=>'chi-tiet-san-pham',
+	'uses'=>'PageController@getProduct'
 ]);
 
 Route::get('so-do-website', [
@@ -108,4 +109,29 @@ Route::get('gia-tri-cot-loi', [
 Route::get('khuyen-mai', [
 	'as'=>'khuyen-mai',
 	'uses'=>'PageController@getOffers'
+]);
+
+Route::get('loai-san-pham/{type}', [
+	'as'=>'loai-san-pham',
+	'uses'=>'PageController@getCategory'
+]);
+
+//hành động
+Route::post('dang-ky', [
+	'as'=>'dang-ky',
+	'uses'=>'PageController@postDangky'
+]);
+
+Route::post('dang-nhap', [
+	'as'=>'dang-nhap',
+	'uses'=>'PageController@postDangnhap'
+]);
+
+Route::get('dang-xuat', [
+	'as'=>'dang-xuat',
+	'uses'=>'PageController@postDangxuat'
+]);
+Route::get('search',[
+	'as'=>'search',
+	'uses' =>'PageController@getSearch'
 ]);
