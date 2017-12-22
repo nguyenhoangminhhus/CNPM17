@@ -135,3 +135,4 @@ Route::get('search',[
 	'as'=>'search',
 	'uses' =>'PageController@getSearch'
 ]);
+Route::post('comment/{id}','CommentController@posCcomment');

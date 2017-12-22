@@ -5,7 +5,7 @@
 			<div class="welcome-info">
 				<div class="bs-example bs-example-tabs" role="tabpanel" data-example-id="togglable-tabs">
 					<h3 class="w3ls-title">Tìm Kiếm</h3>
-					
+						<h6 class="w3ls-title">Tìm được {{count($product)}} sản phẩm</h6>
 						
 					<div id="myTabContent" class="tab-content">
 						<div role="tabpanel" class="tab-pane fade in active" id="home" aria-labelledby="home-tab">

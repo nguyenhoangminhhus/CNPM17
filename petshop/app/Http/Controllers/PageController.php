@@ -25,6 +25,12 @@ class PageController extends Controller
 
         return view('page.trangchu', compact('category','sanpham_khuyenmai'));
     }
+    function _construct(){
+          $category = Category::all();
+          if(Auth::check()){
+            view()->share('nguoidung', Auth::user());
+          }
+    }
 
     public function getDangky(){
         
@@ -105,6 +111,7 @@ class PageController extends Controller
         $sanpham= Products::where('products_id',$req->id)->first();
         //$sp_khac = Products::where('products_id', '<>',$type)->paginate(6);
     	return view('page.product',compact('sanpham','sp_khac'));
+
     }
 
     public function getSitemap(){
@@ -196,11 +203,18 @@ class PageController extends Controller
         return redirect()->route('trang-chu');
     }
     public function getSearch(Request $req){
+        $price = (float)$req->key;
         
         $product = Products::where('name','like','%'. $req->key .'%')
-                        ->orWhere('unit_price',$req->key)
+                        ->orWhere(function($que) use ($price){
+                            if($price > 0){
+                                 $que->orWhere('unit_price',$price);
+                            }
+                            })
+
+                       
                           
-                        ->get();
+                         ->get();
 
             return view('page.search',compact('product'));
                                                            

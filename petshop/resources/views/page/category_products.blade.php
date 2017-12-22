@@ -34,10 +34,10 @@
 							<div class="agile-product-text">              
 								<h5><a href="single.html">{{$sp->name}}</a></h5> 
 								@if($sp->promotion_price!=0)
-								<h6><del>{{$sp->unit_price}}</del>{{$sp->promotion_price}} đ</h6> 
+								<h6><del>{{number_format($sp->unit_price)}}</del>{{number_format($sp->promotion_price)}} VNĐ</h6> 
 								@else
 
-									<span style="font-size: 18px">{{$sp->unit_price}} đ</span>
+									<span style="font-size: 18px">{{number_format($sp->unit_price)}} VNĐ</span>
 								@endif	
 								<button class="w3ls-cart pw3ls-cart my-cart-btn" data-id="1" data-name="Audio speaker" data-summary="summary 1" data-price="100.00" data-quantity="1" data-image="source/images/e1.png"><i class="fa fa-cart-plus" aria-hidden="true"></i> Thêm vào giỏ hàng</button>
 							</div>
