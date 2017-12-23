@@ -5,22 +5,13 @@
 		<div class="container"> 
 			<h3 class="w3ls-title w3ls-title1">Liên Hệ</h3>  
 			<div class="map-info">
+				@foreach($map as $mp)
 				<div class="col-md-6 map-grids">
-					<h4>Địa chỉ Shopet Corner chi nhánh 1</h4>
-					<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3723.8976201585842!2d105.83245751535917!3d21.036782092879335!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135aba15ec15d17%3A0x620e85c2cfe14d4c!2zTMSDbmcgQ2jhu6cgdOG7i2NoIEjhu5MgQ2jDrSBNaW5o!5e0!3m2!1svi!2s!4v1508246957166"></iframe>
+					<h4>{{$mp->Addresss_name}}</h4>
+					<h5>{{$mp->Addresss_description}}</h5>
+					<iframe src="{{$mp->Addresss_linkmap}}"></iframe>
 				</div>
-				<div class="col-md-6 map-grids">
-					<h4>Địa chỉ Shopet Corner chi nhánh 2</h4>
-					<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d23778.253788067046!2d-87.77626504212625!3d41.84376259112007!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x880e33967c81db8f%3A0xbc5872c77c003120!2sCicero%2C+IL!5e0!3m2!1sen!2sin!4v1470650895897"></iframe>
-				</div>   
-				<div class="col-md-6 map-grids">
-					<h4>Địa chỉ Shopet Corner chi nhánh 3</h4>
-					<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4851.135123262741!2d105.86847248902144!3d58.25136049196456!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5cf6e6f5eed7e5eb%3A0xfec064728556bbad!2sTokma%2C+Irkutsk+Oblast%2C+Russia%2C+666639!5e0!3m2!1sen!2sin!4v1470650971228"></iframe>
-				</div>   
-				<div class="col-md-6 map-grids">
-					<h4>Địa chỉ Shopet Corner chi nhánh 4</h4>
-					<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3023.9503398796587!2d-73.9940307!3d40.719109700000004!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25a27e2f24131%3A0x64ffc98d24069f02!2sCANADA!5e0!3m2!1sen!2sin!4v1441710758555" allowfullscreen=""></iframe>
-				</div> 
+				@endforeach
 				<div class="clearfix"> </div>
 			</div>  
 			<div class="contact-form-row">
