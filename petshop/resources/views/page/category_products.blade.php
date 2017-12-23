@@ -26,7 +26,7 @@
 							<div class="new-tag"><h6>20%<br>Off</h6></div>
 							<a href="{{route('san-pham', $sp->products_id)}}"><img src="source/images/{{$sp->image}}" class="img-responsive" alt="img"></a>
 							<div class="agile-product-text">              
-								<h5><a href="{{route('san-pham')}}">{{$sp->name}}</a></h5> 
+								<h5>{{$sp->name}}</h5> 
 								<h6><del>$200</del> $100</h6> 
 								<button class="w3ls-cart pw3ls-cart my-cart-btn" data-id="1" data-name="Audio speaker" data-summary="summary 1" data-price="100.00" data-quantity="1" data-image="images/e1.png"><i class="fa fa-cart-plus" aria-hidden="true"></i> Thêm vào giỏ hàng</button>
 							</div>

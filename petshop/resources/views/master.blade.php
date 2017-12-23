@@ -1,4 +1,4 @@
-
+<!DOCTYPE html>
 <html lang="en">
 <head>
 	<title>Shop Pet Corner / Phụ kiện chó - mèo</title>
@@ -16,10 +16,11 @@
 	<link href="source/css/animate.min.css" rel="stylesheet" type="text/css" media="all" /> 
 	<link href="source/css/owl.carousel.css" rel="stylesheet" type="text/css" media="all"> <!-- carousel slider --> 
 	<link href="source/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css" media="all">  <!-- dataTable -->  
+	
 	<!-- //Custom Theme files -->
 	<!-- font-awesome icons -->
 	<link href="source/css/font-awesome.css" rel="stylesheet"> 
-	<!-- //font-awesome icons 
+	<!-- //font-awesome icons -->
 	<!-- web-fonts -->
 	<link href='https://fonts.googleapis.com/css?family=Roboto+Condensed:400,300,300italic,400italic,700,700italic' rel='stylesheet' type='text/css'>
 	<link href='https://fonts.googleapis.com/css?family=Lovers+Quarrel' rel='stylesheet' type='text/css'>
@@ -27,6 +28,19 @@
 	<link href='https://fonts.googleapis.com/css?family=Dancing+Script' rel='stylesheet' type='text/css'>
 	<!-- web-fonts --> 
 	
+	<!-- js --> 
+	<!-- Alertify -->
+	<script src="source/js/jquery-2.2.3.min.js"></script> 
+	<!-- Alertify JavaScript -->
+	<script src="https://cdn.jsdelivr.net/npm/alertifyjs@1.11.0/build/alertify.min.js"></script>
+	<!-- CSS -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/alertifyjs@1.11.0/build/css/alertify.min.css"/>
+	<!-- Default theme -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/alertifyjs@1.11.0/build/css/themes/default.min.css"/>
+	<!-- Semantic UI theme -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/alertifyjs@1.11.0/build/css/themes/semantic.min.css"/>
+	<!-- Bootstrap theme -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/alertifyjs@1.11.0/build/css/themes/bootstrap.min.css"/>
 
 </head>
 <body>
@@ -36,11 +50,10 @@
 
 	@include('footer')
 
-	
-	<!-- js --> 
-	
-	<script src="source/js/jquery-2.2.3.min.js"></script> 
 	<script src="source/js/owl.carousel.js"></script>  
+	
+	<script type="text/javascript" src="source/js/jquery.marquee.min.js"></script>
+	
 	<script>
 		$(document).ready(function() { 
 			$("#owl-demo").owlCarousel({ 
@@ -53,11 +66,12 @@
 		}); 
 		}); 
 	</script>
-	<script type="text/javascript" src="source/js/jquery.marquee.min.js"></script>
+
 	<script>
 		$('.marquee').marquee({ pauseOnHover: true });
 		//@ sourceURL=pen.js
 	</script>
+
 	<script>
 		$(document).ready(function() { 
 			$("#owl-demo1").owlCarousel({
@@ -396,7 +410,6 @@
 	</script>
 	<!--flex slider-->
 	<script src="source/js/imagezoom.js"></script>
-	
 	
 	<!-- //js -->
 </body>
