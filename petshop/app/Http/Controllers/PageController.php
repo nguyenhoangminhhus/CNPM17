@@ -5,7 +5,11 @@ namespace App\Http\Controllers;
 use App\User;
 use App\Category;
 use App\Products;
+use App\Customer;
+use App\Transaction;
+use App\Billdetails;
 use App\Sale;
+
 use App\Addresss;
 
 
@@ -16,15 +20,13 @@ use App\Emailsale;
 
 
 
+
+use DB;
+use Session;
+
 use Hash;
 use Auth;
-use Mail;
-
-
-
-use App\mail\sendMail;
-use Illuminate\Support\Facades\Input;
-use Illuminate\Support\Facades\DB;
+use Cart;
 
 
 
@@ -33,6 +35,7 @@ use Illuminate\Http\Request;
 class PageController extends Controller
 {
     
+
     //hiển thị
     public function getIndex_Admin(){
         if (Auth::check()) {
@@ -193,9 +196,14 @@ class PageController extends Controller
         return view('admin.view_inbox');
     }
 
+
+    //hiển thị
     public function getIndex(){
         $category = Category::all();
-        return view('page.trangchu', compact('category'));
+        
+        $sanpham_khuyenmai = Products::where('promotion_price','<>',0)->paginate(8);
+
+        return view('page.trangchu', compact('category','sanpham_khuyenmai'));
     }
 
     public function getDangky(){
@@ -212,8 +220,6 @@ class PageController extends Controller
         
         return view('page.forgot_password');
     }
-
-
 
 
     public function postForgotpass(Request $req){
@@ -243,8 +249,6 @@ class PageController extends Controller
         }
     }
 
-
-
     public function getThongtin(){
         
     	return view('page.thongtin');
@@ -260,38 +264,8 @@ class PageController extends Controller
     	return view('page.change_pass');
     }
 
-    public function postChangepass(Request $req){
-        $this->validate($req,
-            [
-                'passwordold'=>'required',
-                'password'=>'required|min:6|max:20',
-                're_password'=>'required|same:password'
-            ],
-            [
-                'passwordold.required'=>'Vui lòng nhập mật khẩu cũ.',
-                'password.required'=>'Vui lòng nhập mật khẩu mới.',
-                'password.min'=>'Mật khẩu ít nhất 6 ký tự.',
-                'password.max'=>'Mật khẩu nhiều nhất 20 ký tự.',
-                're_password.required'=>'Vui lòng nhập lại mật khẩu mới.',
-                're_password.same'=>'Nhập lại mật khẩu không đúng.'
-            ]
-        );
-        $user = User::find(Auth::user()->user_id);
-        if ($req->password == $req->passwordold) {
-            return redirect()->back()->with('thatbai', 'Mật khẩu mới không được trùng với mật khẩu cũ');
-        } else {
-            if (Hash::check($req->passwordold, $user['password'])){
-                $user->password = Hash::make($req->password);
-                $user->save();
-                return redirect()->back()->with('thanhcong', 'Bạn đã đổi mật khẩu thành công. Bạn phải đăng nhập lại');
-            } else {
-                return redirect()->back()->with('thatbai', 'Bạn đã nhập sai mật khẩu cũ.');
-            }
-        }
-        
-    }
-
     public function getContact(){
+
         $map = Addresss::all();
     	return view('page.contact', compact('map'));
 
@@ -316,16 +290,16 @@ class PageController extends Controller
         $contact->users_email = $req->email;
         $contact->content = $req->Message;
         $contact->time = date('Y-m-d H:i:s');
-        
-        $contact->Stt = 'Chưa xem';
-        $contact->save();
-
-        return redirect()->back()->with('thanhcong', 'Bạn đã gửi tin nhắn thành công. Chúng tôi sẽ gửi mail trả lời cho bạn trong 24h. Xin cảm ơn');
+      
+    	return view('page.contact');
     }
 
     public function getEditinfor(){
+
         $user = Auth::user();
     	return view('page.edit_infor', compact('user'));
+ 
+    	return view('page.edit_infor');
 
     }
 
@@ -382,6 +356,8 @@ class PageController extends Controller
             $user->save();
             return redirect()->back()->with('thanhcong', 'Sửa thông tin thành công');
         }
+  
+    	return view('page.infor');
 
     }
 
@@ -390,10 +366,6 @@ class PageController extends Controller
     	return view('page.infor_bill');
     }
 
-    public function getListbill(){
-        
-    	return view('page.list_bill');
-    }
 
     public function getMarketplace(){
         
@@ -401,8 +373,13 @@ class PageController extends Controller
     }
 
     public function getPayment(){
+    	
+        if(Cart::count() != 0){
+            return view('page.payment');
+        }else{
+            return redirect()->route('gio-hang')->with(['flash_message'=>'Bạn chưa có sản phẩm nào trong giỏ hàng']);
+        }
         
-    	return view('page.payment');
     }
 
     public function getPrivacy(){
@@ -410,18 +387,19 @@ class PageController extends Controller
     	return view('page.privacy');
     }
 
-    public function getProduct(){
-        
-    	return view('page.product');
+    public function getProduct(Request $req){
+        $sanpham= Products::where('products_id',$req->id)->first();
+    	return view('page.product',compact('sanpham'));
     }
 
     public function getSitemap(){
-
         
     	return view('page.sitemap');
 
         $category = Category::all();
     	return view('page.sitemap', compact('category'));
+
+    	return view('page.sitemap');
 
     }
 
@@ -431,34 +409,21 @@ class PageController extends Controller
     }
 
     public function getOffers(){
-        $sale_hienthi = Sale::whereNull('sale_off_code')->paginate(15);     
-    	return view('page.offers', compact('sale_hienthi'));
+        
+    	return view('page.offers');
     }
 
-    public function getGiohang(){
-        
-        return view('page.giohang');
-    }
 
-    public function getActive(){
-        
-        return view('page.active');
-    }
 
     public function getCategory($type){
-        $sp_theoloai = Products::where('category_id', $type)->get();
-        return view('page.category_products', compact('sp_theoloai'));
-    }
-
-    public function getSale($type){
-        $sp_theokhuyenmai = Products::where('saleoff_id', $type)->get();
-        $sale_view = Sale::where('sale_id', $type)->first();
-        return view('page.sale', compact('sp_theokhuyenmai', 'sale_view'));
+        $sp_theoloai = Products::where('category_id', $type)->paginate(4);
+        //$sp_khac = Products::where('category_id', '<>',$type)->paginate(2);
+        $loai_sp = Category::where('category_id',$type)->first();
+        return view('page.category_products', compact('sp_theoloai','sp_khac','loai_sp'));
     }
 
     //hành động
     public function postDangky(Request $req){
-        $random = rand(100000, 999999);
         $this->validate($req,
             [
                 'fullname'=>'required|string|max:255',
@@ -489,9 +454,7 @@ class PageController extends Controller
         $user->email = $req->email;
         $user->password = Hash::make($req->password);
         $user->role = '1';
-        $user->sign_date = date('Y-m-d');
-        
-        $user->active_code = $random;
+        $user->sign_date = '1995-01-06';
         $user->save();
 
         Mail::send('email.user-activation', array('name'=>$user->fullname, 'code'=>$random), function($message){
@@ -541,6 +504,10 @@ class PageController extends Controller
         } else {
             return redirect()->back()->with('thatbai','Sai tài khoản hoặc mã code hoặc tài khoản của bạn đã được kích hoạt');
         }
+
+        return redirect()->back()->with('thanhcong', 'Tạo tài khoản thành công');
+        Auth::login($user);
+
     }
 
     public function postDangnhap(Request $req){
@@ -558,17 +525,20 @@ class PageController extends Controller
                 'password.max'=>'Mật khẩu nhiều nhất 20 ký tự.'
             ]
         );
+
         $credentials = array('account'=>$req->account, 'password'=>$req->password, 'active'=>0);
         $remember = $req->remember;
         if (Auth::attempt($credentials, $remember)) {
+
+        $credentials = array('account'=>$req->account, 'password'=>$req->password);
+        if (Auth::attempt($credentials)) {
+
             return redirect()->route('trang-chu');
         } else {
-            return redirect()->back()->with(['flag'=>'danger','message'=>'Sai tài khoản hoặc mật khẩu hoặc tài khoản của bạn chưa được kích hoạt']);
+            return redirect()->back()->with(['flag'=>'danger','message'=>'Sai tài khoản hoặc mật khẩu']);
         }
 
     }
-
-
 
     public function postEmailsale(Request $req){
         $this->validate($req,
@@ -586,17 +556,177 @@ class PageController extends Controller
         $email->sale_id = '17';
         $email->save();
 
-        Mail::send('email.emailsale', array('name'=>'bạn', 'code'=>'SALE25CODE', 'dateto'=>'31/1/2018'), function($message){
-            $message->to(Input::get('email'))->subject('Mã khuyến mãi cho email mới!');
-        });
+    public function postDangxuat(){
+        Auth::logout();
+        return redirect()->route('trang-chu');
+    }
+    public function getSearch(Request $req){
+        $product = Products::where('name','like','%'.$req->key.'%')
+                        ->orWhere('unit_price',$req->key)      
+                        ->get();
 
-        return redirect()->back()->with('thanhcong', 'Chúng tôi đã gửi mã khuyến mãi. Xin kiểm tra email của bạn');
+            return view('page.search',compact('product'));
+                                                           
+    }
+    //Thêm sp vào giỏ hàng
+    public function muahang($id){
+       
+        $product_buy = DB::table('products')->where('products_id',$id)->first();
+       
+        if($product_buy->status > 0){
+            Cart::add(array('id'=>$id,'name'=>$product_buy->name,'qty'=>1,'price'=>$product_buy->unit_price, 'options'=>array('img'=>$product_buy->image)));
+        
+            return redirect()->route('gio-hang');
+        }else{
+            return redirect()->route('chi-tiet-san-pham',$id)->with(['flash_message'=>'Hết hàng']);
+        }
+        
     }
 
+    //lấy dữ liệu của giỏ hàng
+    public function getGiohang(){
+        $content = Cart::content();
+        return view('page.giohang',compact('content'));
+    }
+
+    //xóa sp giỏ hàng
+    public function xoaspgiohang($id){
+        Cart::remove($id);
+        return redirect()->route('gio-hang');
+    }
+
+    //cập nhật giỏ hàng
+    public function capnhatgiohang($id,$qty){
+       Cart::update($id,$qty);
+        return redirect()->route('gio-hang');
+    
+    }
 
 
     public function postDangxuat(){
         Auth::logout();
         return redirect()->route('trang-chu');
+
+    //đặt hàng và lưu thông tin vào csdl
+    public function dathang(Request $req){
+        
+        $hoten = "";
+        $sdt = 0;
+        $mail = "";
+        $diachi = "";
+        $trangthai = 0;
+
+        $giamgia = 0;
+        $sale = DB::table('sale')->get();
+        foreach ($sale as $a) {
+            if ($req->saleid == $a->sale_id) {
+                $giamgia =($a->sale_percent * Cart::subtotal(0,0,''))/100;
+            }
+        }
+        $phigiaohang = 0;
+        $phuongthucvanchuyen = $req->optradio;
+        $test = "Giao hàng nhanh (Thời gian: 1-2 ngày) - phí giao hàng: 30.000 VNĐ";
+        if (strcmp($req->optradio, $test) == 0) {
+            $phigiaohang = 30000;
+        }
+        $tonggiadonhang = Cart::subtotal(0,0,'') - $giamgia + $phigiaohang;
+        
+        if (Auth::check()) {
+            $tran = new Transaction;
+            $tran->users_id = Auth::user()->user_id;
+            $tran->date_oder = date('Y-m-d');
+            if (strcmp($req->optradio, $test) == 0) {
+                $tran->date_delivery = date( "Y-m-d",strtotime('+2 days'));
+            }else{
+                $tran->date_delivery = date( "Y-m-d",strtotime('+5 days'));   
+            }
+            foreach ($sale as $a) {
+                if ( $a->sale_id == $req->saleid) {
+                    $tran->sale_id = $req->saleid;
+                }else{
+                    $tran->sale_id = null;
+                }
+            }
+            
+            $tran->payment = $req->optradio;
+            $tran->total =$tonggiadonhang;
+            $tran->node = $req->note;
+            $tran->status = 0;
+            $tran->save();
+
+            foreach (Cart::content() as $item) {
+                $bill = new Billdetails;
+                $bill->Transaction_id = $tran->transaction_id;
+                $bill->products_id = $item->id;
+                $bill->quantity = $item->qty;
+                $bill->unit_price = $item->price;
+                $bill->save();
+            }
+            $hoten = Auth::user()->fullname;
+            $sdt = Auth::user()->phone;
+            $mail = Auth::user()->email;
+            $diachi = Auth::user()->address;
+            $trangthai = $tran->status;
+
+        } else{
+            $customer = new Customer;
+            $customer->customer_name = $req->hoten;
+            $customer->customer_phone = $req->phone;
+            $customer->customer_email = $req->email;
+            $customer->customer_address = $req->address;
+            $customer->save();
+
+            $tran = new Transaction;
+            $tran->customer_id = $customer->customer_id;
+            $tran->date_oder = date('Y-m-d');
+            if (strcmp($req->optradio, $test) == 0) {
+                $tran->date_delivery = date( "Y-m-d",strtotime('+2 days'));
+            }else{
+                $tran->date_delivery = date( "Y-m-d",strtotime('+5 days'));   
+            }
+            $tran->sale_id = $req->saleid;
+            $tran->payment = $req->optradio;
+            $tran->total =$tonggiadonhang;
+            $tran->node = $req->note;
+            $tran->status = 0;
+            $tran->save();
+            foreach (Cart::content() as $item) {
+                $bill = new Billdetails;
+                $bill->Transaction_id = $tran->transaction_id;
+                $bill->products_id = $item->id;
+                $bill->quantity = $item->qty;
+                $bill->unit_price = $item->price;
+                $bill->save();
+            }
+            $hoten = $customer->customer_name;
+            $sdt = $customer->customer_phone;
+            $mail = $customer->customer_email;
+            $diachi = $customer->customer_address;
+            $trangthai = $tran->status;
+        }
+
+
+        return view('page.infor_bill',compact('giamgia','phigiaohang','tonggiadonhang','phuongthucvanchuyen','hoten','sdt','mail','diachi','trangthai'));
+
+
     }
+
+
+    //lấy dữ liệu giỏ hàng cho user
+    public function getListbill(){   
+        if(Auth::check()){
+            $userid = Auth::user()->user_id;
+            $usertran = DB::table('transaction')->where('users_id',$userid)->get();
+            return view('page.list_bill',compact('usertran'));
+        } 
+    }
+
+    //lấy dữ liệu giỏ hàng cho customer
+    public function custListbill(Request $req){
+        $cusid = $req->checkbill;
+        $custran = DB::table('transaction')->where('transaction_id',$cusid)->get();
+        return view('page.cus_list_bill',compact('custran'));
+    }
+
+   
 }

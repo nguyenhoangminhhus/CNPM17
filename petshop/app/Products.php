@@ -17,9 +17,7 @@ class Products extends Model
     	return $this->hasMany('App\Billdetails', 'products_id', 'billdetails_id');
     }
 
-    public function sale(){
+    public function products(){
     	return $this->belongsTo('App\Sale', 'saleoff_id', 'products_id');
     }
-
-
 }

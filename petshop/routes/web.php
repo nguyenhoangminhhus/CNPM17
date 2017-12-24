@@ -11,6 +11,7 @@
 |
 */
 //Hiển thị
+
 Route::get('Admin', [
 	'as'=>'Admin',
 	'middleware' => 'auth',
@@ -285,6 +286,7 @@ Route::get('Admin/view-inbox', [
 
 
 
+
 Route::get('/', [
 	'as'=>'trang-chu',
 	'uses'=>'PageController@getIndex'
@@ -312,8 +314,6 @@ Route::post('quen-mat-khau', [
 	'uses'=>'PageController@postForgotpass'
 ]);
 
-
-
 Route::get('thong-tin', [
 	'as'=>'thong-tin',
 	'uses'=>'PageController@getThongtin'
@@ -329,11 +329,6 @@ Route::get('doi-mat-khau', [
 	'uses'=>'PageController@getChangepass'
 ]);
 
-Route::post('doi-mat-khau', [
-	'as'=>'doi-mat-khau',
-	'uses'=>'PageController@postChangepass'
-]);
-
 Route::get('lien-he', [
 	'as'=>'lien-he',
 	'uses'=>'PageController@getContact'
@@ -342,11 +337,6 @@ Route::get('lien-he', [
 Route::get('sua-thong-tin-tai-khoan', [
 	'as'=>'sua-thong-tin-tai-khoan',
 	'uses'=>'PageController@getEditinfor'
-]);
-
-Route::post('sua-thong-tin-tai-khoan', [
-	'as'=>'sua-thong-tin-tai-khoan',
-	'uses'=>'PageController@postEditinfor'
 ]);
 
 Route::get('giup-do', [
@@ -364,15 +354,12 @@ Route::get('thong-tin-don-hang', [
 	'uses'=>'PageController@getInforbill'
 ]);
 
-Route::get('danh-sach-don-hang', [
-	'as'=>'danh-sach-don-hang',
-	'uses'=>'PageController@getListbill'
-]);
 
 Route::get('dich-vu', [
 	'as'=>'dich-vu',
 	'uses'=>'PageController@getMarketplace'
 ]);
+
 
 Route::get('thanh-toan', [
 	'as'=>'thanh-toan',
@@ -384,8 +371,8 @@ Route::get('chinh-sach-bao-mat', [
 	'uses'=>'PageController@getPrivacy'
 ]);
 
-Route::get('san-pham/{id}', [
-	'as'=>'san-pham',
+Route::get('chi-tiet-san-pham/{id}'	, [
+	'as'=>'chi-tiet-san-pham',
 	'uses'=>'PageController@getProduct'
 ]);
 
@@ -409,25 +396,10 @@ Route::get('loai-san-pham/{type}', [
 	'uses'=>'PageController@getCategory'
 ]);
 
-Route::get('san-pham-khuyen-mai/{type}', [
-	'as'=>'san-pham-khuyen-mai',
-	'uses'=>'PageController@getSale'
-]);
-
-Route::get('kich-hoat', [
-	'as'=>'kich-hoat',
-	'uses'=>'PageController@getActive'
-]);
-
 //hành động
 Route::post('dang-ky', [
 	'as'=>'dang-ky',
 	'uses'=>'PageController@postDangky'
-]);
-
-Route::post('kich-hoat', [
-	'as'=>'kich-hoat',
-	'uses'=>'PageController@postActive'
 ]);
 
 Route::post('dang-nhap', [
@@ -441,15 +413,19 @@ Route::get('dang-xuat', [
 ]);
 
 
-
 Route::post('lien-he',[
 	'as'=>'lien-he',
 	'uses'=>'PageController@postContact'
-]);
+ ]);
 
-Route::post('emailsale', [
-	'as'=>'emailsale',
-	'uses'=>'PageController@postEmailsale'
+Route::get('search',[
+	'as'=>'search',
+	'uses' =>'PageController@getSearch'
+
+]);
+Route::get('mua-hang/{id}/{name}',[
+	'as' => 'mua-hang',
+	'uses' => 'PageController@muahang'
 ]);
 
 
@@ -459,7 +435,32 @@ Route::get('gio-hang', [
 	'uses'=>'PageController@getGiohang'
 ]);
 
-Route::get('test', function()
-{
-    dd(Config::get('mail'));
-});
+Route::get('xoa-sp-giohang/{id}', [
+	'as' => 'xoa-sp-giohang',
+	'uses' => 'PageController@xoaspgiohang'
+]);
+
+Route::get('cap-nhat/{id}/{qty}',[
+	'as' => 'cap-nhat',
+	'uses' => 'PageController@capnhatgiohang'
+]);
+
+
+Route::post('dat-hang', [
+	'as' => 'dat-hang',
+	'uses' => 'PageController@dathang'
+]);
+
+Route::get('danh-sach-don-hang', [
+	'as'=>'danh-sach-don-hang',
+	'uses'=>'PageController@getListbill'
+]);
+Route::post('customer-bill',[
+	'as' => 'customer-bill',
+	'uses' =>'PageController@custListbill'
+]);
+
+
+
+
+

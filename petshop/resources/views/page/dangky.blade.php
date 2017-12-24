@@ -29,6 +29,9 @@
 						</script>
 
 
+
+						<div class="alert alert-success">{{Session::get('thanhcong')}}</div>
+
 					@endif
 					<input type="text" class="user" name="fullname" placeholder="Nhập tên của bạn" required="">
 					<input type="text" class="user" name="account" placeholder="Nhập tên tài khoản" required="">

@@ -12,4 +12,7 @@ class Transaction extends Model
     public function billdetails(){
     	return $this->hasOne('App\Bill', 'Transaction_id', 'transaction_id');
     }
+    public function Transaction(){
+    	return $this->belongsTo('App\Customer','customer_id','transaction_id');
+    }
 }

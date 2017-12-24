@@ -2,16 +2,14 @@
 	<div class="w3single-offers offer-bottom"> 
 		<div class="col-md-6 offer-bottom-grids">
 			<div class="offer-bottom-grids-info2">
-				<h4>Quà tặng đặc biệt</h4> 
-				<h6>Thêm thương hiệu, nhiều cách khác để mua sắm. <br> Kiểm tra những món quà lý tưởng này!</h6>
-				<a href="{{route('khuyen-mai')}}">Xem thêm <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>
+				<h4>Special Gift Cards</h4> 
+				<h6>More brands, more ways to shop. <br> Check out these ideal gifts!</h6>
 			</div>
 		</div>
 		<div class="col-md-6 offer-bottom-grids">
 			<div class="offer-bottom-grids-info">
-				<h4>Giảm giá 10%</h4> 
-				<h6>Khuyến mãi mua sắm</h6>
-				<a href="{{route('khuyen-mai')}}">Xem thêm <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>
+				<h4>Flat $10 Discount</h4> 
+				<h6>The best Shopping Offer <br> On Fashion Store</h6>
 			</div>
 		</div>
 		<div class="clearfix"> </div>
