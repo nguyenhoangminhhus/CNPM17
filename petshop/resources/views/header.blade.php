@@ -14,6 +14,9 @@
 								<li><a href="infor.html">Quản lý tài khoản </a></li> 
 								<li><a href="signup.html">Đơn hàng của tôi</a></li> 
 								<li><a href="change_pass.html">Đổi mật khẩu</a></li>  
+								<li><a href="infor.html">Quản lý tài khoản </a></li> 
+								<li><a href="signup.html">Đơn hàng của tôi</a></li> 
+								<li><a href="change_pass.html">Đổi mật khẩu</a></li>  
 
 
 								<li><a href="infor.html">Quản lý tài khoản </a></li> 

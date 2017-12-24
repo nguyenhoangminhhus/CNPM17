@@ -5,10 +5,8 @@
 		<div class="container"> 
 			<h3 class="w3ls-title w3ls-title1">Quên mật khẩu</h3>  
 			<div class="login-body">
-
 				<form action="#" method="post">
 					<input type="text" class="user" name="fullname" placeholder="Nhập tên tài khoản của bạn" required="">
-
 
 				<form action="#" method="post">
 					<input type="text" class="user" name="fullname" placeholder="Nhập tên tài khoản của bạn" required="">

@@ -6,6 +6,11 @@ use App\User;
 use App\Category;
 use App\Products;
 
+use App\Comment;
+use DB;
+use Session;
+
+
 use Session;
 use Hash;
 use Auth;
@@ -20,15 +25,9 @@ use App\Emailsale;
 
 
 
+
 use Hash;
 use Auth;
-use Mail;
-
-
-
-use App\mail\sendMail;
-use Illuminate\Support\Facades\Input;
-use Illuminate\Support\Facades\DB;
 
 
 
@@ -37,9 +36,6 @@ use Illuminate\Http\Request;
 
 class PageController extends Controller
 {
-    
-
-
     //hiển thị
     public function getIndex(){
         $category = Category::all();
@@ -95,96 +91,20 @@ class PageController extends Controller
         return view('admin.change_category');
     }
 
-    public function getChange_pass(){
+    //hiển thị
+    public function getIndex(){
+        $category = Category::all();
         
-        return view('admin.change_pass');
+        $sanpham_khuyenmai = Products::where('promotion_price','<>',0)->paginate(8);
+
+        return view('page.trangchu', compact('category','sanpham_khuyenmai'));
     }
 
-    public function getChange_product(){
-        
-        return view('admin.change_product');
-    }
-
-    public function getChange_sale(){
-        
-        return view('admin.change_sale');
-    }
-
-    public function getChange_slide(){
-        
-        return view('admin.change_slide');
-    }
-
-    public function getEdit_profile(){
-        
-        return view('admin.edit_profile');
-    }
-
-    public function getForgot_pass(){
-        
-        return view('admin.forgot_pass');
-    }
-
-    public function getList_address(){
-        
-        return view('admin.list_address');
-    }
-
-    public function getList_bill(){
-        
-        return view('admin.list_bill');
-    }
-
-    public function getList_category(){
-        
-        return view('admin.list_category');
-    }
-
-    public function getList_inbox(){
-        
-        return view('admin.list_inbox');
-    }
-
-    public function getList_product(){
-        
-        return view('admin.list_products');
-    }
-
-    public function getList_sale(){
-        
-        return view('admin.list_sale');
-    }
-
-    public function getList_slide(){
-        
-        return view('admin.list_slide');
-    }
-
-    public function getList_user(){
-        
-        return view('admin.list_user');
-    }
-
-    public function getLogin_admin(){
-        
-        return view('admin.login');
-    }
-
-    public function getProfile_admin(){
-        
-        return view('admin.profile');
-    }
-
-    public function getReply_inbox(){
-        
-        return view('admin.reply_inbox');
-    }
-
-    public function getView_inbox(){
-        
-        return view('admin.view_inbox');
-    }
-
+    function _construct(){
+          $category = Category::all();
+          if(Auth::check()){
+            view()->share('nguoidung', Auth::user());
+          }
     public function getIndex(){
         $category = Category::all();
         return view('page.trangchu', compact('category'));
@@ -205,10 +125,6 @@ class PageController extends Controller
         
         return view('page.forgot_password');
     }
-
-
-
-
 
     public function postForgotpass(Request $req){
         $this->validate($req,
@@ -237,9 +153,6 @@ class PageController extends Controller
         }
     }
 
-
-
-
     public function getThongtin(){
         
     	return view('page.thongtin');
@@ -255,39 +168,7 @@ class PageController extends Controller
     	return view('page.change_pass');
     }
 
-    public function postChangepass(Request $req){
-        $this->validate($req,
-            [
-                'passwordold'=>'required',
-                'password'=>'required|min:6|max:20',
-                're_password'=>'required|same:password'
-            ],
-            [
-                'passwordold.required'=>'Vui lòng nhập mật khẩu cũ.',
-                'password.required'=>'Vui lòng nhập mật khẩu mới.',
-                'password.min'=>'Mật khẩu ít nhất 6 ký tự.',
-                'password.max'=>'Mật khẩu nhiều nhất 20 ký tự.',
-                're_password.required'=>'Vui lòng nhập lại mật khẩu mới.',
-                're_password.same'=>'Nhập lại mật khẩu không đúng.'
-            ]
-        );
-        $user = User::find(Auth::user()->user_id);
-        if ($req->password == $req->passwordold) {
-            return redirect()->back()->with('thatbai', 'Mật khẩu mới không được trùng với mật khẩu cũ');
-        } else {
-            if (Hash::check($req->passwordold, $user['password'])){
-                $user->password = Hash::make($req->password);
-                $user->save();
-                return redirect()->back()->with('thanhcong', 'Bạn đã đổi mật khẩu thành công. Bạn phải đăng nhập lại');
-            } else {
-                return redirect()->back()->with('thatbai', 'Bạn đã nhập sai mật khẩu cũ.');
-            }
-        }
-        
-    }
-
-    public function getContact(){
-        
+    public function getContact(){ 
     	return view('page.contact');
     }
 
@@ -320,16 +201,12 @@ class PageController extends Controller
         $contact->content = $req->Message;
         $contact->time = date('Y-m-d H:i:s');
         
-        $contact->Stt = 'Chưa xem';
-        $contact->save();
-
-        return redirect()->back()->with('thanhcong', 'Bạn đã gửi tin nhắn thành công. Chúng tôi sẽ gửi mail trả lời cho bạn trong 24h. Xin cảm ơn');
+    	return view('page.contact');
     }
 
     public function getEditinfor(){
-        $user = Auth::user();
-    	return view('page.edit_infor', compact('user'));
-
+        
+    	return view('page.edit_infor');
     }
 
     public function getHelp(){
@@ -338,56 +215,8 @@ class PageController extends Controller
     }
 
     public function getInfor(){
-
         
     	return view('page.infor');
-
-        $user = Auth::user();
-    	return view('page.infor', compact('user'));
-    }
-
-    public function postEditinfor(Request $req){
-        $this->validate($req,
-            [
-                'fullname'=>'required|string|max:255',
-                'email'=>'required|email',
-                'phone'=>'required|int',
-                'address'=>'required'
-            ],
-            [
-                'fullname.required'=>'Vui lòng nhập tên của bạn.',
-                'phone.required'=>'Vui lòng nhập số điện thoại.',
-                'phone.int'=>'Vui lòng nhập đúng định dạng số',
-                'email.required'=>'Vui lòng nhập email.',
-                'email.email'=>'Không đúng định dạng email.',
-                'email.unique'=>'Email đã có người sử dụng.',
-                'address.required'=>'Vui lòng nhập địa chỉ.'
-            ]
-        );
-        $user = Auth::user();
-        if ($req->email == $user->email) {
-            $user->fullname = $req->fullname;
-            $user->phone = $req->phone;
-            $user->address = $req->address;
-            $user->save();
-            return redirect()->back()->with('thanhcong', 'Sửa thông tin thành công');
-        } else {
-            $this->validate($req,
-                [
-                    'email'=>'unique:users,email'
-                ],
-                [
-                    'email.unique'=>'Email đã có người sử dụng.'
-                ]
-            );
-            $user->fullname = $req->fullname;
-            $user->phone = $req->phone;
-            $user->email = $req->email;
-            $user->address = $req->address;
-            $user->save();
-            return redirect()->back()->with('thanhcong', 'Sửa thông tin thành công');
-        }
-
     }
 
     public function getInforbill(){
@@ -418,6 +247,9 @@ class PageController extends Controller
 
     public function getProduct(Request $req){
         $sanpham= Products::where('products_id',$req->id)->first();
+        $com = DB::table('comment')->where('product_id',$req->id)->get();
+    public function getProduct(Request $req){
+        $sanpham= Products::where('products_id',$req->id)->first();
         //$sp_khac = Products::where('products_id', '<>',$type)->paginate(6);
     	return view('page.product',compact('sanpham','sp_khac'));
 
@@ -427,18 +259,14 @@ class PageController extends Controller
 
     public function getProduct(){
         
-    	return view('page.product');
+        //$sp_khac = Products::where('products_id', '<>',$type)->paginate(6);
+    	return view('page.product',compact('sanpham','com'));
+
     }
 
     public function getSitemap(){
-
-
         
     	return view('page.sitemap');
-
-        $category = Category::all();
-    	return view('page.sitemap', compact('category'));
-
     }
 
     public function getValues(){
@@ -446,9 +274,7 @@ class PageController extends Controller
     	return view('page.values');
     }
 
-    public function getOffers(){
-
-        
+    public function getOffers(){    
     	return view('page.offers');
 
         $sale_hienthi = Sale::whereNull('sale_off_code')->paginate(15);     
@@ -457,28 +283,18 @@ class PageController extends Controller
 
     public function getGiohang(){
         
-        return view('page.giohang');
-    }
-
-    public function getActive(){
-        
-        return view('page.active');
+    	return view('page.offers');
     }
 
     public function getCategory($type){
-        $sp_theoloai = Products::where('category_id', $type)->get();
-        return view('page.category_products', compact('sp_theoloai'));
-    }
-
-    public function getSale($type){
-        $sp_theokhuyenmai = Products::where('saleoff_id', $type)->get();
-        $sale_view = Sale::where('sale_id', $type)->first();
-        return view('page.sale', compact('sp_theokhuyenmai', 'sale_view'));
+        $sp_theoloai = Products::where('category_id', $type)->paginate(4);
+        $sp_khac = Products::where('category_id', '<>',$type)->paginate(6);
+        $loai_sp = Category::where('category_id',$type)->first();
+        return view('page.category_products', compact('sp_theoloai','sp_khac','loai_sp'));
     }
 
     //hành động
     public function postDangky(Request $req){
-        $random = rand(100000, 999999);
         $this->validate($req,
             [
                 'fullname'=>'required|string|max:255',
@@ -509,58 +325,10 @@ class PageController extends Controller
         $user->email = $req->email;
         $user->password = Hash::make($req->password);
         $user->role = '1';
-        $user->sign_date = date('Y-m-d');
-        
-        $user->active_code = $random;
+        $user->sign_date = '1995-01-06';
         $user->save();
-
-        Mail::send('email.user-activation', array('name'=>$user->fullname, 'code'=>$random), function($message){
-            $message->to(Input::get('email'), Input::get('fullname'))->subject('Mã kích hoạt tài khoản!');
-        });
-
-        return redirect()->back()->with('thanhcong', 'Tạo tài khoản thành công. Vui lòng kiểm tra email để xác thực tài khoản trước khi đăng nhập.');
-        
-    }
-
-    public function postActive(Request $req){
-        $this->validate($req,
-            [
-                'account'=>'required|min:6|max:25',
-            ],
-            [
-                'account.required'=>'Vui lòng nhập tên tài khoản.',
-                'account.min'=>'Tài khoản ít nhất 6 ký tự.',
-                'account.max'=>'Tài khoản nhiều nhất 25 ký tự.',
-            ]
-        );
-
-        $check = array('account'=>$req->account, 'active_code'=>$req->code, 'active'=>0);
-
-
-        $check = array('account'=>$req->account, 'active_code'=>$req->code, 'active'=>0);
-
-
-        $user = DB::table('users')
-                ->where('account', $req->account)
-                ->where('active_code', $req->code)
-                ->where('active', 0)
-                ->get();
-        if (count($user) > 0) {
-            DB::table('users')
-                ->where('account', $req->account)
-                ->update(['active' => 1]);
-
-            return redirect()->back()->with('thanhcong','Tài khoản của bạn đã kích hoạt thành công.');
-
-
-            return redirect()->back()->with('thanhcong','Tài khoản của bạn đã kích hoạt thành công.');
-
-            return redirect()->back()->with('thanhcong','Tài khoản của bạn đã kích hoạt thành công. Bạn có thể đăng nhập ngay.');
-
-
-        } else {
-            return redirect()->back()->with('thatbai','Sai tài khoản hoặc mã code hoặc tài khoản của bạn đã được kích hoạt');
-        }
+        return redirect()->back()->with('thanhcong', 'Tạo tài khoản thành công');
+        Auth::login($user);
     }
 
     public function postDangnhap(Request $req){
@@ -578,42 +346,14 @@ class PageController extends Controller
                 'password.max'=>'Mật khẩu nhiều nhất 20 ký tự.'
             ]
         );
-        $credentials = array('account'=>$req->account, 'password'=>$req->password, 'active'=>1);
-        $remember = $req->remember;
-        if (Auth::attempt($credentials, $remember)) {
+        $credentials = array('account'=>$req->account, 'password'=>$req->password);
+        if (Auth::attempt($credentials)) {
             return redirect()->route('trang-chu');
         } else {
-            return redirect()->back()->with(['flag'=>'danger','message'=>'Sai tài khoản hoặc mật khẩu hoặc tài khoản của bạn chưa được kích hoạt']);
+            return redirect()->back()->with(['flag'=>'danger','message'=>'Sai tài khoản hoặc mật khẩu']);
         }
 
     }
-
-
-
-    public function postEmailsale(Request $req){
-        $this->validate($req,
-            [
-                'email'=>'required|email|unique:emailsale,email',
-            ],
-            [
-                'email.required'=>'Vui lòng nhập email.',
-                'email.email'=>'Không đúng định dạng email.',
-                'email.unique'=>'Email đã được hưởng khuyến mãi.',
-            ]
-        );
-        $email = new Emailsale();
-        $email->email = $req->email;
-        $email->sale_id = '17';
-        $email->save();
-
-        Mail::send('email.emailsale', array('name'=>'bạn', 'code'=>'SALE25CODE', 'dateto'=>'31/1/2018'), function($message){
-            $message->to(Input::get('email'))->subject('Mã khuyến mãi cho email mới!');
-        });
-
-        return redirect()->back()->with('thanhcong', 'Chúng tôi đã gửi mã khuyến mãi. Xin kiểm tra email của bạn');
-    }
-
-
 
     public function postDangxuat(){
         Auth::logout();
@@ -710,5 +450,33 @@ class PageController extends Controller
 
             return view('page.search',compact('product'));
                                                            
+    }
+    public function getSearch(Request $req){
+        $price = (float)$req->key;
+        
+        $product = Products::where('name','like','%'. $req->key .'%')
+                        ->orWhere(function($que) use ($price){
+                            if($price > 0){
+                                 $que->orWhere('unit_price',$price);
+                            }
+                            })
+
+                       
+                          
+                         ->get();
+
+            return view('page.search',compact('product'));
+                                                           
+    }
+    public function postComment(Request $req){
+        $id = $req->productid;
+        $userid = Auth::user()->user_id;
+        $comment = $req->comment;
+        $com = new Comment();
+        $com->user_id = $userid;
+        $com->product_id = $id;
+        $com->content = $comment;
+        $com->save();
+        return redirect()->route('chi-tiet-san-pham',$id);
     }
 }

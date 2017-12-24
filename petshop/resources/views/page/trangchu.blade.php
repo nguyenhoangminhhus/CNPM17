@@ -48,8 +48,7 @@
 					<h3 class="w3ls-title">Sản Phẩm Nổi Bật</h3>
 					
 					<div id="myTabContent" class="tab-content">
-						
-						<div role="tabpanel" class="tab-pane fade" id="" aria-labelledby="-tab">
+						<div role="tabpanel" class="tab-pane fade in active" id="home" aria-labelledby="home-tab">
 							<div class="tabcontent-grids">  
 								<div id="owl-demo" class="owl-carousel"> 
 								@foreach($sanpham_khuyenmai as $sp_km)
@@ -57,6 +56,7 @@
 										
 										<div class="glry-w3agile-grids agileits"> 
 											<a href="{{route('chi-tiet-san-pham',$sp_km->products_id)}}"><img src="source/images/{{$sp_km->image}}" alt="img"></a>
+
 											<div class="view-caption agileits-w3layouts">           
 												<h4><a href="products.html">{{$sp_km->name}}</a></h4>
 												<p>{{$sp_km->description}}</p>
@@ -121,54 +121,30 @@
 									<div class="item">
 										<div class="glry-w3agile-grids agileits"> 
 											<a href="products.html"><img src="source/images/e1.png" alt="img"></a>
+
 											<div class="view-caption agileits-w3layouts">           
-												<h4><a href="products.html">Audio speaker</a></h4>
-												<p>Lorem ipsum dolor sit amet consectetur</p>
-												<h5>1.000.000 VNĐ</h5> 
-												<button class="w3ls-cart my-cart-btn" data-id="5" data-name="Audio speaker" data-summary="summary 5" data-price="1000000" data-quantity="1" data-image="source/images/e1.png"><i class="fa fa-cart-plus" aria-hidden="true"></i> Thêm vào giỏ hàng</button>
+												<h4><a href="products.html">{{$sp_km->name}}</a></h4>
+												<p>{{$sp_km->description}}</p>
+												<h5><div> @if($sp_km->promotion_price!=0)
+											<h6><del>{{$sp_km->unit_price}}</del>  {{$sp_km->promotion_price}} đ</h6> 
+												@else
+
+												<span style="font-size: 18px">{{$sp_km->unit_price}} đ</span>
+													@endif	</div></h5> 
+												<button class="w3ls-cart my-cart-btn" data-id="1" data-name="{{$sp_km->name}}" data-summary="summary 1" data-price="{{$sp_km->promotion_price}}" data-quantity="1" data-image="source/images/{{$sp_km->image}}"><i class="fa fa-cart-plus" aria-hidden="true"></i> Thêm vào giỏ hàng</button>
 											</div>   
-										</div>   
+										</div> 
+										
+										
 									</div>
-									<div class="item">
-										<div class="glry-w3agile-grids agileits">
-											<div class="new-tag"><h6>Sale</h6></div>
-											<a href="products.html"><img src="source/images/e2.png" alt="img"></a>
-											<div class="view-caption agileits-w3layouts">           
-												<h4><a href="products.html">Refrigerator</a></h4>
-												<p>Lorem ipsum dolor sit amet consectetur</p> 
-												<h5>1.000.000 VNĐ</h5>
-												<button class="w3ls-cart my-cart-btn" data-id="6" data-name="Refrigerator" data-summary="summary 6" data-price="1000000" data-quantity="1" data-image="source/images/e1.png"><i class="fa fa-cart-plus" aria-hidden="true"></i> Thêm vào giỏ hàng</button>
-											</div>       
-										</div>  
-									</div>
-									<div class="item">
-										<div class="glry-w3agile-grids agileits"> 
-											<div class="new-tag"><h6>New</h6></div>
-											<a href="products.html"><img src="source/images/e3.png" alt="img"></a>
-											<div class="view-caption agileits-w3layouts">           
-												<h4><a href="products.html">Smart Phone</a></h4>
-												<p>Lorem ipsum dolor sit amet consectetur</p>
-												<h5>1.000.000 VNĐ</h5>
-												<button class="w3ls-cart my-cart-btn" data-id="7" data-name="Audio speaker" data-summary="summary 1" data-price="1000000" data-quantity="1" data-image="source/images/e1.png"><i class="fa fa-cart-plus" aria-hidden="true"></i> Thêm vào giỏ hàng</button>
-											</div>        
-										</div>  
-									</div>
-									<div class="item">
-										<div class="glry-w3agile-grids agileits"> 
-											<a href="products.html"><img src="source/images/e4.png" alt="img"></a>
-											<div class="view-caption agileits-w3layouts">           
-												<h4><a href="products.html">Digital Camera</a></h4>
-												<p>Lorem ipsum dolor sit amet consectetur</p>
-												<h5>1.000.000 VNĐ</h5>
-												<button class="w3ls-cart my-cart-btn" data-id="8" data-name="Audio speaker" data-summary="summary 1" data-price="1000000" data-quantity="1" data-image="source/images/e1.png"><i class="fa fa-cart-plus" aria-hidden="true"></i> Thêm vào giỏ hàng</button>
-											</div>         
-										</div>  
-									</div>
-								</div> 
+
+								@endforeach  
+
 							</div>
 						</div>
 						
-					</div>   
+					</div>
+					<div class="item">{{$sanpham_khuyenmai->Links()}}</div>
 				</div>  
 			</div>  	
 		</div>  	
