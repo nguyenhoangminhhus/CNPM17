@@ -237,22 +237,6 @@ ul.cd-dropdown-content li {
 .header-cart h4 a {
     color: #000;
 }
-/*-- giohang-page --*/
-.giohang .container .panel-group .panel.panel-default{
-    width: 100%;
-    margin-left: 0; 
-}
-.giohang .container .panel-group .panel.panel-default .panel-body{
-    width: 100%;
-    margin: 0 1%; 
-}
-.giohang .container table.dataTable.display tbody td:nth-child(4){
-    width: 15%;
-}
-.giohang .container table.dataTable.display tbody td:nth-child(6){
-    width: 15%;
-}
-/*-- //giohang-page --*/
 /*-- cart-box --*/ 
 .cart {
     margin-left: 2em;
@@ -564,9 +548,6 @@ h3.w3ls-title {
 } 
 /*-- //welcome --*/
 /*-- add-products --*/
-.add-products-row .w3ls-add-grids h4{
-    font-size: 1.7em;
-}
 .w3ls-add-grids {
     background: url(../images/img1.jpg)no-repeat 0px 0px;
     background-size: cover;
@@ -590,18 +571,13 @@ h3.w3ls-title {
     padding: 1em;
 }
 .w3ls-add-grids h4 {
-    font-size: 3em;
+    font-size: 1.8em;
     color: #fff;
     letter-spacing: 2px;
-    padding-top: 1em;
+    padding-top: 3em;
 	outline:none;
 	text-decoration:none;
 	line-height: 1.5em;
-}
-.w3ls-add-grids p{
-   color: #fff;
-   font-size: 1.5em;
-   padding-top: 0.5em; 
 }
 .w3ls-add-grids h4 span {
     font-family: 'Lovers Quarrel', cursive;
@@ -1858,37 +1834,16 @@ h3.w3ls-title.w3ls-title1 {
     margin: 0 0 1.5em;
 	font-size: 2.5em;
 }
-.wthree-offers .w3ls-add-grids.w3agile-add-products{
-    margin-bottom: 4em;
-}
 .offer-card-row {
-    margin-top: 1em;
-    margin-bottom: 1em;
-}
-
-.row.offer-card-row:nth-child(2){
-    margin-top: 1em;
+    margin: 4em 0;
 }
 .offer-card-grids {
     width: 31.5%;
     float: left;
     padding: 2em;
     border: 1px solid #dadada;
-    margin-bottom: 25px;
 }
 .offer-card-grids:nth-child(2) {
-    margin: 0 2em;
-}
-.offer-card-grids:nth-child(5) {
-    margin: 0 2em;
-}
-.offer-card-grids:nth-child(8) {
-    margin: 0 2em;
-}
-.offer-card-grids:nth-child(11) {
-    margin: 0 2em;
-}
-.offer-card-grids:nth-child(14) {
     margin: 0 2em;
 }
 .offer-card-grids h4 {
@@ -1898,7 +1853,6 @@ h3.w3ls-title.w3ls-title1 {
 }
 .offer-card-grids p {
     margin: 1em 0;
-    color: #fff;
 }
 .offer-card-grids a {
     font-size: 1em;
@@ -1923,6 +1877,7 @@ h3.w3ls-title.w3ls-title1 {
 .offer-bottom-grids h4 {
     font-size: 3.5em;
     color: #fff;
+    font-family: 'Tangerine', cursive;
 }
 .offer-bottom-grids h6 {
     font-size: 1.5em;
@@ -1933,10 +1888,6 @@ h3.w3ls-title.w3ls-title1 {
 }
 .offer-bottom-grids .offer-bottom-grids-info2 h6 { 
     color: #FFC107; 
-}
-
-.w3single-offers.offer-bottom a{
-    color: #fff;
 }
 /*-- //offers-page --*/
 /*-- contact-page --*/
@@ -1951,11 +1902,6 @@ h3.w3ls-title.w3ls-title1 {
     font-weight: 300;
     margin-bottom: 1em;
 } 
-.contact h5{
-    font-size: 1.3em;
-    font-weight: 200;
-    margin-bottom: 1em;
-}
 .contact input[type="text"] {
     width: 47.7%;
     color: #999;

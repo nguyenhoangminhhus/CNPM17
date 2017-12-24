@@ -21,7 +21,7 @@
 						</div>
 					</div>
 					<div class="col-md-6 single-top-right">
-						<h3 class="item_name">Thẻ tên</h3>
+						<h3 class="item_name">{{$sanpham->name}}</h3>
 						<p>(*Sản phẩm dành cho chó*)</p>
 						<div class="single-rating">
 							<ul>
@@ -31,7 +31,7 @@
 						</div>
 						<div class="single-price">
 							<ul>
-								<li>100.000.000 VNĐ</li>  
+								<li>$sanpham->unit_price</li>  
 								<li><del>600.000.000 VNĐ</del><span class="w3off">Giảm 10%</span> kết thúc: 5 / 11</li> 
 							</ul>	
 						</div> 

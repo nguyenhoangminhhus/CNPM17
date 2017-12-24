@@ -17,7 +17,7 @@ class User extends Authenticatable
     protected $table = "users";
     protected $primaryKey = 'user_id';
     protected $fillable = [
-        'account', 'password', 'active_code', 'active',
+        'account', 'password',
     ];
 
     /**
@@ -28,4 +28,9 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+      public function comment(){
+
+        return $this->hasMany('App\Comment', 'comment_id','user_id');
+    }
 }
