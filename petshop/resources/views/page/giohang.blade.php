@@ -134,7 +134,9 @@
 				<div class="clearfix"> </div>
 			</div>
 
+
 			@include('offers_cards')
+
 
 			<!-- //offers-cards -->
 		</div>

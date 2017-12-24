@@ -97,6 +97,7 @@ Route::get('Admin/list-category', [
 	'uses'=>'PageController@getList_category'
 ]);
 
+
 Route::get('Admin/list-inbox', [
 	'as'=>'list-inbox',
 	'uses'=>'PageController@getList_inbox'
@@ -127,6 +128,39 @@ Route::get('Admin/login', [
 	'uses'=>'PageController@getLogin_admin'
 ]);
 
+
+
+Route::get('Admin/list-inbox', [
+	'as'=>'list-inbox',
+	'uses'=>'PageController@getList_inbox'
+]);
+
+Route::get('Admin/list-product', [
+	'as'=>'list-product',
+	'uses'=>'PageController@getList_product'
+]);
+
+Route::get('Admin/list-sale', [
+	'as'=>'list-sale',
+	'uses'=>'PageController@getList_sale'
+]);
+
+Route::get('Admin/list-slide', [
+	'as'=>'list-slide',
+	'uses'=>'PageController@getList_slide'
+]);
+
+Route::get('Admin/list-user', [
+	'as'=>'list-user',
+	'uses'=>'PageController@getList_user'
+]);
+
+Route::get('Admin/login', [
+	'as'=>'login-admin',
+	'uses'=>'PageController@getLogin_admin'
+]);
+
+
 Route::get('Admin/profile', [
 	'as'=>'profile-admin',
 	'uses'=>'PageController@getProfile_admin'
@@ -141,6 +175,7 @@ Route::get('Admin/view-inbox', [
 	'as'=>'view-inbox',
 	'uses'=>'PageController@getView_inbox'
 ]);
+
 
 
 
@@ -245,6 +280,7 @@ Route::get('Admin/view-inbox', [
 ]);
 
 
+
 Route::get('/', [
 	'as'=>'trang-chu',
 	'uses'=>'PageController@getIndex'
@@ -266,10 +302,12 @@ Route::get('quen-mat-khau', [
 ]);
 
 
+
 Route::post('quen-mat-khau', [
 	'as'=>'quen-mat-khau',
 	'uses'=>'PageController@postForgotpass'
 ]);
+
 
 
 Route::get('thong-tin', [
@@ -399,6 +437,7 @@ Route::get('dang-xuat', [
 ]);
 
 
+
 Route::post('lien-he',[
 	'as'=>'lien-he',
 	'uses'=>'PageController@postContact'
@@ -408,6 +447,7 @@ Route::post('emailsale', [
 	'as'=>'emailsale',
 	'uses'=>'PageController@postEmailsale'
 ]);
+
 
 
 Route::get('gio-hang', [

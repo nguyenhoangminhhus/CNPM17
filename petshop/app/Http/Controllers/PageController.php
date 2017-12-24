@@ -9,8 +9,10 @@ use App\Sale;
 use App\Addresss;
 
 
+
 use App\Contact;
 use App\Emailsale;
+
 
 
 
@@ -184,6 +186,7 @@ class PageController extends Controller
 
 
 
+
     public function postForgotpass(Request $req){
         $this->validate($req,
             [
@@ -210,6 +213,7 @@ class PageController extends Controller
             return redirect()->back()->with('thatbai','Tài khoản hoặc email sai.');
         }
     }
+
 
 
     public function getThongtin(){
@@ -491,6 +495,10 @@ class PageController extends Controller
 
         $check = array('account'=>$req->account, 'active_code'=>$req->code, 'active'=>0);
 
+
+        $check = array('account'=>$req->account, 'active_code'=>$req->code, 'active'=>0);
+
+
         $user = DB::table('users')
                 ->where('account', $req->account)
                 ->where('active_code', $req->code)
@@ -503,7 +511,11 @@ class PageController extends Controller
 
             return redirect()->back()->with('thanhcong','Tài khoản của bạn đã kích hoạt thành công.');
 
+
+            return redirect()->back()->with('thanhcong','Tài khoản của bạn đã kích hoạt thành công.');
+
             return redirect()->back()->with('thanhcong','Tài khoản của bạn đã kích hoạt thành công. Bạn có thể đăng nhập ngay.');
+
 
         } else {
             return redirect()->back()->with('thatbai','Sai tài khoản hoặc mã code hoặc tài khoản của bạn đã được kích hoạt');
@@ -536,6 +548,7 @@ class PageController extends Controller
     }
 
 
+
     public function postEmailsale(Request $req){
         $this->validate($req,
             [
@@ -558,6 +571,7 @@ class PageController extends Controller
 
         return redirect()->back()->with('thanhcong', 'Chúng tôi đã gửi mã khuyến mãi. Xin kiểm tra email của bạn');
     }
+
 
 
     public function postDangxuat(){
