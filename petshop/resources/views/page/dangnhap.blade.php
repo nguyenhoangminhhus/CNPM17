@@ -22,11 +22,13 @@
                             <strong>{{ session('warning') }}</strong>
                         </span>
                     @endif
+						<div class="alert alert-{{Session::get('flag')}}">{{Session::get('message')}}<a href="{{route('kich-hoat')}}">  kích hoạt ngay</a></div>
+					@endif
 					<input type="text" class="user" name="account" placeholder="Nhập tài khoản của bạn" required="">
 					<input type="password" name="password" class="lock" placeholder="Nhập mật khẩu" required="">
 					<input type="submit" value="Đăng nhập">
 					<div class="forgot-grid">
-						<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Nhớ mật khẩu</label>
+						<label class="checkbox"><input type="checkbox" name="remember"><i></i>Nhớ mật khẩu</label>
 						<div class="forgot">
 							<a href="{{route('quen-mat-khau')}}">Quên mật khẩu?</a>
 						</div>

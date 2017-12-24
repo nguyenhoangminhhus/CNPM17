@@ -5,10 +5,13 @@
 		<div class="container"> 
 			<h3 class="w3ls-title w3ls-title1">Liên Hệ</h3>  
 			<div class="map-info">
+				@foreach($map as $mp)
 				<div class="col-md-6 map-grids">
-					<h4>Địa chỉ Shopet Corner chi nhánh 1</h4>
-					<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3723.8976201585842!2d105.83245751535917!3d21.036782092879335!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135aba15ec15d17%3A0x620e85c2cfe14d4c!2zTMSDbmcgQ2jhu6cgdOG7i2NoIEjhu5MgQ2jDrSBNaW5o!5e0!3m2!1svi!2s!4v1508246957166"></iframe>
+					<h4>{{$mp->Addresss_name}}</h4>
+					<h5>{{$mp->Addresss_description}}</h5>
+					<iframe src="{{$mp->Addresss_linkmap}}"></iframe>
 				</div>
+
 				<div class="col-md-6 map-grids">
 					<h4>Địa chỉ Shopet Corner chi nhánh 2</h4>
 					<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d931.2965472280997!2d105.81748817923065!3d20.985172401279932!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135aced68f8df2f%3A0x806e2435a29b641e!2zMzU4IELDuWkgWMawxqFuZyBUcuG6oWNoLCBLaMawxqFuZyDEkMOsbmgsIFRoYW5oIFh1w6JuLCBIw6AgTuG7mWksIFZp4buHdCBOYW0!5e0!3m2!1svi!2s!4v1513411527183"></iframe>
@@ -21,14 +24,26 @@
 					<h4>Địa chỉ Shopet Corner chi nhánh 4</h4>
 					<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3023.9503398796587!2d-73.9940307!3d40.719109700000004!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25a27e2f24131%3A0x64ffc98d24069f02!2sCANADA!5e0!3m2!1sen!2sin!4v1441710758555" allowfullscreen=""></iframe>
 				</div> 
+				@endforeach
 				<div class="clearfix"> </div>
 			</div>  
 			<div class="contact-form-row">
 				<h3 class="w3ls-title w3ls-title1">Gửi tin nhắn cho chúng tôi</h3>  
 				<div class="col-md-7 contact-left">
-					<form action="#" method="post">
-						<input type="text" name="Name" placeholder="Tên của bạn" required="">
-						<input class="email" type="text" name="Email" placeholder="Email của bạn" required="">
+					<form action="{{route('lien-he')}}" method="post">
+						<input type="hidden" name="_token" value="{{csrf_token()}}">
+							@if(count($errors)>0)
+								<div class="alert alert-danger">
+									@foreach($errors->all() as $err)
+										{{$err}}
+									@endforeach
+								</div>
+							@endif
+							@if(Session::has('thanhcong'))
+								<div class="alert alert-success">{{Session::get('thanhcong')}}</div>
+							@endif
+						<input type="text" name="name" placeholder="Tên của bạn" required="">
+						<input class="email" type="text" name="email" placeholder="Email của bạn" required="">
 						<textarea placeholder="Tin nhắn" name="Message" required=""></textarea>
 						<input type="submit" value="GỬI">
 					</form>

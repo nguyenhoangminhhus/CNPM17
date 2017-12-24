@@ -48,7 +48,8 @@
 					<h3 class="w3ls-title">Sản Phẩm Nổi Bật</h3>
 					
 					<div id="myTabContent" class="tab-content">
-						<div role="tabpanel" class="tab-pane fade in active" id="home" aria-labelledby="home-tab">
+						
+						<div role="tabpanel" class="tab-pane fade" id="" aria-labelledby="-tab">
 							<div class="tabcontent-grids">  
 								<div id="owl-demo" class="owl-carousel"> 
 								@foreach($sanpham_khuyenmai as $sp_km)
@@ -67,6 +68,7 @@
 													@endif	</div></h5> 
 												<button class="w3ls-cart my-cart-btn" data-id="1" data-name="{{$sp_km->name}}" data-summary="summary 1" data-price="{{$sp_km->promotion_price}}" data-quantity="1" data-image="source/images/{{$sp_km->image}}"><i class="fa fa-cart-plus" aria-hidden="true"></i> Thêm vào giỏ hàng</button>
 											</div>   
+
 										</div> 
 										
 										
@@ -79,6 +81,94 @@
 						
 					</div>
 					<div class="item">{{$sanpham_khuyenmai->Links()}}</div>
+										</div>   
+									</div>
+									<div class="item">
+										<div class="glry-w3agile-grids agileits">
+											<div class="new-tag"><h6>Sale</h6></div>
+											<a href="products.html"><img src="source/images/e2.png" alt="img"></a>
+											<div class="view-caption agileits-w3layouts">           
+												<h4><a href="products.html">Refrigerator</a></h4>
+												<p>Lorem ipsum dolor sit amet consectetur</p> 
+												<h5>1.000.000 VNĐ</h5>
+												<button class="w3ls-cart my-cart-btn" data-id="2" data-name="Refrigerator" data-summary="summary 2" data-price="1000000" data-quantity="1" data-image="source/images/e1.png"><i class="fa fa-cart-plus" aria-hidden="true"></i> Thêm vào giỏ hàng</button>
+											</div>       
+										</div>  
+									</div>
+									<div class="item">
+										<div class="glry-w3agile-grids agileits"> 
+											<div class="new-tag"><h6>New</h6></div>
+											<a href="products.html"><img src="source/images/e3.png" alt="img"></a>
+											<div class="view-caption agileits-w3layouts">           
+												<h4><a href="products.html">Smart Phone</a></h4>
+												<p>Lorem ipsum dolor sit amet consectetur</p>
+												<h5>1.000.000 VNĐ</h5>
+												<button class="w3ls-cart my-cart-btn" data-id="3" data-name="Smart Phone" data-summary="summary 3" data-price="1000000" data-quantity="1" data-image="source/images/e1.png"><i class="fa fa-cart-plus" aria-hidden="true"></i> Thêm vào giỏ hàng</button>
+											</div>        
+										</div>  
+									</div>
+									<div class="item">
+										<div class="glry-w3agile-grids agileits"> 
+											<a href="products.html"><img src="source/images/e4.png" alt="img"></a>
+											<div class="view-caption agileits-w3layouts">           
+												<h4><a href="products.html">Digital Camera</a></h4>
+												<p>Lorem ipsum dolor sit amet consectetur</p>
+												<h5>1.000.000 VNĐ</h5>
+												<button class="w3ls-cart my-cart-btn" data-id="4" data-name="Digital Camera" data-summary="summary 4" data-price="1000000" data-quantity="1" data-image="source/images/e1.png"><i class="fa fa-cart-plus" aria-hidden="true"></i> Thêm vào giỏ hàng</button>
+											</div>         
+										</div>  
+									</div>
+									<div class="item">
+										<div class="glry-w3agile-grids agileits"> 
+											<a href="products.html"><img src="source/images/e1.png" alt="img"></a>
+											<div class="view-caption agileits-w3layouts">           
+												<h4><a href="products.html">Audio speaker</a></h4>
+												<p>Lorem ipsum dolor sit amet consectetur</p>
+												<h5>1.000.000 VNĐ</h5> 
+												<button class="w3ls-cart my-cart-btn" data-id="5" data-name="Audio speaker" data-summary="summary 5" data-price="1000000" data-quantity="1" data-image="source/images/e1.png"><i class="fa fa-cart-plus" aria-hidden="true"></i> Thêm vào giỏ hàng</button>
+											</div>   
+										</div>   
+									</div>
+									<div class="item">
+										<div class="glry-w3agile-grids agileits">
+											<div class="new-tag"><h6>Sale</h6></div>
+											<a href="products.html"><img src="source/images/e2.png" alt="img"></a>
+											<div class="view-caption agileits-w3layouts">           
+												<h4><a href="products.html">Refrigerator</a></h4>
+												<p>Lorem ipsum dolor sit amet consectetur</p> 
+												<h5>1.000.000 VNĐ</h5>
+												<button class="w3ls-cart my-cart-btn" data-id="6" data-name="Refrigerator" data-summary="summary 6" data-price="1000000" data-quantity="1" data-image="source/images/e1.png"><i class="fa fa-cart-plus" aria-hidden="true"></i> Thêm vào giỏ hàng</button>
+											</div>       
+										</div>  
+									</div>
+									<div class="item">
+										<div class="glry-w3agile-grids agileits"> 
+											<div class="new-tag"><h6>New</h6></div>
+											<a href="products.html"><img src="source/images/e3.png" alt="img"></a>
+											<div class="view-caption agileits-w3layouts">           
+												<h4><a href="products.html">Smart Phone</a></h4>
+												<p>Lorem ipsum dolor sit amet consectetur</p>
+												<h5>1.000.000 VNĐ</h5>
+												<button class="w3ls-cart my-cart-btn" data-id="7" data-name="Audio speaker" data-summary="summary 1" data-price="1000000" data-quantity="1" data-image="source/images/e1.png"><i class="fa fa-cart-plus" aria-hidden="true"></i> Thêm vào giỏ hàng</button>
+											</div>        
+										</div>  
+									</div>
+									<div class="item">
+										<div class="glry-w3agile-grids agileits"> 
+											<a href="products.html"><img src="source/images/e4.png" alt="img"></a>
+											<div class="view-caption agileits-w3layouts">           
+												<h4><a href="products.html">Digital Camera</a></h4>
+												<p>Lorem ipsum dolor sit amet consectetur</p>
+												<h5>1.000.000 VNĐ</h5>
+												<button class="w3ls-cart my-cart-btn" data-id="8" data-name="Audio speaker" data-summary="summary 1" data-price="1000000" data-quantity="1" data-image="source/images/e1.png"><i class="fa fa-cart-plus" aria-hidden="true"></i> Thêm vào giỏ hàng</button>
+											</div>         
+										</div>  
+									</div>
+								</div> 
+							</div>
+						</div>
+						
+					</div>   
 				</div>  
 			</div>  	
 		</div>  	

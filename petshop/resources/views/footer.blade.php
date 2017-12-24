@@ -9,7 +9,7 @@
 					</div> 
 					<div class="ftr-top-right">
 						<h4>Giao Hàng Miễn Phí</h4>
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce tempus justo ac </p>
+						<p>Mọi đơn hàng trên 180000 quý khách sẽ được giao hàng hoàn toàn miễn phí </p>
 					</div> 
 					<div class="clearfix"> </div>
 				</div> 
@@ -19,7 +19,7 @@
 					</div> 
 					<div class="ftr-top-right">
 						<h4>Chăm Sóc Khách Hàng</h4>
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce tempus justo ac </p>
+						<p> Mr.Hùng: 0972479395 </p>
 					</div> 
 					<div class="clearfix"> </div>
 				</div>
@@ -28,8 +28,8 @@
 						<i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
 					</div> 
 					<div class="ftr-top-right">
-						<h4>Chất Lượng Tốt</h4>
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce tempus justo ac </p>
+						<h4>Chất Lượng Sản Phẩm</h4>
+						<p> Chúng tôi luôn cố gắng đi đầu về chất lượng sản phẩm </p>
 					</div>
 					<div class="clearfix"> </div>
 				</div> 
@@ -57,7 +57,18 @@
 			</div> 
 			<div class="col-md-6 subscribe-right">
 				<h4>Đăng ký email và nhận mã giảm giá 25% !</h4>  
-				<form action="#" method="post"> 
+				<form action="{{route('emailsale')}}" method="post"> 
+					<input type="hidden" name="_token" value="{{csrf_token()}}">
+					@if(count($errors)>0)
+						<div class="alert alert-danger">
+							@foreach($errors->all() as $err)
+							{{$err}}
+							@endforeach
+						</div>
+					@endif
+					@if(Session::has('thanhcong'))
+						<div class="alert alert-success">{{Session::get('thanhcong')}}</div>
+					@endif
 					<input type="text" name="email" placeholder="Nhập Email Của Bạn..." required="">
 					<input type="submit" value="Đăng Ký">
 				</form>
@@ -77,10 +88,17 @@
 						<h6>Cửa hàng của bạn. Địa điểm của bạn.</h6>
 					</div>
 					<ul>
+
 						<li><i class="fa fa-map-marker"></i>358 - Bùi Xương Trạch - Khương Đình - Thanh Xuân</li>
 						<li><i class="fa fa-mobile"></i> 01679643840 </li>
 						<li><i class="fa fa-phone"></i> +0898573076	</li>
 						<li><i class="fa fa-envelope-o"></i> <a href="mailto:example@mail.com">duongnc@i-com.vn</a></li>
+
+						<li><i class="fa fa-map-marker"></i> 281 Trương Định-Hai Bà Trưng-Hà Nội.</li>
+						<li><i class="fa fa-mobile"></i> 0972479395 </li>
+						<li><i class="fa fa-phone"></i> 02431556222 </li>
+						<li><i class="fa fa-envelope-o"></i> <a href="mailto:example@mail.com"> meowcorner@gmail.com</a></li>
+
 					</ul> 
 				</div>
 				<div class="col-md-8 address-right">
@@ -88,6 +106,13 @@
 						<h3>Company</h3>
 						<ul>
 							<li><a href="{{route('thong-tin')}}">Về chúng tôi</a></li>
+							<li><a href="{{route('dich-vu')}}">Marketplace</a></li>  
+
+							<li><a href="{{route('dich-vu')}}">Marketplace</a></li>  
+
+
+							<li><a href="{{route('dich-vu')}}">Địa điểm mua sắm</a></li>  
+
 							<li><a href="{{route('dich-vu')}}">Marketplace</a></li>  
 							<li><a href="{{route('gia-tri-cot-loi')}}">Giá trị cốt lõi</a></li>  
 							<li><a href="{{route('chinh-sach-bao-mat')}}">Chính sách bảo mật</a></li>

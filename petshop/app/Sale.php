@@ -12,4 +12,8 @@ class Sale extends Model
     public function products(){
     	return $this->hasMany('App\Products', 'saleoff_id', 'sale_id');
     }
+
+    public function emailsale(){
+    	return $this->hasMany('App\Emailsale', 'sale_id', 'sale_id');
+    }
 }

@@ -44,6 +44,7 @@ return [
 
     'port' => env('MAIL_PORT', 587),
 
+
     /*
     |--------------------------------------------------------------------------
     | Global "From" Address
@@ -57,7 +58,7 @@ return [
 
     'from' => [
         'address' => env('MAIL_FROM_ADDRESS', 'hello@example.com'),
-        'name' => env('MAIL_FROM_NAME', 'Example'),
+        'name' => env('MAIL_FROM_NAME', 'Shoppet Conner'),
     ],
 
     /*
@@ -84,9 +85,15 @@ return [
     |
     */
 
+
     'username' => env('tuananh6195@gmail.com'),
 
     'password' => env('Quenemmaimai'),
+
+    'username' => 'bachsat9521@gmail.com',
+
+    'password' => 'hsvlfhyoypwaifgj',
+
 
     /*
     |--------------------------------------------------------------------------
@@ -112,12 +119,12 @@ return [
     |
     */
 
-    'markdown' => [
-        'theme' => 'default',
-
-        'paths' => [
-            resource_path('views/vendor/mail'),
-        ],
-    ],
-
+    'pretend' => false,
+    'stream' => [
+    'ssl' => [
+    'allow_self_signed' => true,
+    'verify_peer' => false,
+    'verify_peer_name' => false,
+],
+],
 ];
