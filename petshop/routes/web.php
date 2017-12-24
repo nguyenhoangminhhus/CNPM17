@@ -13,6 +13,7 @@
 //Hiển thị
 Route::get('Admin', [
 	'as'=>'Admin',
+	'middleware' => 'auth',
 	'uses'=>'PageController@getIndex_Admin'
 ]);
 
@@ -40,6 +41,147 @@ Route::get('Admin/add-slide', [
 	'as'=>'add-slide',
 	'uses'=>'PageController@getAdd_slide'
 ]);
+
+
+Route::get('Admin/change-address', [
+	'as'=>'change-address',
+	'uses'=>'PageController@getChange_address'
+]);
+
+Route::get('Admin/change-category', [
+	'as'=>'change-category',
+	'uses'=>'PageController@getChange_category'
+]);
+
+Route::get('Admin/change-pass', [
+	'as'=>'change-pass',
+	'uses'=>'PageController@getChange_pass'
+]);
+
+Route::get('Admin/change-product', [
+	'as'=>'change-product',
+	'uses'=>'PageController@getChange_product'
+]);
+
+Route::get('Admin/change-sale', [
+	'as'=>'change-sale',
+	'uses'=>'PageController@getChange_sale'
+]);
+
+Route::get('Admin/change-slide', [
+	'as'=>'change-slide',
+	'uses'=>'PageController@getChange_slide'
+]);
+
+Route::get('Admin/edit-profile', [
+	'as'=>'edit-profile',
+	'uses'=>'PageController@getEdit_profile'
+]);
+
+Route::get('Admin/forgot-pass', [
+	'as'=>'forgot-pass',
+	'uses'=>'PageController@getForgot_pass'
+]);
+
+Route::get('Admin/list-address', [
+	'as'=>'list-address',
+	'uses'=>'PageController@getList_address'
+]);
+
+Route::get('Admin/list-bill', [
+	'as'=>'list-bill',
+	'uses'=>'PageController@getList_bill'
+]);
+
+Route::get('Admin/list-category', [
+	'as'=>'list-category',
+	'uses'=>'PageController@getList_category'
+]);
+
+
+Route::get('Admin/list-inbox', [
+	'as'=>'list-inbox',
+	'uses'=>'PageController@getList_inbox'
+]);
+
+Route::get('Admin/list-product', [
+	'as'=>'list-product',
+	'uses'=>'PageController@getList_product'
+]);
+
+Route::get('Admin/list-sale', [
+	'as'=>'list-sale',
+	'uses'=>'PageController@getList_sale'
+]);
+
+Route::get('Admin/list-slide', [
+	'as'=>'list-slide',
+	'uses'=>'PageController@getList_slide'
+]);
+
+Route::get('Admin/list-user', [
+	'as'=>'list-user',
+	'uses'=>'PageController@getList_user'
+]);
+
+Route::get('Admin/login', [
+	'as'=>'login-admin',
+	'uses'=>'PageController@getLogin_admin'
+]);
+
+Route::post('dang-nhap-admin', [
+	'as'=>'dang-nhap-admin',
+	'uses'=>'PageController@postDangnhap_admin'
+]);
+
+Route::get('Admin/list-inbox', [
+	'as'=>'list-inbox',
+	'uses'=>'PageController@getList_inbox'
+]);
+
+Route::get('Admin/list-product', [
+	'as'=>'list-product',
+	'uses'=>'PageController@getList_product'
+]);
+
+Route::get('Admin/list-sale', [
+	'as'=>'list-sale',
+	'uses'=>'PageController@getList_sale'
+]);
+
+Route::get('Admin/list-slide', [
+	'as'=>'list-slide',
+	'uses'=>'PageController@getList_slide'
+]);
+
+Route::get('Admin/list-user', [
+	'as'=>'list-user',
+	'uses'=>'PageController@getList_user'
+]);
+
+Route::get('Admin/login', [
+	'as'=>'login-admin',
+	'uses'=>'PageController@getLogin_admin'
+]);
+
+
+Route::get('Admin/profile', [
+	'as'=>'profile-admin',
+	'uses'=>'PageController@getProfile_admin'
+]);
+
+Route::get('Admin/reply-inbox', [
+	'as'=>'reply-inbox',
+	'uses'=>'PageController@getReply_inbox'
+]);
+
+Route::get('Admin/view-inbox', [
+	'as'=>'view-inbox',
+	'uses'=>'PageController@getView_inbox'
+]);
+
+
+
 
 Route::get('Admin/change-address', [
 	'as'=>'change-address',
@@ -121,7 +263,7 @@ Route::get('Admin/list-user', [
 	'uses'=>'PageController@getList_user'
 ]);
 
-Route::get('Admin/login', [
+Route::get('login', [
 	'as'=>'login-admin',
 	'uses'=>'PageController@getLogin_admin'
 ]);
@@ -140,6 +282,8 @@ Route::get('Admin/view-inbox', [
 	'as'=>'view-inbox',
 	'uses'=>'PageController@getView_inbox'
 ]);
+
+
 
 Route::get('/', [
 	'as'=>'trang-chu',
@@ -161,10 +305,14 @@ Route::get('quen-mat-khau', [
 	'uses'=>'PageController@getForgotpass'
 ]);
 
+
+
 Route::post('quen-mat-khau', [
 	'as'=>'quen-mat-khau',
 	'uses'=>'PageController@postForgotpass'
 ]);
+
+
 
 Route::get('thong-tin', [
 	'as'=>'thong-tin',
@@ -292,6 +440,8 @@ Route::get('dang-xuat', [
 	'uses'=>'PageController@postDangxuat'
 ]);
 
+
+
 Route::post('lien-he',[
 	'as'=>'lien-he',
 	'uses'=>'PageController@postContact'
@@ -301,6 +451,8 @@ Route::post('emailsale', [
 	'as'=>'emailsale',
 	'uses'=>'PageController@postEmailsale'
 ]);
+
+
 
 Route::get('gio-hang', [
 	'as'=>'gio-hang',

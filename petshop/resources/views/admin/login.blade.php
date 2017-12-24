@@ -8,18 +8,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>Shop Pet Corner / Phụ kiện chó - mèo</title>
-
+    <base href="{{asset('')}}">
     <!-- Bootstrap -->
-    <link href="vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="Admin_asset/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
-    <link href="vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="Admin_asset/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <!-- NProgress -->
-    <link href="vendors/nprogress/nprogress.css" rel="stylesheet">
+    <link href="Admin_asset/vendors/nprogress/nprogress.css" rel="stylesheet">
     <!-- Animate.css -->
-    <link href="vendors/animate.css/animate.min.css" rel="stylesheet">
+    <link href="Admin_asset/vendors/animate.css/animate.min.css" rel="stylesheet">
 
     <!-- Custom Theme Style -->
-    <link href="css/custom.css" rel="stylesheet">
+    <link href="Admin_asset/css/custom.css" rel="stylesheet">
 
     <!-- web-fonts -->
   <link href='https://fonts.googleapis.com/css?family=Roboto+Condensed:400,300,300italic,400italic,700,700italic' rel='stylesheet' type='text/css'>
@@ -34,16 +34,28 @@
       <div class="login_wrapper">
         <div class="animate form login_form">
           <section class="login_content">
-            <form>
+            <form action="{{route('dang-nhap-admin')}}" method="post">
+              <input type="hidden" name="_token" value="{{csrf_token()}}">
               <h1>Đăng nhập</h1>
+
+              @if(count($errors)>0)
+                <div class="alert alert-danger">
+                  @foreach($errors->all() as $err)
+                    {{$err}}
+                  @endforeach
+                </div>
+              @endif
+              @if(Session::has('flag'))
+                <div class="alert alert-{{Session::get('flag')}}">{{Session::get('message')}}</div>
+              @endif
               <div>
-                <input type="text" class="form-control" placeholder="Tài khoản" required="" />
+                <input type="text" class="form-control" name="account" placeholder="Tài khoản" required="" />
               </div>
               <div>
-                <input type="password" class="form-control" placeholder="Mật khẩu" required="" />
+                <input type="password" class="form-control" name="password" placeholder="Mật khẩu" required="" />
               </div>
               <div>
-                <a class="btn btn-default submit" href="{{route('Admin')}}">Đăng nhập</a>
+                <input type="submit" value="Đăng nhập">
                 <a class="reset_pass" href="{{route('forgot-pass')}}">Quên mật khẩu?</a>
               </div>
 

@@ -1898,7 +1898,8 @@ h3.w3ls-title.w3ls-title1 {
 }
 .offer-card-grids p {
     margin: 1em 0;
-    color: #fff;
+    color: #000;
+    font-size: 1.5em;
 }
 .offer-card-grids a {
     font-size: 1em;

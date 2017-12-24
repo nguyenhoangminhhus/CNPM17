@@ -1,3 +1,4 @@
+
 	<!-- header -->
 	<div class="header">
 		<div class="w3ls-header"><!--header-one--> 
@@ -7,9 +8,20 @@
 						<li class="dropdown head-dpdn">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-user" aria-hidden="true"></i>{{Auth::user()->fullname}} <span class="caret"></span> </a>
 							<ul class="dropdown-menu">
+
+								<li><a href="infor.html">Quản lý tài khoản </a></li> 
+								<li><a href="signup.html">Đơn hàng của tôi</a></li> 
+								<li><a href="change_pass.html">Đổi mật khẩu</a></li>  
+
+
+								<li><a href="infor.html">Quản lý tài khoản </a></li> 
+								<li><a href="signup.html">Đơn hàng của tôi</a></li> 
+								<li><a href="change_pass.html">Đổi mật khẩu</a></li>  
 								<li><a href="{{route('thong-tin-tai-khoan')}}">Quản lý tài khoản </a></li> 
 								<li><a href="signup.html">Đơn hàng của tôi</a></li> 
 								<li><a href="{{route('doi-mat-khau')}}">Đổi mật khẩu</a></li>  
+
+
 								<li><a href="{{route('dang-xuat')}}">Đăng xuất</a></li> 
 							</ul> 
 						</li>

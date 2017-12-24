@@ -24,6 +24,8 @@
 						<div class="alert alert-danger">{{Session::get('thatbai')}}</div>
 					@endif
 					<input type="text" class="user" name="account" placeholder="Nhập tên tài khoản của bạn" required="">
+
+
 					<input type="text" class="user" name="email" placeholder="Nhập email tương ứng" required="">
 					<input type="submit" value="Đồng ý ">
 				</form>
