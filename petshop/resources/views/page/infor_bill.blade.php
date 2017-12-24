@@ -23,19 +23,19 @@
 									<div class="panel-body">
 										<div class="row">
 											<div class="col-md-3">Họ tên:</div>
-											<div class="col-md-9"><input type="text" name="" value="<?php echo $hoten;?>" readonly></div>
+											<div class="col-md-9"><input type="text" name="" value="alo" readonly></div>
 										</div>
 										<div class="row">
 											<div class="col-md-3">Số điện thoại:</div>
-											<div class="col-md-9"><input type="text" name="" value="<?php echo $sdt;?>" readonly></div>
+											<div class="col-md-9"><input type="text" name="" value="alo" readonly></div>
 										</div>
 										<div class="row">
 											<div class="col-md-3">Email:</div>
-											<div class="col-md-9"><input type="text" name="" value="<?php echo $mail;?>" readonly></div>
+											<div class="col-md-9"><input type="text" name="" value="alo" readonly></div>
 										</div>
 										<div class="row">
 											<div class="col-md-3">Địa chỉ:</div>
-											<div class="col-md-9"><input type="text" name="" value="<?php echo $diachi;?>" readonly></div>
+											<div class="col-md-9"><input type="text" name="" value="alo" readonly></div>
 										</div>
 									</div>
 								</div>
@@ -65,14 +65,18 @@
 												</tr>
 											</thead>
 											<tbody>
-												@foreach(Cart::content() as $item)
 												<tr>
-													<td><?php echo $item->name; ?></td>
-													<td><?php echo $item->price; ?></td>
-													<td><?php echo $item->qty; ?></td>
-													<td><?php echo $item->price * $item->qty; ?></td>
+													<td><a href="">123456</a></td>
+													<td>22/5/2016</td>
+													<td>57000000 VNĐ</td>
+													<td>Hoàn thành</td>
 												</tr>
-												@endforeach
+												<tr>
+													<td><a href="">123456</a></td>
+													<td>22/5/2016</td>
+													<td>57000000 VNĐ</td>
+													<td>Hoàn thành</td>
+												</tr>
 											</tbody>
 										</table>
 									</div>
@@ -100,16 +104,10 @@
 													<a class="panel-title">Loại hình giao hàng</a>
 													<form>
 														<div>
-															<label><?php echo $phuongthucvanchuyen; ?></label>
+															<label>Giao hàng tiêu chuẩn (Thời gian: 3-5 ngày) - không mất phí giao hàng</label>
 														</div>
 														<div>
-															<label>Trạng thái giao hàng: <?php
-																if ($trangthai == 0) {
-																	echo "chưa hoàn thành";
-																} else{
-																	echo "đã hoàn thành";
-																}
-															 ?></label>
+															<label>Trạng thái giao hàng: hoàn thành</label>
 														</div>
 													</form>
 												</div>
@@ -135,20 +133,21 @@
 												<div class="panel-group">
 													<div class="row">
 														<div class="col-md-8 total">Tổng giá sản phẩm</div>
-														<div class="col-md-4"> <?php echo Cart::subtotal(0,0,'');?><span>VNĐ</span></div>
+														<div class="col-md-4"> 100000000<span>VNĐ</span></div>
 													</div>
 													<div class="row">
 														<div class="col-md-8">Mã giảm giá</div>
-														<div class="col-md-4"><?php echo $giamgia; ?> <span>VNĐ</span></div>
+														<div class="col-md-4">50000000 <span>VNĐ</span></div>
 													</div>
 													<div class="row">
 														<div class="col-md-8">Phí giao hàng</div>
-														<div class="col-md-4"><?php echo $phigiaohang; ?> <span>VNĐ</span></div>
+														<div class="col-md-4">50000000 <span>VNĐ</span></div>
 													</div>
 													<div class="row">
 														<div class="col-md-8">Tổng giá đơn hàng</div>
-														<div class="col-md-4"><?php echo $tonggiadonhang; ?> <span>VNĐ</span></div>
+														<div class="col-md-4">50000000 <span>VNĐ</span></div>
 													</div>
+													<button type="button" class="btn btn-success">Chỉnh sửa đơn hàng</button>
 												</div>
 											</div>
 										</div>
@@ -160,7 +159,6 @@
 				</div>
 			</div>
 			<!-- //collapse --> 
-			<?php Cart::destroy(); ?>
 			@include('offers_cards')
 		</div>
 	</div>

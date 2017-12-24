@@ -104,11 +104,9 @@
 	    <script src="Admin_asset/vendors/jszip/dist/jszip.min.js"></script>
 	    <script src="Admin_asset/vendors/pdfmake/build/pdfmake.min.js"></script>
 	    <script src="Admin_asset/vendors/pdfmake/build/vfs_fonts.js"></script>
-	    <!-- bootstrap-wysiwyg -->
-    	<script src="Admin_asset/vendors/bootstrap-wysiwyg/js/bootstrap-wysiwyg.min.js"></script>
+		<script src="Admin_asset/vendors/bootstrap-wysiwyg/js/bootstrap-wysiwyg.min.js"></script>
     	<script src="Admin_asset/vendors/jquery.hotkeys/jquery.hotkeys.js"></script>
     	<script src="Admin_asset/vendors/google-code-prettify/src/prettify.js"></script>
-
 	    <!-- Custom Theme Scripts -->
 	    <script src="Admin_asset/js/custom.js"></script>
 	

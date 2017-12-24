@@ -37,15 +37,18 @@
                 </tr>
               </thead>
               <tbody> 
+                <?php $sale = DB::table('sale')->get(); ?>
+                @foreach($sale as $item)
                 <tr>
-                  <td>1</td>
-                  <td>Donna Snider</td>
-                  <td>Customer</td>
-                  <td>tuananh6195@gmail.com</td>
-                  <td>27</td>
-                  <td>tuananh6195@gmail.com</td>
-                  <td>27</td>
+                  <td><?php echo $item->sale_id; ?></td>
+                  <td><?php echo $item->sale_name; ?></td>
+                  <td><?php echo $item->sale_off_code; ?></td>
+                  <td><?php echo $item->date_from." -> ".$item->date_to; ?></td>
+                  <td><?php echo $item->sale_percent; ?></td>
+                  <td><?php echo $item->sale_image; ?></td>
+                  <td><?php echo $item->sale_description; ?></td>
                 </tr>
+                @endforeach
               </tbody>
             </table>
           </div>

@@ -15,18 +15,13 @@
 						</div>
 					@endif
 					@if(Session::has('flag'))
-						<div class="alert alert-{{Session::get('flag')}}">{{Session::get('message')}}</div>
+						<div class="alert alert-{{Session::get('flag')}}">{{Session::get('message')}}<a href="{{route('kich-hoat')}}">  kích hoạt ngay</a></div>
 					@endif
-					@if (session('warning'))
-                        <span class="alert alert-warning help-block">
-                            <strong>{{ session('warning') }}</strong>
-                        </span>
-                    @endif
 					<input type="text" class="user" name="account" placeholder="Nhập tài khoản của bạn" required="">
 					<input type="password" name="password" class="lock" placeholder="Nhập mật khẩu" required="">
 					<input type="submit" value="Đăng nhập">
 					<div class="forgot-grid">
-						<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Nhớ mật khẩu</label>
+						<label class="checkbox"><input type="checkbox" name="remember"><i></i>Nhớ mật khẩu</label>
 						<div class="forgot">
 							<a href="{{route('quen-mat-khau')}}">Quên mật khẩu?</a>
 						</div>
@@ -35,14 +30,6 @@
 				</form>
 			</div>  
 			<h6> Bạn chưa có tài khoản? <a href="{{route('dang-ky')}}">Tạo tài khoản ngay »</a> </h6> 
-			<div class="login-page-bottom social-icons">
-				<h5>Đăng nhập với tài khoản mạng xã hội</h5>
-				<ul>
-					<li><a href="#" class="fa fa-facebook icon facebook"> </a></li>
-					<li><a href="#" class="fa fa-twitter icon twitter"> </a></li>
-					<li><a href="#" class="fa fa-google-plus icon googleplus"> </a></li>
-				</ul> 
-			</div>
 		</div>
 	</div>
 	<!-- //login-page --> 

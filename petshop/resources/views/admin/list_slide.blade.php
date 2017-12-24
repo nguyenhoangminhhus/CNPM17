@@ -34,12 +34,14 @@
                 </tr>
               </thead>
               <tbody> 
+                @foreach($slide as $s)
                 <tr>
-                  <td>1</td>
-                  <td>Donna Snider</td>
-                  <td>Customer</td>
-                  <td>Đã xem</td>
+                  <td>{{$s->Slide_id}}</td>
+                  <td>{{$s->Slide_name}}</td>
+                  <td>{{$s->Slide_description}}</td>
+                  <td>{{$s->Slide_image}}</td>
                 </tr>
+                @endforeach
               </tbody>
             </table>
           </div>

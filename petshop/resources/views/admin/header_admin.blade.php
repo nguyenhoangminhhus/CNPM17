@@ -9,11 +9,11 @@
 		<!-- menu profile quick info -->
 		<div class="profile clearfix">
 			<div class="profile_pic">
-				<img src="Admin_asset/images/img.jpg" alt="..." class="img-circle profile_img">
+				<i class="fa fa-user fa-3x img-circle profile_img" aria-hidden="true"></i>
 			</div>
 			<div class="profile_info">
 				<span>Xin chào,</span>
-				<h2>John Doe</h2>
+				<h2>{{Auth::user()->fullname}}</h2>
 			</div>
 		</div>
 		<!-- /menu profile quick info -->
@@ -58,81 +58,14 @@
 			<ul class="nav navbar-nav navbar-right">
 				<li class="">
 					<a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-						<img src="images/img.jpg" alt="">John Doe
+						<img src="images/img.jpg" alt="">{{Auth::user()->fullname}}
 						<span class=" fa fa-angle-down"></span>
 					</a>
 					<ul class="dropdown-menu dropdown-usermenu pull-right">
 						<li><a href="{{route('profile-admin')}}"><i class="fa fa-info pull-right"></i> Thông tin tài khoản</a></li>
-						<li><a href="{{route('change-pass')}}"><i class="fa fa-key pull-right"></i> Đổi mật khẩu</a></li>
-						<li><a href="{{route('login-admin')}}"><i class="fa fa-sign-out pull-right"></i> Đăng xuất</a></li>
+						<li><a href="{{route('dang-xuat-admin')}}"><i class="fa fa-sign-out pull-right"></i> Đăng xuất</a></li>
 					</ul>
 				</li>
-				<!-- thông báo tin nhắn -->
-				<li role="presentation" class="dropdown">
-					<a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
-						<i class="fa fa-envelope-o"></i>
-						<span class="badge bg-green">6</span>
-					</a>
-					<ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
-						<li>
-							<a>
-								<span class="image"><img src="Admin_asset/images/img.jpg" alt="Profile Image" /></span>
-								<span>
-									<span>John Smith</span>
-									<span class="time">3 mins ago</span>
-								</span>
-								<span class="message">
-									Film festivals used to be do-or-die moments for movie makers. They were where...
-								</span>
-							</a>
-						</li>
-						<li>
-							<a>
-								<span class="image"><img src="Admin_asset/images/img.jpg" alt="Profile Image" /></span>
-								<span>
-									<span>John Smith</span>
-									<span class="time">3 mins ago</span>
-								</span>
-								<span class="message">
-									Film festivals used to be do-or-die moments for movie makers. They were where...
-								</span>
-							</a>
-						</li>
-						<li>
-							<a>
-								<span class="image"><img src="Admin_asset/images/img.jpg" alt="Profile Image" /></span>
-								<span>
-									<span>John Smith</span>
-									<span class="time">3 mins ago</span>
-								</span>
-								<span class="message">
-									Film festivals used to be do-or-die moments for movie makers. They were where...
-								</span>
-							</a>
-						</li>
-						<li>
-							<a>
-								<span class="image"><img src="Admin_asset/images/img.jpg" alt="Profile Image" /></span>
-								<span>
-									<span>John Smith</span>
-									<span class="time">3 mins ago</span>
-								</span>
-								<span class="message">
-									Film festivals used to be do-or-die moments for movie makers. They were where...
-								</span>
-							</a>
-						</li>
-						<li>
-							<div class="text-center">
-								<a href="{{route('list-inbox')}}">
-									<strong>Xem tất cả tin nhắn</strong>
-									<i class="fa fa-angle-right"></i>
-								</a>
-							</div>
-						</li>
-					</ul>
-				</li>
-				<!-- /thông báo tin nhắn -->
 			</ul>
 		</nav>
 	</div>

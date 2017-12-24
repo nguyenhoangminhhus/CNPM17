@@ -6,8 +6,6 @@
     <div class="page-title">
       <div class="title_left">
         <a href="{{route('add-category')}}"><button type="button" id="add" class="btn btn-primary">Thêm loại sản phẩm</button></a>
-        <a href="{{route('change-category')}}"><button type="button" id="change" class="btn btn-warning">Sửa loại sản phẩm</button></a>
-        <button type="button" id="delete" class="btn btn-danger">Xóa loại sản phẩm</button>
       </div>
     </div>
 
@@ -32,16 +30,28 @@
                   <th>Biểu tượng</th>
                   <th>Màu sắc</th>
                   <th>Số cột</th>
+                  <th></th>
                 </tr>
               </thead>
               <tbody> 
+                <?php
+                    $cat = DB::table('category')->get();
+                   ?>
+                 @foreach($cat as $item)
                 <tr>
-                  <td>1</td>
-                  <td>Donna Snider</td>
-                  <td>Customer</td>
-                  <td>tuananh6195@gmail.com</td>
-                  <td>27</td>
+                  
+                  
+                  <td><?php echo $item->category_id; ?></td>
+                  <td><?php echo $item->name; ?></td>
+                  <td><?php echo $item->category_icon; ?></td>
+                  <td><?php echo $item->color; ?></td>
+                  <td><?php echo $item->cot; ?></td>
+                  <td>
+                  
+                    <a href=""><button type="button" id="change" class="btn btn-primary">Sửa loại sản phẩm</button></a>
+                  </td>
                 </tr>
+                @endforeach
               </tbody>
             </table>
           </div>

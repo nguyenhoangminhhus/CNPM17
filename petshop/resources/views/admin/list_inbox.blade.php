@@ -34,13 +34,15 @@
                 </tr>
               </thead>
               <tbody> 
+                @foreach($inbox as $i)
                 <tr>
-                  <td>1</td>
-                  <td>Donna Snider</td>
-                  <td>Customer</td>
-                  <td>Đã xem</td>
-                  <td>34234</td>
+                  <td>{{$i->id}}</td>
+                  <td>{{$i->users_name}}</td>
+                  <td>{{$i->users_email}}</td>
+                  <td>{{$i->Stt}}</td>
+                  <td>{{$i->time}}</td>
                 </tr>
+                @endforeach
               </tbody>
             </table>
           </div>

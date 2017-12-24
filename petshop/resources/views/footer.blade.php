@@ -57,7 +57,18 @@
 			</div> 
 			<div class="col-md-6 subscribe-right">
 				<h4>Đăng ký email và nhận mã giảm giá 25% !</h4>  
-				<form action="#" method="post"> 
+				<form action="{{route('emailsale')}}" method="post"> 
+					<input type="hidden" name="_token" value="{{csrf_token()}}">
+					@if(count($errors)>0)
+						<div class="alert alert-danger">
+							@foreach($errors->all() as $err)
+							{{$err}}
+							@endforeach
+						</div>
+					@endif
+					@if(Session::has('thanhcong'))
+						<div class="alert alert-success">{{Session::get('thanhcong')}}</div>
+					@endif
 					<input type="text" name="email" placeholder="Nhập Email Của Bạn..." required="">
 					<input type="submit" value="Đăng Ký">
 				</form>

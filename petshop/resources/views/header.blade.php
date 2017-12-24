@@ -22,11 +22,6 @@
 								<li><a href="{{route('doi-mat-khau')}}">Đổi mật khẩu</a></li>  
 
 
-
-								<li><a href="infor.html">Quản lý tài khoản </a></li> 
-								<li><a href="signup.html">Đơn hàng của tôi</a></li> 
-								<li><a href="change_pass.html">Đổi mật khẩu</a></li>  
-
 								<li><a href="{{route('dang-xuat')}}">Đăng xuất</a></li> 
 							</ul> 
 						</li>
@@ -54,21 +49,16 @@
 						<a href="{{route('credit-card')}}" class="dropdown-toggle"><i class="fa fa-credit-card-alt" aria-hidden="true"></i> Thẻ tín dụng</a>
 					</li> 
 					<li class="dropdown head-dpdn">
-						@if(Auth::check())
-						<a class="dropdown-toggle" href="{{route('danh-sach-don-hang')}}"><i class="fa fa-trademark" aria-hidden="true"></i> Kiểm tra đơn hàng </a>
-						@else
 						<a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="#"><i class="fa fa-trademark" aria-hidden="true"></i> Kiểm tra đơn hàng </a>
 						<ul class="dropdown-menu">
 							<li class="trademark">
-								<h5>Nhập mã đơn hàng</h5>
-								<form action="{{route('customer-bill')}}" method="POST" class="input-group">
-									<input type="hidden" name="_token" value="{{ csrf_token() }}">
-									<input type="text" class="form-control" name="checkbill">
-									<input type="submit" class="btn btn-primary" value="checkbill">
+								<h5>Nhập email muốn kiểm tra</h5>
+								<form class="input-group">
+									<input type="email" class="form-control" placeholder="Email">
+									<span type="submit" class="btn input-group-addon"><i class="fa fa-angle-right" aria-hidden="true"></i></span>
 								</form>
 							</li> 
-						</ul>
-						@endif
+						</ul> 
 					</li>
 				</ul>
 			</div>
@@ -81,8 +71,8 @@
 					<h6>Cửa hàng của bạn. Địa điểm của bạn</h6> 
 				</div>	
 				<div class="header-search">
-					<form action="{{route('search')}}" method="get" role="search">
-						<input type="search" name="key" placeholder="Tìm kiếm sản phẩm..." required="">
+					<form action="#" method="post">
+						<input type="search" name="Search" placeholder="Tìm kiếm sản phẩm..." required="">
 						<button type="submit" class="btn btn-default" aria-label="Left Align">
 							<i class="fa fa-search" aria-hidden="true"> </i>
 						</button>
@@ -90,11 +80,7 @@
 				</div>
 				<div class="header-cart"> 
 					<div class="cart"> 
-						<a href="{{route('gio-hang')}}"><button class="w3view-cart btn btn-primary">
-							<i class="fa fa-cart-arrow-down">
-								<span class="badge badge-notify my-cart-badge"><?php echo Cart::count(); ?></span>
-							</i>
-						</button></a>
+						<button class="w3view-cart my-cart-icon" type="submit" name="submit" value=""><i class="fa fa-cart-arrow-down" aria-hidden="true"><span class="badge badge-notify my-cart-badge"></span></i></button>
 					</div>
 					<div class="clearfix"> </div> 
 				</div> 

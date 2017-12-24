@@ -6,8 +6,8 @@
     <div class="page-title">
       <div class="title_left">
         <a href="{{route('add-product')}}"><button type="button" id="add" class="btn btn-primary">Thêm sản phẩm</button></a>
-        <a href="{{route('change-product')}}"><button type="button" id="change" class="btn btn-warning">Sửa sản phẩm</button></a>
-        <button type="button" id="delete" class="btn btn-danger">Xóa sản phẩm</button>
+        
+        
       </div>
     </div>
 
@@ -34,18 +34,32 @@
                   <th>Giá mới</th>
                   <th>Ảnh</th>
                   <th>Mô tả</th>
+                  <th></th>
+                  <th></th>
                 </tr>
               </thead>
               <tbody> 
+                <?php $pro = DB::table('products')->get(); ?>
+                @foreach($pro as $item)
                 <tr>
-                  <td>1</td>
-                  <td>Donna Snider</td>
-                  <td>Customer</td>
-                  <td>tuananh6195@gmail.com</td>
-                  <td>27</td>
-                  <td>tuananh6195@gmail.com</td>
-                  <td>27</td>
+                  <td><?php echo $item->products_id;
+                            $a = $item->products_id;
+                   ?></td>
+                  <td><?php echo $item->name; ?></td>
+                  <td><?php $namecat = DB::table('category')->where('category_id',$item->category_id)->get(); 
+                     //echo $item->category_id;
+                     foreach ($namecat as $key) {
+                       echo $key->name;
+                     }
+                  ?></td>
+                  <td><?php echo $item->unit_price ;?></td>
+                  <td><?php echo $item->promotion_price ;?></td>
+                  <td><?php echo $item->image ;?></td>
+                  <td><?php echo $item->description ;?></td>
+                  <td><a href="{{route('change-product',$a)}}"><button type="button" id="change" class="btn btn-warning">Sửa sản phẩm</button></a></td>
+                  <td><button type="button" id="delete" class="btn btn-danger">Xóa sản phẩm</button></td>
                 </tr>
+                @endforeach
               </tbody>
             </table>
           </div>

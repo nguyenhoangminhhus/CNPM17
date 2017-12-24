@@ -34,12 +34,14 @@
                 </tr>
               </thead>
               <tbody> 
+                @foreach($address as $a)
                 <tr>
-                  <td>1</td>
-                  <td>Donna Snider</td>
-                  <td>Customer</td>
-                  <td>Đã xem</td>
+                  <td>{{$a->Addresss_id}}</td>
+                  <td>{{$a->Addresss_name}}</td>
+                  <td>{{$a->Addresss_description}}</td>
+                  <td>{{$a->Addresss_linkmap}}</td>
                 </tr>
+                @endforeach
               </tbody>
             </table>
           </div>
