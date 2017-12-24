@@ -5,7 +5,7 @@
   <div class="">
     <div class="page-title">
       <div class="title_left">
-        <a href="{{route('change-bill')}}"><button type="button" id="change" class="btn btn-warning">Sửa hóa đơn</button></a>
+        <a href="#"><button type="button" id="change" class="btn btn-warning">Sửa hóa đơn</button></a>
         <button type="button" id="delete" class="btn btn-danger">Xóa hóa đơn</button>
       </div>
     </div>
@@ -27,24 +27,40 @@
               <thead>
                 <tr>
                   <th>Id</th>
-                  <th>Tên sản phẩm</th>
-                  <th>Loại sản phẩm</th>
-                  <th>Giá cũ</th>
-                  <th>Giá mới</th>
-                  <th>Ảnh</th>
-                  <th>Mô tả</th>
+                  <th>Tên khách hàng</th>
+                  <th>Tổng giá</th>
+                  <th>Ngày đặt hàng</th>
+                  <th>Trạng thái</th>
+                  <th>Xem chi tiết</th>
+                  <th>Sửa hóa đơn</th>
                 </tr>
               </thead>
               <tbody> 
+                @foreach($bill as $b)
                 <tr>
-                  <td>1</td>
-                  <td>Donna Snider</td>
-                  <td>Customer</td>
-                  <td>tuananh6195@gmail.com</td>
-                  <td>27</td>
-                  <td>tuananh6195@gmail.com</td>
-                  <td>27</td>
+                  <td>{{$b->transaction_id}}</td>
+                  <td>
+                    @if($b->users_id != '')
+                      <?php echo DB::table('users')->where('user_id', $b->users_id)->value('fullname'); ?>
+                    @else
+                      <?php echo DB::table('customer')->where('customer_id', $b->customer_id)->value('customer_name'); ?>
+                    @endif
+                  </td>
+                  <td>{{$b->total}}</td>
+                  <td>{{$b->date_oder}}</td>
+                  <td>
+                    @if($b->status == 0)
+                      Đã đặt
+                    @elseif($b->status == 1)
+                      Đang giao
+                    @elseif($b->status == 2)
+                      Hoàn thành
+                    @endif
+                  </td>
+                  <td><a href=""><button type="button" id="change" class="btn btn-primary">Xem chi tiết</button></a></td>
+                  <td><a href=""><button type="button" id="change" class="btn btn-primary">Sửa</button></a></td>
                 </tr>
+                @endforeach
               </tbody>
             </table>
           </div>

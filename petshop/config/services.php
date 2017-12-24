@@ -35,4 +35,15 @@ return [
         'secret' => env('STRIPE_SECRET'),
     ],
 
+    'facebook' => [
+        'client_id' => '1651908864867131',
+        'client_secret' => 'a2abb4b23c689f88a2e59d2a17767425',
+        'redirect' => 'http://webshop.test/login/facebook/callback',
+    ],
+
+    'google' => [
+        'client_id' => '940315568191-v29qdfa79e6t87uapk8ja5vq43fb3h4c.apps.googleusercontent.com',
+        'client_secret' => 'TRabcwcNEgfef7zwZPaXKqO_',
+        'redirect' => 'http://webshop.test/login/google/callback',
+    ],
 ];

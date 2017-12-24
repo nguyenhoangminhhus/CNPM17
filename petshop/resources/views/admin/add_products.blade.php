@@ -15,43 +15,43 @@
 					</div>
 					<div class="x_content">
 						<br />
-						<form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
-
+						<form method="POST" action="{{route('post-add-product')}}" id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
+							<input type="hidden" name="_token" value="{{ csrf_token() }}">
 							<div class="form-group">
 								<label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Tên sản phẩm <span class="required">*</span>
 								</label>
 								<div class="col-md-6 col-sm-6 col-xs-12">
-									<input type="text" id="first-name" required="required" class="form-control col-md-7 col-xs-12">
+									<input name="productname" type="text" id="first-name" required="required" class="form-control col-md-7 col-xs-12">
 								</div>
 							</div>
 							<div class="form-group">
 								<label class="control-label col-md-3 col-sm-3 col-xs-12">Loại sản phẩm</label>
+								<?php $cat = DB::table('category')->get(); ?>
 								<div class="col-md-6 col-sm-6 col-xs-12">
-									<select class="form-control">
-										<option>Option one</option>
-										<option>Option two</option>
-										<option>Option three</option>
-										<option>Option four</option>
+									<select class="form-control" name="catename">
+										@foreach($cat as $item)
+										<option value="{{$item->name}}"><?php echo $item->name; ?></option>
+										@endforeach
 									</select>
 								</div>
 							</div>
 							<div class="form-group">
 								<label class="control-label col-md-3 col-sm-3 col-xs-12">Giá cũ <span class="required">*</span></label>
 								<div class="col-md-6 col-sm-6 col-xs-12">
-									<input id="birthday" class="date-picker form-control col-md-7 col-xs-12" required="required" type="text">
+									<input name="unit_price" id="birthday" class="date-picker form-control col-md-7 col-xs-12" required="required" type="text">
 								</div>
 							</div>
 							<div class="form-group">
-								<label class="control-label col-md-3 col-sm-3 col-xs-12">Giá mới <span class="required">*</span></label>
+								<label  class="control-label col-md-3 col-sm-3 col-xs-12">Giá mới <span class="required">*</span></label>
 								<div class="col-md-6 col-sm-6 col-xs-12">
-									<input id="birthday" class="date-picker form-control col-md-7 col-xs-12" required="required" type="text">
+									<input name="promotion_price" id="birthday" class="date-picker form-control col-md-7 col-xs-12" required="required" type="text">
 								</div>
 							</div>
 							<div class="form-group">
 								<label class="control-label col-md-3 col-sm-3 col-xs-12">Ảnh <span class="required">*</span></label>
 								<div class="col-md-6 col-sm-6 col-xs-12">
 									<a class="btn" title="Thêm ảnh" id="pictureBtn"><i class="fa fa-picture-o"></i></a>
-									<input type="file" data-role="magic-overlay" data-target="#pictureBtn" data-edit="insertImage" />
+									<input name="image" type="file" data-role="magic-overlay" data-target="#pictureBtn" data-edit="insertImage" />
 								</div>
 							</div>
 							<div class="form-group">
@@ -59,7 +59,7 @@
 								<div class="col-md-6 col-sm-6 col-xs-12">
 									<div class="btn-toolbar editor" data-role="editor-toolbar" data-target="#editor-one">
 										<div class="btn-group">
-											<a class="btn dropdown-toggle" data-toggle="dropdown" title="Font"><i class="fa fa-font"></i><b class="caret"></b></a>
+											<a class="btn drop	down-toggle" data-toggle="dropdown" title="Font"><i class="fa fa-font"></i><b class="caret"></b></a>
 											<ul class="dropdown-menu">
 											</ul>
 										</div>
@@ -123,7 +123,7 @@
 
 									<div id="editor-one" class="editor-wrapper"></div>
 
-									<textarea name="descr" id="descr" style="display:none;"></textarea>
+									<textarea name="description" id="descr" style="display:none;"></textarea>
 								</div>
 							</div>
 

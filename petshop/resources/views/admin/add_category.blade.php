@@ -15,32 +15,33 @@
                     </div>
                     <div class="x_content">
                         <br />
-                        <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
+                        <form method="POST" action="{{route('post-add-category')}}" id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
+                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
                             <div class="form-group">
                                 <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Tên loại sản phẩm <span class="required">*</span></label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <input type="text" id="first-name" required="required" class="form-control col-md-7 col-xs-12">
+                                    <input name="categoryname" type="text" id="first-name" required="required" class="form-control col-md-7 col-xs-12">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Biểu tượng <span class="required">*</span></label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <input type="text" id="first-name" required="required" class="form-control col-md-7 col-xs-12">
+                                    <input name="categoryicon" type="text" id="first-name" required="required" class="form-control col-md-7 col-xs-12">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Màu sắc <span class="required">*</span></label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
                                     <div class="input-group demo2">
-                                        <input id="middle-name" type="text" value="#e01ab5" class="form-control col-md-7 col-xs-12" />
-                                        <span class="input-group-addon"><i></i></span>
+                                        <input id="middle-name" type="text" name="categorycolor" class="form-control col-md-7 col-xs-1   2" />
+                                        
                                     </div>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="control-label col-md-3 col-sm-3 col-xs-12">Số cột <span class="required">*</span></label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <input id="birthday" class="date-picker form-control col-md-7 col-xs-12" required="required" type="text">
+                                    <input name="categorycot" id="birthday" class="date-picker form-control col-md-7 col-xs-12" required="required" type="text">
                                 </div>
                             </div>
                             <div class="ln_solid"></div>
@@ -48,7 +49,7 @@
                                 <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
                                     <button class="btn btn-primary" type="button">Hủy</button>
                                     <button class="btn btn-danger" type="reset">Xóa hết</button>
-                                    <button type="submit" class="btn btn-success">Thêm</button>
+                                    <input type="submit" class="btn btn-success" value="Thêm">
                                 </div>
                             </div>
                         </form>

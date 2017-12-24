@@ -270,7 +270,8 @@ button a{
     position: inherit;
     margin-top: 10px;
     border: 1px solid rgba(52, 73, 94, 0.44);
-    padding: 4px
+    padding: 4px;
+    text-align: center;
 }
 .profile_info {
     padding: 10px;

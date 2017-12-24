@@ -19,18 +19,102 @@
 								</tr>
 							</thead>
 							<tbody>
-								@foreach($usertran as $item)
-									<tr>
-										<td><?php echo $item->transaction_id; ?></td>
-										<td><?php echo $item->date_oder; ?></td>
-										<td><?php echo $item->total; ?></td>
-										<td><?php if($item->status == 0) {
-											echo "Chưa Hoàn Thành";
-										} else{
-											echo "Hoàn Thành";
-										} ?></td>
-									</tr>
-								@endforeach
+								<tr>
+									<td><a href="">123456</a></td>
+									<td>22/5/2016</td>
+									<td>57000000 VNĐ</td>
+									<td>Hoàn thành</td>
+								</tr>
+								<tr>
+									<td><a href="">234</a></td>
+									<td>22/5/2016</td>
+									<td>57000000 VNĐ</td>
+									<td>Hoàn thành</td>
+								</tr>
+								<tr>
+									<td><a href="">567</a></td>
+									<td>22/5/2016</td>
+									<td>57000000 VNĐ</td>
+									<td>Hoàn thành</td>
+								</tr>
+								<tr>
+									<td><a href="">123456</a></td>
+									<td>22/5/2016</td>
+									<td>57000000 VNĐ</td>
+									<td>Hoàn thành</td>
+								</tr>
+								<tr>
+									<td><a href="">123456</a></td>
+									<td>22/5/2016</td>
+									<td>57000000 VNĐ</td>
+									<td>Hoàn thành</td>
+								</tr>
+								<tr>
+									<td><a href="">123456</a></td>
+									<td>22/5/2016</td>
+									<td>57000000 VNĐ</td>
+									<td>Hoàn thành</td>
+								</tr>
+								<tr>
+									<td><a href="">123456</a></td>
+									<td>22/5/2016</td>
+									<td>57000000 VNĐ</td>
+									<td>Hoàn thành</td>
+								</tr>
+								<tr>
+									<td><a href="">123456</a></td>
+									<td>22/5/2016</td>
+									<td>57000000 VNĐ</td>
+									<td>Hoàn thành</td>
+								</tr>
+								<tr>
+									<td><a href="">123456</a></td>
+									<td>22/5/2016</td>
+									<td>57000000 VNĐ</td>
+									<td>Hoàn thành</td>
+								</tr>
+								<tr>
+									<td><a href="">123456</a></td>
+									<td>22/5/2016</td>
+									<td>57000000 VNĐ</td>
+									<td>Hoàn thành</td>
+								</tr>
+								<tr>
+									<td><a href="">123456</a></td>
+									<td>22/5/2016</td>
+									<td>57000000 VNĐ</td>
+									<td>Hoàn thành</td>
+								</tr>
+								<tr>
+									<td><a href="">123456</a></td>
+									<td>22/5/2016</td>
+									<td>57000000 VNĐ</td>
+									<td>Hoàn thành</td>
+								</tr>
+								<tr>
+									<td><a href="">123456</a></td>
+									<td>22/5/2016</td>
+									<td>57000000 VNĐ</td>
+									<td>Hoàn thành</td>
+								</tr>
+								<tr>
+									<td><a href="">123456</a></td>
+									<td>22/5/2016</td>
+									<td>57000000 VNĐ</td>
+									<td>Hoàn thành</td>
+								</tr>
+								<tr>
+									<td><a href="">123456</a></td>
+									<td>22/5/2016</td>
+									<td>57000000 VNĐ</td>
+									<td>Hoàn thành</td>
+								</tr>
+								<tr>
+									<td><a href="">123456</a></td>
+									<td>22/5/2016</td>
+									<td>57000000 VNĐ</td>
+									<td>Hoàn thành</td>
+								</tr>
 							</tbody>
 						</table>
 					</div>

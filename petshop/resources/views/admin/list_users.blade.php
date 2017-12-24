@@ -37,16 +37,24 @@
                 </tr>
               </thead>
               <tbody> 
+                @foreach($user as $u)
                 <tr>
-                  <td>1</td>
-                  <td>Donna Snider</td>
-                  <td>Customer</td>
-                  <td>tuananh6195@gmail.com</td>
-                  <td>27</td>
-                  <td>2011/01/25</td>
-                  <td>$112,000</td>
-                  <td>Tài khoản thường</td>
+                  <td>{{$u->user_id}}</td>
+                  <td>{{$u->fullname}}</td>
+                  <td>{{$u->account}}</td>
+                  <td>{{$u->email}}</td>
+                  <td>{{$u->address}}</td>
+                  <td>{{$u->phone}}</td>
+                  <td>{{$u->sign_date}}</td>
+                  <td>
+                    @if($u->role == '1')
+                      Admin
+                    @elseif($u->role == '0')
+                      Tài khoản thường
+                    @endif
+                  </td>
                 </tr>
+                @endforeach
               </tbody>
             </table>
           </div>

@@ -56,7 +56,6 @@
               </div>
               <div>
                 <input type="submit" value="Đăng nhập">
-                <a class="reset_pass" href="{{route('forgot-pass')}}">Quên mật khẩu?</a>
               </div>
 
               <div class="clearfix"></div>

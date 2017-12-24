@@ -15,43 +15,48 @@
           </div>
           <div class="x_content">
             <br />
-            <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
-
+            <form method="POST" action="{{route('post-update-product')}}" id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
+              <input type="hidden" name="_token" value="{{ csrf_token() }}">
+              <?php $query = DB::table('products')->where('products_id',$id)->get() ; ?>
               <div class="form-group">
                 <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Tên sản phẩm <span class="required">*</span>
                 </label>
                 <div class="col-md-6 col-sm-6 col-xs-12">
-                  <input type="text" id="first-name" required="required" class="form-control col-md-7 col-xs-12">
+                  <input value="<?php foreach($query as $item){ echo $item->name;} ?>" type="text" id="first-name" required="required" class="form-control col-md-7 col-xs-12">
                 </div>
               </div>
               <div class="form-group">
                 <label class="control-label col-md-3 col-sm-3 col-xs-12">Loại sản phẩm</label>
                 <div class="col-md-6 col-sm-6 col-xs-12">
                   <select class="form-control">
-                    <option>Option one</option>
-                    <option>Option two</option>
-                    <option>Option three</option>
-                    <option>Option four</option>
+                    @foreach($query as $item)
+                    <?php $catname = DB::table('category')->where('category_id',$item->category_id)->get(); ?>
+                        @foreach($catname as $key)
+                          <option>
+                              <?php echo $key->name; ?>
+                            </option>
+                        @endforeach 
+                    @endforeach
                   </select>
                 </div>
               </div>
               <div class="form-group">
                 <label class="control-label col-md-3 col-sm-3 col-xs-12">Giá cũ <span class="required">*</span></label>
                 <div class="col-md-6 col-sm-6 col-xs-12">
-                  <input id="birthday" class="date-picker form-control col-md-7 col-xs-12" required="required" type="text">
+                  <input value="<?php foreach($query as $item){ echo $item->unit_price;} ?>" id="birthday" class="date-picker form-control col-md-7 col-xs-12" required="required" type="text">
                 </div>
               </div>
               <div class="form-group">
                 <label class="control-label col-md-3 col-sm-3 col-xs-12">Giá mới <span class="required">*</span></label>
                 <div class="col-md-6 col-sm-6 col-xs-12">
-                  <input id="birthday" class="date-picker form-control col-md-7 col-xs-12" required="required" type="text">
+                  <input value="<?php foreach($query as $item){ echo $item->promotion_price;} ?>" id="birthday" class="date-picker form-control col-md-7 col-xs-12" required="required" type="text">
                 </div>
               </div>
               <div class="form-group">
                 <label class="control-label col-md-3 col-sm-3 col-xs-12">Ảnh <span class="required">*</span></label>
                 <div class="col-md-6 col-sm-6 col-xs-12">
                   <a class="btn" title="Thêm ảnh" id="pictureBtn"><i class="fa fa-picture-o"></i></a>
-                  <input type="file" data-role="magic-overlay" data-target="#pictureBtn" data-edit="insertImage" />
+                  <input value="<?php foreach($query as $item){ echo $item->image;} ?>" type="file" data-role="magic-overlay" data-target="#pictureBtn" data-edit="insertImage" />
                 </div>
               </div>
               <div class="form-group">
@@ -123,7 +128,7 @@
 
                   <div id="editor-one" class="editor-wrapper"></div>
 
-                  <textarea name="descr" id="descr" style="display:none;"></textarea>
+                  <textarea name="descr" id="descr" style="display:none;" placeholder="<?php foreach($query as $item){ echo $item->description;} ?>"></textarea>
                 </div>
               </div>
 
