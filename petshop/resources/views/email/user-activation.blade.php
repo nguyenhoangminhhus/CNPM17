@@ -1,7 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
+
 	<title>Activation Email - Shoppet Conner</title>
+
+
+	<title>Activation Email - Shoppet Conner</title>
+
+	<title>Email kích hoạt tài khoản - Shoppet Conner</title>
+
+
 </head>
 <body>
 	<p>

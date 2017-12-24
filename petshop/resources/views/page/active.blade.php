@@ -15,7 +15,20 @@
 						</div>
 					@endif
 					@if(Session::has('thanhcong'))
+
 						<div class="alert alert-success">{{Session::get('thanhcong')}}<a href="{{route('dang-nhap')}}"> Đăng nhập ngay</a></div>
+
+
+						<div class="alert alert-success">{{Session::get('thanhcong')}}<a href="{{route('dang-nhap')}}"> Đăng nhập ngay</a></div>
+
+						<script type="text/javascript">
+							alertify.alert("{{Session::get('thanhcong')}}", function(){
+								window.location.href = "{{URL::to('dang-nhap')}}";
+    							alertify.message('OK');
+  							}).setting({'label':'Thành công', 'closable':false}); 
+						</script>
+
+
 					@elseif(Session::has('thatbai'))
 						<div class="alert alert-danger">{{Session::get('thatbai')}}</div>
 					@endif

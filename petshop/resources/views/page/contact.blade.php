@@ -17,9 +17,20 @@
 			<div class="contact-form-row">
 				<h3 class="w3ls-title w3ls-title1">Gửi tin nhắn cho chúng tôi</h3>  
 				<div class="col-md-7 contact-left">
-					<form action="#" method="post">
-						<input type="text" name="Name" placeholder="Tên của bạn" required="">
-						<input class="email" type="text" name="Email" placeholder="Email của bạn" required="">
+					<form action="{{route('lien-he')}}" method="post">
+						<input type="hidden" name="_token" value="{{csrf_token()}}">
+							@if(count($errors)>0)
+								<div class="alert alert-danger">
+									@foreach($errors->all() as $err)
+										{{$err}}
+									@endforeach
+								</div>
+							@endif
+							@if(Session::has('thanhcong'))
+								<div class="alert alert-success">{{Session::get('thanhcong')}}</div>
+							@endif
+						<input type="text" name="name" placeholder="Tên của bạn" required="">
+						<input class="email" type="text" name="email" placeholder="Email của bạn" required="">
 						<textarea placeholder="Tin nhắn" name="Message" required=""></textarea>
 						<input type="submit" value="GỬI">
 					</form>

@@ -7,7 +7,7 @@
 			<div class="collpse tabs">
 				<div class="w3ls-title">
 					<h3>Thông tin tài khoản</h3> 
-					<a href="edit_infor.html" type="button" class="btn btn-default">Sửa thông tin cá nhân</a>
+					<a href="{{route('sua-thong-tin-tai-khoan')}}" type="button" class="btn btn-default">Sửa thông tin cá nhân</a>
 				</div>
 				<div class="panel-group collpse" id="accordion" role="tablist" aria-multiselectable="true">
 					<div class="row">
@@ -24,15 +24,15 @@
 									<div class="panel-body">
 										<div class="row">
 											<div class="col-md-4">Họ tên:</div>
-											<div class="col-md-8">alo</div>
+											<div class="col-md-8">{{$user->fullname}}</div>
 										</div>
 										<div class="row">
 											<div class="col-md-4">Số điện thoại:</div>
-											<div class="col-md-8">alo</div>
+											<div class="col-md-8">{{$user->phone}}</div>
 										</div>
 										<div class="row">
 											<div class="col-md-4">Email:</div>
-											<div class="col-md-8">1234@gmail.com</div>
+											<div class="col-md-8">{{$user->email}}</div>
 										</div>
 									</div>
 								</div>
@@ -50,12 +50,12 @@
 								<div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
 									<div class="panel-body">
 										<div class="row">
-											<div class="col-md-4">Địa chỉ 1:</div>
-											<div class="col-md-8">Hà Nội</div>
+											<div class="col-md-2">Địa chỉ 1:</div>
+											<div class="col-md-10">{{$user->address}}</div>
 										</div>
 										<div class="row">
-											<div class="col-md-4">Địa chỉ 2:</div>
-											<div class="col-md-8">Hà Nội</div>
+											<div class="col-md-2">Địa chỉ 2:</div>
+											<div class="col-md-10"></div>
 										</div>
 									</div>
 								</div>
