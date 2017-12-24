@@ -8,6 +8,12 @@ use App\Products;
 use App\Sale;
 use App\Addresss;
 
+
+use App\Contact;
+use App\Emailsale;
+
+
+
 use Hash;
 use Auth;
 use Mail;
@@ -176,6 +182,36 @@ class PageController extends Controller
         return view('page.forgot_password');
     }
 
+
+
+    public function postForgotpass(Request $req){
+        $this->validate($req,
+            [
+                'account'=>'required',
+                'email'=>'required|email'
+            ],
+            [
+                'account.required'=>'Vui lòng nhập tài khoản',
+                'email.required'=>'Vui lòng nhập email.',
+                'email.email'=>'Không đúng định dạng email.',
+            ]
+        );
+        $user = DB::table('users')
+                ->where('account', $req->account)
+                ->where('email', $req->email)
+                ->get();
+        if (count($user) > 0) {
+            $password = DB::table('users')->where('account', $req->account)->value('password');
+            Mail::send('email.forgot_pass', array('fullname'=>Input::get('account'), 'password'=>$password), function($message){
+                $message->to(Input::get('email'))->subject('Quên mật khẩu!');
+            });
+            return redirect()->back()->with('thanhcong','Chúng tôi đã gửi mật khẩu về email của bạn. Vui lòng kiểm tra email.');
+        } else {
+            return redirect()->back()->with('thatbai','Tài khoản hoặc email sai.');
+        }
+    }
+
+
     public function getThongtin(){
         
     	return view('page.thongtin');
@@ -191,14 +227,79 @@ class PageController extends Controller
     	return view('page.change_pass');
     }
 
+    public function postChangepass(Request $req){
+        $this->validate($req,
+            [
+                'passwordold'=>'required',
+                'password'=>'required|min:6|max:20',
+                're_password'=>'required|same:password'
+            ],
+            [
+                'passwordold.required'=>'Vui lòng nhập mật khẩu cũ.',
+                'password.required'=>'Vui lòng nhập mật khẩu mới.',
+                'password.min'=>'Mật khẩu ít nhất 6 ký tự.',
+                'password.max'=>'Mật khẩu nhiều nhất 20 ký tự.',
+                're_password.required'=>'Vui lòng nhập lại mật khẩu mới.',
+                're_password.same'=>'Nhập lại mật khẩu không đúng.'
+            ]
+        );
+        $user = User::find(Auth::user()->user_id);
+        if ($req->password == $req->passwordold) {
+            return redirect()->back()->with('thatbai', 'Mật khẩu mới không được trùng với mật khẩu cũ');
+        } else {
+            if (Hash::check($req->passwordold, $user['password'])){
+                $user->password = Hash::make($req->password);
+                $user->save();
+                return redirect()->back()->with('thanhcong', 'Bạn đã đổi mật khẩu thành công. Bạn phải đăng nhập lại');
+            } else {
+                return redirect()->back()->with('thatbai', 'Bạn đã nhập sai mật khẩu cũ.');
+            }
+        }
+        
+    }
+
     public function getContact(){
         $map = Addresss::all();
     	return view('page.contact', compact('map'));
+
     }
 
     public function getEditinfor(){
         
     	return view('page.edit_infor');
+
+    }
+
+    public function postContact(Request $req){
+        $this->validate($req,
+            [
+                'name'=>'required|string|max:255',
+                'email'=>'required|email',
+                'Message'=>'required'
+            ],
+            [
+                'name.required'=>'Vui lòng nhập tên của bạn.',
+                'email.required'=>'Vui lòng nhập email.',
+                'email.email'=>'Không đúng định dạng email.',
+                'Message.required'=>'Vui lòng nhập tin nhắn'
+            ]
+        );
+        $contact = new Contact();
+        $contact->users_name = $req->name;
+        $contact->users_email = $req->email;
+        $contact->content = $req->Message;
+        $contact->time = date('Y-m-d H:i:s');
+        
+        $contact->Stt = 'Chưa xem';
+        $contact->save();
+
+        return redirect()->back()->with('thanhcong', 'Bạn đã gửi tin nhắn thành công. Chúng tôi sẽ gửi mail trả lời cho bạn trong 24h. Xin cảm ơn');
+    }
+
+    public function getEditinfor(){
+        $user = Auth::user();
+    	return view('page.edit_infor', compact('user'));
+
     }
 
     public function getHelp(){
@@ -207,8 +308,56 @@ class PageController extends Controller
     }
 
     public function getInfor(){
+
         
     	return view('page.infor');
+
+        $user = Auth::user();
+    	return view('page.infor', compact('user'));
+    }
+
+    public function postEditinfor(Request $req){
+        $this->validate($req,
+            [
+                'fullname'=>'required|string|max:255',
+                'email'=>'required|email',
+                'phone'=>'required|int',
+                'address'=>'required'
+            ],
+            [
+                'fullname.required'=>'Vui lòng nhập tên của bạn.',
+                'phone.required'=>'Vui lòng nhập số điện thoại.',
+                'phone.int'=>'Vui lòng nhập đúng định dạng số',
+                'email.required'=>'Vui lòng nhập email.',
+                'email.email'=>'Không đúng định dạng email.',
+                'email.unique'=>'Email đã có người sử dụng.',
+                'address.required'=>'Vui lòng nhập địa chỉ.'
+            ]
+        );
+        $user = Auth::user();
+        if ($req->email == $user->email) {
+            $user->fullname = $req->fullname;
+            $user->phone = $req->phone;
+            $user->address = $req->address;
+            $user->save();
+            return redirect()->back()->with('thanhcong', 'Sửa thông tin thành công');
+        } else {
+            $this->validate($req,
+                [
+                    'email'=>'unique:users,email'
+                ],
+                [
+                    'email.unique'=>'Email đã có người sử dụng.'
+                ]
+            );
+            $user->fullname = $req->fullname;
+            $user->phone = $req->phone;
+            $user->email = $req->email;
+            $user->address = $req->address;
+            $user->save();
+            return redirect()->back()->with('thanhcong', 'Sửa thông tin thành công');
+        }
+
     }
 
     public function getInforbill(){
@@ -242,8 +391,13 @@ class PageController extends Controller
     }
 
     public function getSitemap(){
+
         
     	return view('page.sitemap');
+
+        $category = Category::all();
+    	return view('page.sitemap', compact('category'));
+
     }
 
     public function getValues(){
@@ -334,7 +488,9 @@ class PageController extends Controller
                 'account.max'=>'Tài khoản nhiều nhất 25 ký tự.',
             ]
         );
+
         $check = array('account'=>$req->account, 'active_code'=>$req->code, 'active'=>0);
+
         $user = DB::table('users')
                 ->where('account', $req->account)
                 ->where('active_code', $req->code)
@@ -344,7 +500,11 @@ class PageController extends Controller
             DB::table('users')
                 ->where('account', $req->account)
                 ->update(['active' => 1]);
+
             return redirect()->back()->with('thanhcong','Tài khoản của bạn đã kích hoạt thành công.');
+
+            return redirect()->back()->with('thanhcong','Tài khoản của bạn đã kích hoạt thành công. Bạn có thể đăng nhập ngay.');
+
         } else {
             return redirect()->back()->with('thatbai','Sai tài khoản hoặc mã code hoặc tài khoản của bạn đã được kích hoạt');
         }
@@ -374,6 +534,31 @@ class PageController extends Controller
         }
 
     }
+
+
+    public function postEmailsale(Request $req){
+        $this->validate($req,
+            [
+                'email'=>'required|email|unique:emailsale,email',
+            ],
+            [
+                'email.required'=>'Vui lòng nhập email.',
+                'email.email'=>'Không đúng định dạng email.',
+                'email.unique'=>'Email đã được hưởng khuyến mãi.',
+            ]
+        );
+        $email = new Emailsale();
+        $email->email = $req->email;
+        $email->sale_id = '17';
+        $email->save();
+
+        Mail::send('email.emailsale', array('name'=>'bạn', 'code'=>'SALE25CODE', 'dateto'=>'31/1/2018'), function($message){
+            $message->to(Input::get('email'))->subject('Mã khuyến mãi cho email mới!');
+        });
+
+        return redirect()->back()->with('thanhcong', 'Chúng tôi đã gửi mã khuyến mãi. Xin kiểm tra email của bạn');
+    }
+
 
     public function postDangxuat(){
         Auth::logout();

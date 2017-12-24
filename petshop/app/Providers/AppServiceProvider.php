@@ -18,6 +18,7 @@ class AppServiceProvider extends ServiceProvider
             $category = Category::all();
             $view->with('category', $category);
         });
+
     }
 
     /**

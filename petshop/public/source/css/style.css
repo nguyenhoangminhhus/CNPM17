@@ -237,6 +237,22 @@ ul.cd-dropdown-content li {
 .header-cart h4 a {
     color: #000;
 }
+/*-- giohang-page --*/
+.giohang .container .panel-group .panel.panel-default{
+    width: 100%;
+    margin-left: 0; 
+}
+.giohang .container .panel-group .panel.panel-default .panel-body{
+    width: 100%;
+    margin: 0 1%; 
+}
+.giohang .container table.dataTable.display tbody td:nth-child(4){
+    width: 15%;
+}
+.giohang .container table.dataTable.display tbody td:nth-child(6){
+    width: 15%;
+}
+/*-- //giohang-page --*/
 /*-- cart-box --*/ 
 .cart {
     margin-left: 2em;
@@ -548,6 +564,9 @@ h3.w3ls-title {
 } 
 /*-- //welcome --*/
 /*-- add-products --*/
+.add-products-row .w3ls-add-grids h4{
+    font-size: 1.7em;
+}
 .w3ls-add-grids {
     background: url(../images/img1.jpg)no-repeat 0px 0px;
     background-size: cover;
@@ -1904,7 +1923,6 @@ h3.w3ls-title.w3ls-title1 {
 .offer-bottom-grids h4 {
     font-size: 3.5em;
     color: #fff;
-    font-family: 'Tangerine', cursive;
 }
 .offer-bottom-grids h6 {
     font-size: 1.5em;
@@ -1915,6 +1933,10 @@ h3.w3ls-title.w3ls-title1 {
 }
 .offer-bottom-grids .offer-bottom-grids-info2 h6 { 
     color: #FFC107; 
+}
+
+.w3single-offers.offer-bottom a{
+    color: #fff;
 }
 /*-- //offers-page --*/
 /*-- contact-page --*/

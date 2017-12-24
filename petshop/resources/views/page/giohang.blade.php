@@ -117,6 +117,7 @@
 			</div>
 			<!-- //collapse --> 
 			<!-- offers-cards --> 
+
 			<div class="w3single-offers offer-bottom"> 
 				<div class="col-md-6 offer-bottom-grids">
 					<div class="offer-bottom-grids-info2">
@@ -132,6 +133,9 @@
 				</div>
 				<div class="clearfix"> </div>
 			</div>
+
+			@include('offers_cards')
+
 			<!-- //offers-cards -->
 		</div>
 	</div>
