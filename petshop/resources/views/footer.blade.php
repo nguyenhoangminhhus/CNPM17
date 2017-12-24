@@ -1,3 +1,4 @@
+
 	<!-- footer-top -->
 	<div class="w3agile-ftr-top">
 		<div class="container">
@@ -56,7 +57,18 @@
 			</div> 
 			<div class="col-md-6 subscribe-right">
 				<h4>Đăng ký email và nhận mã giảm giá 25% !</h4>  
-				<form action="#" method="post"> 
+				<form action="{{route('emailsale')}}" method="post"> 
+					<input type="hidden" name="_token" value="{{csrf_token()}}">
+					@if(count($errors)>0)
+						<div class="alert alert-danger">
+							@foreach($errors->all() as $err)
+							{{$err}}
+							@endforeach
+						</div>
+					@endif
+					@if(Session::has('thanhcong'))
+						<div class="alert alert-success">{{Session::get('thanhcong')}}</div>
+					@endif
 					<input type="text" name="email" placeholder="Nhập Email Của Bạn..." required="">
 					<input type="submit" value="Đăng Ký">
 				</form>
@@ -72,7 +84,7 @@
 			<div class="footer-info w3-agileits-info">
 				<div class="col-md-4 address-left agileinfo">
 					<div class="footer-logo header-logo">
-						<h2><a href="index.html"><span>S</span>hopet<i> Corner</i></a></h2>
+						<h2><a href="{{route('trang-chu')}}"><span>S</span>hopet<i> Corner</i></a></h2>
 						<h6>Cửa hàng của bạn. Địa điểm của bạn.</h6>
 					</div>
 					<ul>
@@ -86,20 +98,18 @@
 					<div class="col-md-3 footer-grids">
 						<h3>Company</h3>
 						<ul>
-							<li><a href="about.html">Về chúng tôi</a></li>
-							<li><a href="marketplace.html">Marketplace</a></li>  
-							<li><a href="values.html">Core Values</a></li>  
-							<li><a href="privacy.html">Chính sách bảo mật</a></li>
+							<li><a href="{{route('thong-tin')}}">Về chúng tôi</a></li>
+							<li><a href="{{route('dich-vu')}}">Marketplace</a></li>  
+							<li><a href="{{route('gia-tri-cot-loi')}}">Giá trị cốt lõi</a></li>  
+							<li><a href="{{route('chinh-sach-bao-mat')}}">Chính sách bảo mật</a></li>
 						</ul>
 					</div>
 					<div class="col-md-3 footer-grids">
 						<h3>Dịch vụ</h3>
 						<ul>
-							<li><a href="contact.html">Liên hệ với chúng tôi</a></li>
-							<li><a href="login.html">Returns</a></li> 
-							<li><a href="faq.html">FAQ</a></li>
-							<li><a href="sitemap.html">Sơ đồ website</a></li>
-							<li><a href="login.html">Order Status</a></li>
+							<li><a href="{{route('lien-he')}}">Liên hệ với chúng tôi</a></li>
+							<li><a href="{{route('giup-do')}}">Hướng dẫn</a></li>
+							<li><a href="{{route('so-do-website')}}">Sơ đồ website</a></li>
 						</ul> 
 					</div>
 					<div class="col-md-6 footer-grids">
