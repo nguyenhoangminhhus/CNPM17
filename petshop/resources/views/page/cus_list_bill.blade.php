@@ -19,7 +19,7 @@
 								</tr>
 							</thead>
 							<tbody>
-								@foreach($usertran as $item)
+								@foreach($custran as $item)
 									<tr>
 										<td><?php echo $item->transaction_id; ?></td>
 										<td><?php echo $item->date_oder; ?></td>
@@ -31,6 +31,7 @@
 										} ?></td>
 									</tr>
 								@endforeach
+								
 							</tbody>
 						</table>
 					</div>

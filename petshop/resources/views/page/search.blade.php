@@ -5,8 +5,8 @@
 			<div class="welcome-info">
 				<div class="bs-example bs-example-tabs" role="tabpanel" data-example-id="togglable-tabs">
 					<h3 class="w3ls-title">Tìm Kiếm</h3>
-						<h6 class="w3ls-title">Tìm được {{count($product)}} sản phẩm</h6>
-						
+					
+						<h3>Tìm thấy {{count($product)}} sản phẩm</h3>
 					<div id="myTabContent" class="tab-content">
 						<div role="tabpanel" class="tab-pane fade in active" id="home" aria-labelledby="home-tab">
 							<div class="tabcontent-grids">  
@@ -26,7 +26,10 @@
 
 												<span style="font-size: 18px">{{$pro->unit_price}} đ</span>
 													@endif	</div></h5> 
-												<button class="w3ls-cart my-cart-btn" data-id="1" data-name="Audio speaker" data-summary="summary 1" data-price="1000000" data-quantity="1" data-image="source/images/e1.png"><i class="fa fa-cart-plus" aria-hidden="true"></i> Thêm vào giỏ hàng</button>
+												<!--<button class="w3ls-cart my-cart-btn" data-id="1" data-name="Audio speaker" data-summary="summary 1" data-price="1000000" data-quantity="1" data-image="source/images/e1.png"><i class="fa fa-cart-plus" aria-hidden="true"></i> Thêm vào giỏ hàng</button>-->
+												
+												<a class="w3ls-cart my-cart-btn" href="{{ route('mua-hang',[$pro->products_id,$pro->name]) }}"><i class="fa fa-cart-plus" aria-hidden="true"></i>Them vao gio hang</a>
+												
 											</div>   
 										</div> 
 										
@@ -35,9 +38,7 @@
 
 								@endforeach  
 
-
 							</div>
-							
 						</div>
 						
 					</div>
