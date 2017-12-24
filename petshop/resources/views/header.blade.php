@@ -8,7 +8,9 @@
 						<li class="dropdown head-dpdn">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-user" aria-hidden="true"></i>{{Auth::user()->fullname}} <span class="caret"></span> </a>
 							<ul class="dropdown-menu">
-
+								<li><a href="infor.html">Quản lý tài khoản </a></li> 
+								<li><a href="signup.html">Đơn hàng của tôi</a></li> 
+								<li><a href="change_pass.html">Đổi mật khẩu</a></li>  
 								<li><a href="infor.html">Quản lý tài khoản </a></li> 
 								<li><a href="signup.html">Đơn hàng của tôi</a></li> 
 								<li><a href="change_pass.html">Đổi mật khẩu</a></li>  
@@ -20,8 +22,6 @@
 								<li><a href="{{route('thong-tin-tai-khoan')}}">Quản lý tài khoản </a></li> 
 								<li><a href="signup.html">Đơn hàng của tôi</a></li> 
 								<li><a href="{{route('doi-mat-khau')}}">Đổi mật khẩu</a></li>  
-
-
 								<li><a href="{{route('dang-xuat')}}">Đăng xuất</a></li> 
 							</ul> 
 						</li>
@@ -71,8 +71,8 @@
 					<h6>Cửa hàng của bạn. Địa điểm của bạn</h6> 
 				</div>	
 				<div class="header-search">
-					<form action="#" method="post">
-						<input type="search" name="Search" placeholder="Tìm kiếm sản phẩm..." required="">
+					<form action="{{route('search')}}" method="get" role="search">
+						<input type="search" name="key" placeholder="Tìm kiếm sản phẩm..." required="">
 						<button type="submit" class="btn btn-default" aria-label="Left Align">
 							<i class="fa fa-search" aria-hidden="true"> </i>
 						</button>

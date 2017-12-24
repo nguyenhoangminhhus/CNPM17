@@ -16,6 +16,8 @@
 					@endif
 					@if(Session::has('thanhcong'))
 
+						<div class="alert alert-success">{{Session::get('thanhcong')}}</div>
+
 						<div class="alert alert-success">{{Session::get('thanhcong')}}<a href="{{route('kich-hoat')}}">  kích hoạt ngay</a></div>
 
 
@@ -27,8 +29,6 @@
     							alertify.message('OK');
   							}).setting({'label':'Thành công', 'closable':false}); 
 						</script>
-
-
 					@endif
 					<input type="text" class="user" name="fullname" placeholder="Nhập tên của bạn" required="">
 					<input type="text" class="user" name="account" placeholder="Nhập tên tài khoản" required="">

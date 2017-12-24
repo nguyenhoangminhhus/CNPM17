@@ -11,6 +11,7 @@
 |
 */
 //Hiển thị
+
 Route::get('Admin', [
 	'as'=>'Admin',
 	'uses'=>'PageController@getIndex_Admin'
@@ -278,9 +279,6 @@ Route::get('Admin/view-inbox', [
 	'as'=>'view-inbox',
 	'uses'=>'PageController@getView_inbox'
 ]);
-
-
-
 Route::get('/', [
 	'as'=>'trang-chu',
 	'uses'=>'PageController@getIndex'
@@ -300,16 +298,10 @@ Route::get('quen-mat-khau', [
 	'as'=>'quen-mat-khau',
 	'uses'=>'PageController@getForgotpass'
 ]);
-
-
-
 Route::post('quen-mat-khau', [
 	'as'=>'quen-mat-khau',
 	'uses'=>'PageController@postForgotpass'
 ]);
-
-
-
 Route::get('thong-tin', [
 	'as'=>'thong-tin',
 	'uses'=>'PageController@getThongtin'
@@ -379,7 +371,8 @@ Route::get('chinh-sach-bao-mat', [
 	'as'=>'chinh-sach-bao-mat',
 	'uses'=>'PageController@getPrivacy'
 ]);
-
+Route::get('chi-tiet-san-pham/{id}'	, [
+	'as'=>'chi-tiet-san-pham',
 Route::get('san-pham/{id}', [
 	'as'=>'san-pham',
 	'uses'=>'PageController@getProduct'
@@ -404,7 +397,6 @@ Route::get('loai-san-pham/{type}', [
 	'as'=>'loai-san-pham',
 	'uses'=>'PageController@getCategory'
 ]);
-
 Route::get('san-pham-khuyen-mai/{type}', [
 	'as'=>'san-pham-khuyen-mai',
 	'uses'=>'PageController@getSale'
@@ -414,18 +406,15 @@ Route::get('kich-hoat', [
 	'as'=>'kich-hoat',
 	'uses'=>'PageController@getActive'
 ]);
-
 //hành động
 Route::post('dang-ky', [
 	'as'=>'dang-ky',
 	'uses'=>'PageController@postDangky'
 ]);
-
 Route::post('kich-hoat', [
 	'as'=>'kich-hoat',
 	'uses'=>'PageController@postActive'
 ]);
-
 Route::post('dang-nhap', [
 	'as'=>'dang-nhap',
 	'uses'=>'PageController@postDangnhap'
@@ -436,8 +425,11 @@ Route::get('dang-xuat', [
 	'uses'=>'PageController@postDangxuat'
 ]);
 
-
-
+Route::get('search',[
+	'as'=>'search',
+	'uses' =>'PageController@getSearch'
+]);
+Route::post('comment/{id}','CommentController@posCcomment');
 Route::post('lien-he',[
 	'as'=>'lien-he',
 	'uses'=>'PageController@postContact'
@@ -459,3 +451,4 @@ Route::get('test', function()
 {
     dd(Config::get('mail'));
 });
+

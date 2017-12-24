@@ -15,6 +15,13 @@
 						</div>
 					@endif
 					@if(Session::has('flag'))
+						<div class="alert alert-{{Session::get('flag')}}">{{Session::get('message')}}</div>
+					@endif
+					@if (session('warning'))
+                        <span class="alert alert-warning help-block">
+                            <strong>{{ session('warning') }}</strong>
+                        </span>
+                    @endif
 						<div class="alert alert-{{Session::get('flag')}}">{{Session::get('message')}}<a href="{{route('kich-hoat')}}">  kích hoạt ngay</a></div>
 					@endif
 					<input type="text" class="user" name="account" placeholder="Nhập tài khoản của bạn" required="">
@@ -30,6 +37,14 @@
 				</form>
 			</div>  
 			<h6> Bạn chưa có tài khoản? <a href="{{route('dang-ky')}}">Tạo tài khoản ngay »</a> </h6> 
+			<div class="login-page-bottom social-icons">
+				<h5>Đăng nhập với tài khoản mạng xã hội</h5>
+				<ul>
+					<li><a href="#" class="fa fa-facebook icon facebook"> </a></li>
+					<li><a href="#" class="fa fa-twitter icon twitter"> </a></li>
+					<li><a href="#" class="fa fa-google-plus icon googleplus"> </a></li>
+				</ul> 
+			</div>
 		</div>
 	</div>
 	<!-- //login-page --> 

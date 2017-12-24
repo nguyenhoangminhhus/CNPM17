@@ -13,6 +13,10 @@
 				<form action="#" method="post">
 					<input type="text" class="user" name="fullname" placeholder="Nhập tên tài khoản của bạn" required="">
 
+
+				<form action="#" method="post">
+					<input type="text" class="user" name="fullname" placeholder="Nhập tên tài khoản của bạn" required="">
+
 				<form action="{{route('quen-mat-khau')}}" method="post">
 					<input type="hidden" name="_token" value="{{csrf_token()}}">
 					@if(count($errors)>0)
@@ -32,8 +36,6 @@
 						<div class="alert alert-danger">{{Session::get('thatbai')}}</div>
 					@endif
 					<input type="text" class="user" name="account" placeholder="Nhập tên tài khoản của bạn" required="">
-
-
 					<input type="text" class="user" name="email" placeholder="Nhập email tương ứng" required="">
 					<input type="submit" value="Đồng ý ">
 				</form>

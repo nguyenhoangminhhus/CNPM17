@@ -8,6 +8,16 @@
 					<div class="col-md-6 single-top-left">	
 						<div class="flexslider">
 							<ul class="slides">
+
+								<li data-thumb="source/images/{{$sanpham->image}}">
+									<div class="thumb-image detail_images"> <img src="source/images/{{$sanpham->image}}" data-imagezoom="true" class="img-responsive" alt=""> </div>
+								</li>
+								<li data-thumb="source/images/{{$sanpham->image}}">
+									 <div class="thumb-image"> <img src="source/images/{{$sanpham->image}}" data-imagezoom="true" class="img-responsive" alt=""> </div>
+								</li>
+								<li data-thumb="source/images/{{$sanpham->image}}">
+								   <div class="thumb-image"> <img src="source/images/{{$sanpham->image}}" data-imagezoom="true" class="img-responsive" alt=""> </div>
+
 								<li data-thumb="source/images/s1.jpg">
 									<div class="thumb-image detail_images"> <img src="source/images/s1.jpg" data-imagezoom="true" class="img-responsive" alt=""> </div>
 								</li>
@@ -16,11 +26,25 @@
 								</li>
 								<li data-thumb="source/images/s3.jpg">
 								   <div class="thumb-image"> <img src="source/images/s3.jpg" data-imagezoom="true" class="img-responsive" alt=""> </div>
+
 								</li> 
 							</ul>
 						</div>
 					</div>
 					<div class="col-md-6 single-top-right">
+
+						<h3 class="item_name">{{$sanpham->name}}</h3>
+						<p>{{$sanpham->description}}</p>
+						<div class="single-rating">
+							<!-- <ul>
+								<li class="rating"><i class="fa fa-eye" aria-hidden="true"></i>20 lượt xem sản phẩm</li>
+								<li class="rating"><i class="fa fa-shopping-cart" aria-hidden="true"></i>20 lượt mua sản phẩm</li>
+							</ul> --> 
+						</div>
+						<div class="single-price">
+							<ul>
+								<li>{{number_format($sanpham->unit_price)}} VNĐ</li>  
+								<li><del>{{number_format($sanpham->promotion_price)}} VNĐ</del><span class="w3off"></span></li> 
 						<h3 class="item_name">Thẻ tên</h3>
 						<p>(*Sản phẩm dành cho chó*)</p>
 						<div class="single-rating">
@@ -61,7 +85,9 @@
 						</div>
 						<div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
 							<div class="panel-body">
+								{{$sanpham->description}}
 								Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+
 							</div>
 						</div>
 					</div>
@@ -75,7 +101,11 @@
 						</div>
 						<div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
 							<div class="panel-body">
+
+								{{$sanpham->description}}
+
 								Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+
 							</div>
 						</div>
 					</div>
@@ -83,6 +113,25 @@
 						<div class="panel-heading" role="tab" id="headingThree">
 							<h4 class="panel-title">
 								<a class="collapsed pa_italic" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+
+									<i class="fa fa-check-square-o fa-icon" aria-hidden="true"></i> Bình luận <span class="fa fa-angle-down fa-arrow" aria-hidden="true"></span> <i class="fa fa-angle-up fa-arrow" aria-hidden="true"></i>
+								</a>
+							</h4>
+						</div>
+						
+							<div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+							<div class="panel-body">
+								@if(Auth::check())
+								<form  action="comment/{{$sanpham->products_id}}" role="form">
+									
+									<div class="form-group">
+										<textarea class="form-control" rows="3"></textarea>
+									</div>
+									<button type="submit" class="btn btn-primary"> Gửi</button>
+								</form>
+							</div
+							@endif
+						</div>
 									<i class="fa fa-check-square-o fa-icon" aria-hidden="true"></i> Bình luận (5) <span class="fa fa-angle-down fa-arrow" aria-hidden="true"></span> <i class="fa fa-angle-up fa-arrow" aria-hidden="true"></i>
 								</a>
 							</h4>
@@ -95,7 +144,8 @@
 					</div>
 				</div>
 			</div>
-			<!-- //collapse --> 
+			<!-- //collapse --> 	
+			@include('offers_cards')
 			@include('recommendations')
 			@include('offers_cards')
 		</div>
