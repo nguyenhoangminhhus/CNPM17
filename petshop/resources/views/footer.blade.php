@@ -81,6 +81,11 @@
 						<li><i class="fa fa-mobile"></i> 01679643840 </li>
 						<li><i class="fa fa-phone"></i> +0898573076	</li>
 						<li><i class="fa fa-envelope-o"></i> <a href="mailto:example@mail.com">duongnc@i-com.vn</a></li>
+						<li><i class="fa fa-map-marker"></i> 281 Trương Định-Hai Bà Trưng-Hà Nội.</li>
+						<li><i class="fa fa-mobile"></i> 0972479395 </li>
+						<li><i class="fa fa-phone"></i> 02431556222 </li>
+						<li><i class="fa fa-envelope-o"></i> <a href="mailto:example@mail.com"> meowcorner@gmail.com</a></li>
+
 					</ul> 
 				</div>
 				<div class="col-md-8 address-right">
@@ -88,6 +93,14 @@
 						<h3>Company</h3>
 						<ul>
 							<li><a href="{{route('thong-tin')}}">Về chúng tôi</a></li>
+							<li><a href="{{route('dich-vu')}}">Marketplace</a></li>  
+							<li><a href="{{route('dich-vu')}}">Marketplace</a></li>  
+
+							<li><a href="{{route('dich-vu')}}">Marketplace</a></li>  
+
+
+							<li><a href="{{route('dich-vu')}}">Địa điểm mua sắm</a></li>  
+
 							<li><a href="{{route('dich-vu')}}">Marketplace</a></li>  
 							<li><a href="{{route('gia-tri-cot-loi')}}">Giá trị cốt lõi</a></li>  
 							<li><a href="{{route('chinh-sach-bao-mat')}}">Chính sách bảo mật</a></li>
