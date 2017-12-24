@@ -4,29 +4,30 @@
 	<div class="values">
 		<div class="container"> 
 			<h3 class="w3ls-title w3ls-title1">Giá trị cốt lõi</h3> 
-			<h5>About Core Values</h5>
-			<p>Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Maecenas faucibus ipsum et libero euismod iaculis. Integer consectetur congue laoreet. Morbi eget leo elementum, vulputate eros et, egestas diam. Nam egestas, quam id viverra congue, elit mi eleifend libero, eget vulputate ante lorem vel quam. Sed suscipit ligula eu mi bibendum, vel mollis enim finibus. Suspendisse vitae est tortor. Donec aliquet leo vitae ligula mattis, vitae auctor mi pellentesque. Integer eu dui accumsan, convallis neque id, malesuada urna. </p>
+			<h5>Về chúng tôi</h5>
+			<p>Meow Corner là cửa hàng bán đồ dùng, thức ăn, phụ kiện cho chó mèo tại Hà Nội, được thành lập từ 8/2010 được sự tin tưởng của khách hàng trong suốt thời gian hoạt động đến nay cửa hàng ngày một phát triển và xây dựng được thương hiệu trong lòng quý khách . </p>
 			<div class="w3values-row">
-				<h5>Here  are some core values :</h5>
+				<h5>Trên các tiêu chí:</h5>
 				<div class="col-md-6 w3values-grids">
-					<h6>1. INNOVATION</h6>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ultrices orci at augue sollicitudin, sed rhoncus leo dictum. Duis sed elit tempus, convallis elit eget, ornare nibh. Sed eu risus eget magna condimentum blandit.  </p>
+					<h6>1. CÔNG BẰNG</h6>
+					<p>Công bằng với nhân viên, khách hàng, nhà cung cấp và các bên liên quan khác.</p>
 				</div>
 				<div class="col-md-6 w3values-grids">
-					<h6>2. NEW TRENDS</h6>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ultrices orci at augue sollicitudin, sed rhoncus leo dictum. Duis sed elit tempus, convallis elit eget, ornare nibh. Sed eu risus eget magna condimentum blandit.  </p>
+					<h6>2. ĐẠO ĐỨC</h6>
+					<p>Tôn trọng các tiêu chuẩn đã được thiết lập và hành động một cách
+đạo đức. </p>
 				</div>
 				<div class="col-md-6 w3values-grids">
-					<h6>3. OPENNESS</h6>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ultrices orci at augue sollicitudin, sed rhoncus leo dictum. Duis sed elit tempus, convallis elit eget, ornare nibh. Sed eu risus eget magna condimentum blandit.  </p>
+					<h6>3. KỶ LUẬT</h6>
+					<p>Kỷ luật hướng vào tính chuyên nghiệp; </p>
 				</div>
 				<div class="col-md-6 w3values-grids">
-					<h6>4. OWNERSHIP</h6>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ultrices orci at augue sollicitudin, sed rhoncus leo dictum. Duis sed elit tempus, convallis elit eget, ornare nibh. Sed eu risus eget magna condimentum blandit.  </p>
+					<h6>4. NĂNG ĐỘNG</h6>
+					<p>Năng động hướng tới tính sáng tạo tập thể  </p>
 				</div>
 				<div class="col-md-6 w3values-grids">
-					<h6>5. HONESTY</h6>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ultrices orci at augue sollicitudin, sed rhoncus leo dictum. Duis sed elit tempus, convallis elit eget, ornare nibh. Sed eu risus eget magna condimentum blandit.  </p>
+					<h6>5. CAM KẾT</h6>
+					<p>Cam kết với nội bộ và cộng đồng, xã hội.  </p>
 				</div>
 				<div class="clearfix"> </div>
 			</div>
