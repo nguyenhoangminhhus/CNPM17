@@ -20,9 +20,4 @@ class Products extends Model
     public function products(){
     	return $this->belongsTo('App\Sale', 'saleoff_id', 'products_id');
     }
-
-    public function comment(){
-
-        return $this->hasMany('App\Comment', 'comment_id','products_id');
-    }
 }

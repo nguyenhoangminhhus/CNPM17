@@ -237,6 +237,22 @@ ul.cd-dropdown-content li {
 .header-cart h4 a {
     color: #000;
 }
+/*-- giohang-page --*/
+.giohang .container .panel-group .panel.panel-default{
+    width: 100%;
+    margin-left: 0; 
+}
+.giohang .container .panel-group .panel.panel-default .panel-body{
+    width: 100%;
+    margin: 0 1%; 
+}
+.giohang .container table.dataTable.display tbody td:nth-child(4){
+    width: 15%;
+}
+.giohang .container table.dataTable.display tbody td:nth-child(6){
+    width: 15%;
+}
+/*-- //giohang-page --*/
 /*-- cart-box --*/ 
 .cart {
     margin-left: 2em;
@@ -263,6 +279,13 @@ ul.cd-dropdown-content li {
     color: #ffffff;
 	vertical-align: middle;
 }
+.cart .my-cart-badge{
+    top: -17px;
+    right: 15px;
+    background-color: red;
+    color: #fff;
+}
+
 /*-- //cart-box --*/
 /*.my-account {
     float: left;

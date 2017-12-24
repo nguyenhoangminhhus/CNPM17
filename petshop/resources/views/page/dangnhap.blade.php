@@ -16,15 +16,6 @@
 					@endif
 					@if(Session::has('flag'))
 						<div class="alert alert-{{Session::get('flag')}}">{{Session::get('message')}}</div>
-
-					@endif
-					@if (session('warning'))
-                        <span class="alert alert-warning help-block">
-                            <strong>{{ session('warning') }}</strong>
-                        </span>
-                    @endif
-						<div class="alert alert-{{Session::get('flag')}}">{{Session::get('message')}}<a href="{{route('kich-hoat')}}">  kích hoạt ngay</a></div>
-
 					@endif
 					@if (session('warning'))
                         <span class="alert alert-warning help-block">
