@@ -268,12 +268,6 @@ class PageController extends Controller
 
     }
 
-    public function getEditinfor(){
-        
-    	return view('page.edit_infor');
-
-    }
-
     public function postContact(Request $req){
         $this->validate($req,
             [
