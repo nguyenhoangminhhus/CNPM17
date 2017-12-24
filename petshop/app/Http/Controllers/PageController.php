@@ -7,8 +7,11 @@ use App\Category;
 use App\Products;
 use App\Sale;
 use App\Addresss;
+
+
 use App\Contact;
 use App\Emailsale;
+
 
 
 use Hash;
@@ -179,6 +182,8 @@ class PageController extends Controller
         return view('page.forgot_password');
     }
 
+
+
     public function postForgotpass(Request $req){
         $this->validate($req,
             [
@@ -205,6 +210,7 @@ class PageController extends Controller
             return redirect()->back()->with('thatbai','Tài khoản hoặc email sai.');
         }
     }
+
 
     public function getThongtin(){
         
@@ -255,6 +261,13 @@ class PageController extends Controller
     public function getContact(){
         $map = Addresss::all();
     	return view('page.contact', compact('map'));
+
+    }
+
+    public function getEditinfor(){
+        
+    	return view('page.edit_infor');
+
     }
 
     public function postContact(Request $req){
@@ -286,6 +299,7 @@ class PageController extends Controller
     public function getEditinfor(){
         $user = Auth::user();
     	return view('page.edit_infor', compact('user'));
+
     }
 
     public function getHelp(){
@@ -294,6 +308,10 @@ class PageController extends Controller
     }
 
     public function getInfor(){
+
+        
+    	return view('page.infor');
+
         $user = Auth::user();
     	return view('page.infor', compact('user'));
     }
@@ -339,6 +357,7 @@ class PageController extends Controller
             $user->save();
             return redirect()->back()->with('thanhcong', 'Sửa thông tin thành công');
         }
+
     }
 
     public function getInforbill(){
@@ -372,8 +391,13 @@ class PageController extends Controller
     }
 
     public function getSitemap(){
+
+        
+    	return view('page.sitemap');
+
         $category = Category::all();
     	return view('page.sitemap', compact('category'));
+
     }
 
     public function getValues(){
@@ -464,6 +488,9 @@ class PageController extends Controller
                 'account.max'=>'Tài khoản nhiều nhất 25 ký tự.',
             ]
         );
+
+        $check = array('account'=>$req->account, 'active_code'=>$req->code, 'active'=>0);
+
         $user = DB::table('users')
                 ->where('account', $req->account)
                 ->where('active_code', $req->code)
@@ -473,7 +500,11 @@ class PageController extends Controller
             DB::table('users')
                 ->where('account', $req->account)
                 ->update(['active' => 1]);
+
+            return redirect()->back()->with('thanhcong','Tài khoản của bạn đã kích hoạt thành công.');
+
             return redirect()->back()->with('thanhcong','Tài khoản của bạn đã kích hoạt thành công. Bạn có thể đăng nhập ngay.');
+
         } else {
             return redirect()->back()->with('thatbai','Sai tài khoản hoặc mã code hoặc tài khoản của bạn đã được kích hoạt');
         }
@@ -504,6 +535,7 @@ class PageController extends Controller
 
     }
 
+
     public function postEmailsale(Request $req){
         $this->validate($req,
             [
@@ -526,6 +558,7 @@ class PageController extends Controller
 
         return redirect()->back()->with('thanhcong', 'Chúng tôi đã gửi mã khuyến mãi. Xin kiểm tra email của bạn');
     }
+
 
     public function postDangxuat(){
         Auth::logout();

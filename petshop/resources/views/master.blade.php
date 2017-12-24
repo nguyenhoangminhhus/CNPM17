@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+
 <html lang="en">
 <head>
 	<title>Shop Pet Corner / Phụ kiện chó - mèo</title>
@@ -411,6 +411,7 @@
 	<!--flex slider-->
 	<script src="source/js/imagezoom.js"></script>
 	
+
 	<!-- //js -->
 </body>
 </html>
