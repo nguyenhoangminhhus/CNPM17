@@ -6,24 +6,24 @@
 			<!-- Wrapper-for-Slides -->
 			<div class="carousel-inner" role="listbox">  
 				<div class="item active"><!-- First-Slide -->
-					<img src="source/images/5.jpg" alt="" class="img-responsive" />
+					<img src="source/images/Anh-bia-dong-vat-01.jpg" alt="" class="img-responsive" />
 					<div class="carousel-caption kb_caption kb_caption_right">
-						<h3 data-animation="animated flipInX">Flat <span>50%</span> Discount</h3>
-						<h4 data-animation="animated flipInX">Hot Offer Today Only</h4>
+						<h3 data-animation="animated flipInX" style="font-style: italic;">Đẹp<span>--</span>Dễ thương</h3>
+						<h4 data-animation="animated flipInX">Sale liên tục</h4>
 					</div>
 				</div>  
 				<div class="item"> <!-- Second-Slide -->
-					<img src="source/images/8.jpg" alt="" class="img-responsive" />
+					<img src="source/images/hinh-nen-nhung-chu-cun-de-thuong-2.jpg" alt="" class="img-responsive" />
 					<div class="carousel-caption kb_caption kb_caption_right">
-						<h3 data-animation="animated fadeInDown">Our Latest Fashion Editorials</h3>
-						<h4 data-animation="animated fadeInUp">cupidatat non proident</h4>
+						<h3 data-animation="animated fadeInDown">Đặt hàng nhanh</h3>
+						<h4 data-animation="animated fadeInUp">Giao hàng tới liền</h4>
 					</div>
 				</div> 
 				<div class="item"><!-- Third-Slide -->
 					<img src="source/images/3.jpg" alt="" class="img-responsive"/>
 					<div class="carousel-caption kb_caption kb_caption_center">
-						<h3 data-animation="animated fadeInLeft">End Of Season Sale</h3>
-						<h4 data-animation="animated flipInX">cupidatat non proident</h4>
+						<h3 data-animation="animated fadeInLeft">Bão Sale</h3>
+						<h4 data-animation="animated flipInX">Nhanh tay.nhanh nào....</h4>
 					</div>
 				</div> 
 			</div> 
@@ -46,108 +46,37 @@
 			<div class="welcome-info">
 				<div class="bs-example bs-example-tabs" role="tabpanel" data-example-id="togglable-tabs">
 					<h3 class="w3ls-title">Sản Phẩm Nổi Bật</h3>
+					
 					<div id="myTabContent" class="tab-content">
-						
-						<div role="tabpanel" class="tab-pane fade" id="" aria-labelledby="-tab">
+						<div role="tabpanel" class="tab-pane fade in active" id="home" aria-labelledby="home-tab">
 							<div class="tabcontent-grids">  
 								<div id="owl-demo" class="owl-carousel"> 
+								@foreach($sanpham_khuyenmai as $sp_km)
 									<div class="item">
+										
 										<div class="glry-w3agile-grids agileits"> 
-											<a href="products.html"><img src="source/images/e1.png" alt="img"></a>
+											<a href="{{route('chi-tiet-san-pham',$sp_km->products_id)}}"><img src="source/images/{{$sp_km->image}}" alt="img"></a>
 											<div class="view-caption agileits-w3layouts">           
-												<h4><a href="products.html">Audio speaker</a></h4>
-												<p>Lorem ipsum dolor sit amet consectetur</p>
-												<h5>1.000.000 VNĐ</h5> 
-												<button class="w3ls-cart my-cart-btn" data-id="1" data-name="Audio speaker" data-summary="summary 1" data-price="1000000" data-quantity="1" data-image="source/images/e1.png"><i class="fa fa-cart-plus" aria-hidden="true"></i> Thêm vào giỏ hàng</button>
+												<h4><a href="products.html">{{$sp_km->name}}</a></h4>
+												<p>{{$sp_km->description}}</p>
+												<h5><div> @if($sp_km->promotion_price!=0)
+											<h6><del>{{$sp_km->unit_price}}</del>  {{$sp_km->promotion_price}} đ</h6> 
+												@else
+
+												<span style="font-size: 18px">{{$sp_km->unit_price}} đ</span>
+													@endif	</div></h5> 
+												{{-- <button class="w3ls-cart my-cart-btn" data-id="1" data-name="{{$sp_km->name}}" data-summary="summary 1" data-price="{{$sp_km->promotion_price}}" data-quantity="1" data-image="source/images/{{$sp_km->image}}"><i class="fa fa-cart-plus" aria-hidden="true"></i> Thêm vào giỏ hàng</button> --}}
+
+												<a class="w3ls-cart my-cart-btn" href="{{ route('mua-hang',[$sp_km->products_id,$sp_km->name]) }}"><i class="fa fa-cart-plus" aria-hidden="true"></i>Them vao gio hang</a>
 											</div>   
-										</div>   
+										</div> 
 									</div>
-									<div class="item">
-										<div class="glry-w3agile-grids agileits">
-											<div class="new-tag"><h6>Sale</h6></div>
-											<a href="products.html"><img src="source/images/e2.png" alt="img"></a>
-											<div class="view-caption agileits-w3layouts">           
-												<h4><a href="products.html">Refrigerator</a></h4>
-												<p>Lorem ipsum dolor sit amet consectetur</p> 
-												<h5>1.000.000 VNĐ</h5>
-												<button class="w3ls-cart my-cart-btn" data-id="2" data-name="Refrigerator" data-summary="summary 2" data-price="1000000" data-quantity="1" data-image="source/images/e1.png"><i class="fa fa-cart-plus" aria-hidden="true"></i> Thêm vào giỏ hàng</button>
-											</div>       
-										</div>  
-									</div>
-									<div class="item">
-										<div class="glry-w3agile-grids agileits"> 
-											<div class="new-tag"><h6>New</h6></div>
-											<a href="products.html"><img src="source/images/e3.png" alt="img"></a>
-											<div class="view-caption agileits-w3layouts">           
-												<h4><a href="products.html">Smart Phone</a></h4>
-												<p>Lorem ipsum dolor sit amet consectetur</p>
-												<h5>1.000.000 VNĐ</h5>
-												<button class="w3ls-cart my-cart-btn" data-id="3" data-name="Smart Phone" data-summary="summary 3" data-price="1000000" data-quantity="1" data-image="source/images/e1.png"><i class="fa fa-cart-plus" aria-hidden="true"></i> Thêm vào giỏ hàng</button>
-											</div>        
-										</div>  
-									</div>
-									<div class="item">
-										<div class="glry-w3agile-grids agileits"> 
-											<a href="products.html"><img src="source/images/e4.png" alt="img"></a>
-											<div class="view-caption agileits-w3layouts">           
-												<h4><a href="products.html">Digital Camera</a></h4>
-												<p>Lorem ipsum dolor sit amet consectetur</p>
-												<h5>1.000.000 VNĐ</h5>
-												<button class="w3ls-cart my-cart-btn" data-id="4" data-name="Digital Camera" data-summary="summary 4" data-price="1000000" data-quantity="1" data-image="source/images/e1.png"><i class="fa fa-cart-plus" aria-hidden="true"></i> Thêm vào giỏ hàng</button>
-											</div>         
-										</div>  
-									</div>
-									<div class="item">
-										<div class="glry-w3agile-grids agileits"> 
-											<a href="products.html"><img src="source/images/e1.png" alt="img"></a>
-											<div class="view-caption agileits-w3layouts">           
-												<h4><a href="products.html">Audio speaker</a></h4>
-												<p>Lorem ipsum dolor sit amet consectetur</p>
-												<h5>1.000.000 VNĐ</h5> 
-												<button class="w3ls-cart my-cart-btn" data-id="5" data-name="Audio speaker" data-summary="summary 5" data-price="1000000" data-quantity="1" data-image="source/images/e1.png"><i class="fa fa-cart-plus" aria-hidden="true"></i> Thêm vào giỏ hàng</button>
-											</div>   
-										</div>   
-									</div>
-									<div class="item">
-										<div class="glry-w3agile-grids agileits">
-											<div class="new-tag"><h6>Sale</h6></div>
-											<a href="products.html"><img src="source/images/e2.png" alt="img"></a>
-											<div class="view-caption agileits-w3layouts">           
-												<h4><a href="products.html">Refrigerator</a></h4>
-												<p>Lorem ipsum dolor sit amet consectetur</p> 
-												<h5>1.000.000 VNĐ</h5>
-												<button class="w3ls-cart my-cart-btn" data-id="6" data-name="Refrigerator" data-summary="summary 6" data-price="1000000" data-quantity="1" data-image="source/images/e1.png"><i class="fa fa-cart-plus" aria-hidden="true"></i> Thêm vào giỏ hàng</button>
-											</div>       
-										</div>  
-									</div>
-									<div class="item">
-										<div class="glry-w3agile-grids agileits"> 
-											<div class="new-tag"><h6>New</h6></div>
-											<a href="products.html"><img src="source/images/e3.png" alt="img"></a>
-											<div class="view-caption agileits-w3layouts">           
-												<h4><a href="products.html">Smart Phone</a></h4>
-												<p>Lorem ipsum dolor sit amet consectetur</p>
-												<h5>1.000.000 VNĐ</h5>
-												<button class="w3ls-cart my-cart-btn" data-id="7" data-name="Audio speaker" data-summary="summary 1" data-price="1000000" data-quantity="1" data-image="source/images/e1.png"><i class="fa fa-cart-plus" aria-hidden="true"></i> Thêm vào giỏ hàng</button>
-											</div>        
-										</div>  
-									</div>
-									<div class="item">
-										<div class="glry-w3agile-grids agileits"> 
-											<a href="products.html"><img src="source/images/e4.png" alt="img"></a>
-											<div class="view-caption agileits-w3layouts">           
-												<h4><a href="products.html">Digital Camera</a></h4>
-												<p>Lorem ipsum dolor sit amet consectetur</p>
-												<h5>1.000.000 VNĐ</h5>
-												<button class="w3ls-cart my-cart-btn" data-id="8" data-name="Audio speaker" data-summary="summary 1" data-price="1000000" data-quantity="1" data-image="source/images/e1.png"><i class="fa fa-cart-plus" aria-hidden="true"></i> Thêm vào giỏ hàng</button>
-											</div>         
-										</div>  
-									</div>
-								</div> 
+
+								@endforeach  
+
 							</div>
 						</div>
-						
-					</div>   
+					</div>
 				</div>  
 			</div>  	
 		</div>  	
@@ -158,21 +87,21 @@
 		<div class="container">  
 			<div class="add-products-row">
 				<div class="w3ls-add-grids">
-					<a href="products1.html"> 
-						<h4>TOP 10 TRENDS FOR YOU FLAT <span>20%</span> OFF</h4>
-						<h6>Mua ngay <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></h6>
+					<a href="{{route('khuyen-mai')}}"> 
+						<h4>TOP 10 SẢN PHẨM GIẢM GIÁ <span>20%</span></h4>
+						<h6>Xem ngay <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></h6>
 					</a>
 				</div>
 				<div class="w3ls-add-grids w3ls-add-grids-mdl">
-					<a href="products1.html"> 
-						<h4>SUNDAY SPECIAL DISCOUNT FLAT <span>40%</span> OFF</h4>
-						<h6>Mua ngay <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></h6>
+					<a href="{{route('khuyen-mai')}}"> 
+						<h4>CHỦ NHẬT ĐẶC BIỆT <span>40%</span> GIẢM GIÁ</h4>
+						<h6>Xem ngay <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></h6>
 					</a>
 				</div>
 				<div class="w3ls-add-grids w3ls-add-grids-mdl1">
-					<a href="products.html"> 
-						<h4>LATEST DESIGNS FOR YOU <span> Hurry !</span></h4>
-						<h6>Mua ngay <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></h6>
+					<a href="{{route('khuyen-mai')}}"> 
+						<h4>THIẾT KẾ CHO THỨ CƯNG CỦA BẠN <span>!</span></h4>
+						<h6>Xem ngay <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></h6>
 					</a>
 				</div>
 				<div class="clerfix"> </div>
@@ -196,7 +125,7 @@
 			<div class="deals-row">
 				@foreach($category as $cate)
 				<div class="col-md-{{$cate->cot}} focus-grid"> 
-					<a href="products.html" class="wthree-btn" style="color: {{$cate->color}}"> 
+					<a href="{{route('loai-san-pham',$cate->category_id)}}" class="wthree-btn" style="color: {{$cate->color}}"> 
 						<div class="focus-image"><i class="{{$cate->category_icon}}"></i></div>
 						<h4 class="clrchg">{{$cate->name}}</h4> 
 					</a>

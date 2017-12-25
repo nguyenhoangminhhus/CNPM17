@@ -86,9 +86,6 @@
 				</form>
 			</div>
 			<!-- //collapse --> 
-			<!-- recommendations -->
-			@include('recommendations')
-			<!-- //recommendations -->
 			@include('offers_cards')
 		</div>
 	</div>

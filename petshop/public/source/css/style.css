@@ -263,10 +263,10 @@ ul.cd-dropdown-content li {
 .w3view-cart {
     background: #1d9d74;
     border: none;
-	-webkit-border-radius: 50%;
-	-moz-border-radius: 50%;
-	-o-border-radius: 50%;
-	-ms-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -o-border-radius: 50%;
+    -ms-border-radius: 50%;
     border-radius: 50%;
     width: 60px;
     height: 59px;
@@ -277,8 +277,15 @@ ul.cd-dropdown-content li {
 .w3view-cart  i.fa {
     font-size: 2em;
     color: #ffffff;
-	vertical-align: middle;
+    vertical-align: middle;
 }
+.header .my-cart-badge{
+    top: -17px;
+    right: 15px;
+    background-color: red;
+    color: #fff;
+}
+
 /*-- //cart-box --*/
 /*.my-account {
     float: left;
@@ -1166,7 +1173,6 @@ p {
 }
 .payment .panel-voucher .panel.panel-default{
     width: 100%;
-    height: 100%;
     margin: 20px 0 20px;
     border-radius: 0;
 }

@@ -114,7 +114,6 @@
 				</div>
 			</div>
 			<!-- //collapse --> 
-			@include('recommendations')
 			@include('offers_cards')
 		</div>
 	</div>

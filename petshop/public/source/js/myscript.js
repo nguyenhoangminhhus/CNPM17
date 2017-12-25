@@ -11,7 +11,7 @@ $(document).ready(function () {
 		var qty = $(this).parent().parent().find(".qty").val();
 		var token = $("input[name='_token']").val();
 		$.ajax({
-			url:'http://webshop.test/cap-nhat/'+rowid+'/'+qty,
+			url:'http://localhost/petshop3/public/cap-nhat/'+rowid+'/'+qty,
 			type:'GET',
 			success:function(data) {
 
