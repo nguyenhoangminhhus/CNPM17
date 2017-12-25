@@ -99,15 +99,7 @@
 						<h3>Company</h3>
 						<ul>
 							<li><a href="{{route('thong-tin')}}">Về chúng tôi</a></li>
-
-							<li><a href="{{route('dich-vu')}}">Marketplace</a></li>  
-
-
 							<li><a href="{{route('dich-vu')}}">Địa điểm mua sắm</a></li>  
-
-							<li><a href="{{route('dich-vu')}}">Marketplace</a></li>  
-
-
 							<li><a href="{{route('gia-tri-cot-loi')}}">Giá trị cốt lõi</a></li>  
 							<li><a href="{{route('chinh-sach-bao-mat')}}">Chính sách bảo mật</a></li>
 						</ul>

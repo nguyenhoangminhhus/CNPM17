@@ -176,7 +176,6 @@ Route::group(['prefix'=>'Admin', 'middleware'=>'adminLogin'], function(){
 });
 
 
-
 Route::get('/', [
 	'as'=>'trang-chu',
 	'uses'=>'PageController@getIndex'
@@ -198,13 +197,10 @@ Route::get('quen-mat-khau', [
 ]);
 
 
-
 Route::post('quen-mat-khau', [
 	'as'=>'quen-mat-khau',
 	'uses'=>'PageController@postForgotpass'
 ]);
-
-
 
 Route::get('thong-tin', [
 	'as'=>'thong-tin',
@@ -256,11 +252,6 @@ Route::get('thong-tin-don-hang', [
 	'uses'=>'PageController@getInforbill'
 ]);
 
-Route::get('danh-sach-don-hang', [
-	'as'=>'danh-sach-don-hang',
-	'uses'=>'PageController@getListbill'
-]);
-
 Route::get('dich-vu', [
 	'as'=>'dich-vu',
 	'uses'=>'PageController@getMarketplace'
@@ -276,8 +267,8 @@ Route::get('chinh-sach-bao-mat', [
 	'uses'=>'PageController@getPrivacy'
 ]);
 
-Route::get('san-pham/{id}', [
-	'as'=>'san-pham',
+Route::get('chi-tiet-san-pham/{id}', [
+	'as'=>'chi-tiet-san-pham',
 	'uses'=>'PageController@getProduct'
 ]);
 
@@ -344,11 +335,48 @@ Route::post('emailsale', [
 	'uses'=>'PageController@postEmailsale'
 ]);
 
+Route::get('search',[
+	'as'=>'search',
+	'uses' =>'PageController@getSearch'
+]);
+Route::post('comment',[
+	'as' => 'comment',
+	'uses' => 'PageController@postComment'
+]);
 
+Route::get('mua-hang/{id}/{name}',[
+	'as' => 'mua-hang',
+	'uses' => 'PageController@muahang'
+]);
 
 Route::get('gio-hang', [
-	'as'=>'gio-hang',
-	'uses'=>'PageController@getGiohang'
+	'as' => 'gio-hang',
+	'uses' => 'PageController@getGiohangg'
+]);
+
+Route::get('xoa-sp-giohang/{id}', [
+	'as' => 'xoa-sp-giohang',
+	'uses' => 'PageController@xoaspgiohang'
+]);
+
+Route::get('cap-nhat/{id}/{qty}',[
+	'as' => 'cap-nhat',
+	'uses' => 'PageController@capnhatgiohang'
+]);
+
+Route::post('dat-hang', [
+	'as' => 'dat-hang',
+	'uses' => 'PageController@dathang'
+]);
+
+Route::get('danh-sach-don-hang', [
+	'as' => 'danh-sach-don-hang',
+	'uses' => 'PageController@getListbilll'
+]);
+
+Route::post('customer-bill',[
+	'as' => 'customer-bill',
+	'uses' =>'PageController@custListbill'
 ]);
 
 Route::get('test', function()
